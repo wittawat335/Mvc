@@ -1,31 +1,89 @@
-﻿@{
-    ViewBag.Title = "Home Page";
+﻿@model IEnumerable<Category>
+@{
+    ViewBag.Title = "Home";
+
 }
 
-<div class="jumbotron">
-    <h1>ASP.NET</h1>
-    <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
-    <p><a href="http://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
+<div class="nn-home-banner">
+    @Html.Partial("_Banner")
 </div>
+<!--end home banner-->
 
-<div class="row">
-    <div class="col-md-4">
-        <h2>Getting started</h2>
-        <p>
-            ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
-            enables a clean separation of concerns and gives you full control over markup
-            for enjoyable, agile development.
-        </p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
+@foreach (var c in Model)
+{
+    var item = c.Products
+            .OrderBy(p => Guid.NewGuid())
+            .ToList()
+            .Take(4);
+    <div class="nn-block-margin-top30px">
+        <div class="nn-cat-title">
+            <p>
+                <i class="glyphicon glyphicon-tag"></i>
+                <h2>@c.Name</h2>
+            </p>
+        </div>
+
+        @foreach (var p in item)
+        {
+            <div>
+                <div class="col-md-3">
+                    <div class="nn-product-box">
+                        <a href="/Product/Detail/@p.Id">
+                            <img class="img-responsive" src="/Content/img/products/@p.Image" />
+                        </a>
+                        <div class="nn-product-box-descriptions">
+                            <h3 class="nn-product-box-name">
+                                <a href="http://newsmartwave.net/magento/legenda/index.php/fashion-jacket-386.html" title="@p.Name">@p.Name</a>
+                            </h3>
+                            <div class="nn-product-box-price ">
+                                <span class="">฿ @p.UnitPrice</span>
+                            </div>
+                            <div class="nn-product-box-actions">
+                                <button type="button" class="btn btn-info blue add-to-cart" title="Add to Cart" data-id="@p.Id">
+                                    <span>เพิ่มลงตะกร้า</span>
+                                </button>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        }
     </div>
-    <div class="col-md-4">
-        <h2>Get more libraries</h2>
-        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Web Hosting</h2>
-        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
-    </div>
-</div>
+    <div class="clearfix"></div>
+}
+
+<link rel="stylesheet" href="~/Content/bootstrap.min.css" />
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+
+
+
+@section scripts{
+    <script>
+        $(function() {
+            $(".add-to-cart").click(function() {
+                pid = $(this).attr("data-id");
+                $.ajax({
+                    url: "/Cart/Add",
+                    data: { id: pid },
+                    success: function(response) {
+                        alert("เพิ่มสินค้าลงในตะกร้าเรียบร้อยค่ะ");
+                        $("#nn-cart-count").html(response.Count);
+                        $("#nn-cart-total").html(response.Total);
+                    }
+                });
+
+                // hieu ung bay vao gio
+                cssfly = ".fly-effect {background:url(?);background-size:100% 100%;}";
+                src = $("#i" + pid).attr("src");
+                newcssfly = cssfly.replace("?", src);
+                $("#cart-fly").html(newcssfly);
+
+                options = { to: "#nn-cart-image", className: "fly-effect" };
+                $("#i" + pid).effect("transfer", options, 500, function() {});
+            });
+        });
+    </script>
+
+}

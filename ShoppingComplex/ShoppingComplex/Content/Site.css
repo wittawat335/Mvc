@@ -1,12 +1,25 @@
 ﻿body {
     padding-top: 50px;
     padding-bottom: 20px;
+
+    background-repeat: no-repeat;
+    background-attachment: scroll;
+    background-size: cover;
+    background-attachment: fixed;
+    background-image: url('img/518079-background-hd.jpg');
 }
 
-/* Set padding to keep content from hitting the edges */
+/*Set padding to keep content from hitting the edges */
+.whiteBackground {
+    background-color: #fff;
+    opacity: 0.9;
+    padding: 2em;
+}
+
 .body-content {
     padding-left: 15px;
     padding-right: 15px;
+   
 }
 
 /* Override the default bootstrap behavior where horizontal description lists 
@@ -21,4 +34,11 @@ input,
 select,
 textarea {
     max-width: 280px;
+}
+
+.h2 {
+    font: 18px Tahoma;
+    color: #2E2EFE;
+    font-weight: bold;
+    
 }
