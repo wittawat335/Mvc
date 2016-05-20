@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-namespace MutiShop.Controllers
+namespace ShoppingComplex.Controllers
 {
     public class CartController : Controller
     {
@@ -18,7 +18,7 @@ namespace MutiShop.Controllers
         {
             var cart = ShoppingCart.Cart;
             cart.Add(id);
-
+            
             var info = new { cart.Count, cart.Total };
             return Json(info, JsonRequestBehavior.AllowGet);
         }

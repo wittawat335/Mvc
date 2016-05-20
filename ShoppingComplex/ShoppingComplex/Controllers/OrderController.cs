@@ -10,7 +10,11 @@ namespace ShoppingComplex.Controllers
     public class OrderController : Controller
     {
         ShoppingDbContext db = new ShoppingDbContext();
-        //
+
+        public ActionResult Index()
+        {
+            return View();
+        }
         // GET: /Order/
         public ActionResult Checkout()
         {
@@ -42,6 +46,13 @@ namespace ShoppingComplex.Controllers
             }
             db.SaveChanges();
             
+            // Thanh toán trực tuyến
+            //var api = new WebApiClient<AccountInfo>();
+            //var data = new AccountInfo { 
+            //    Id=Request["BankAccount"],
+            //    Balance = cart.Total
+            //};
+            //api.Put("api/Bank/nn", data);
             return RedirectToAction("Detail", new { id = model.Id });
         }
 

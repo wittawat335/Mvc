@@ -25,7 +25,7 @@ namespace ShoppingComplex
                       "~/Scripts/respond.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
-                     "~/Content/bootstrap.css",
+                     
                       "~/Content/css/bootstrap.css",
                       "~/Content/css/nn-style.css",
                       "~/Content/css/jquery-ui.css",

@@ -21,7 +21,7 @@ public class ShoppingCart
             return cart;
         }
     }
-
+    //Download source code tại Sharecode.vn
     // Chứa các mặt hàng đã chọn
     public List<Product> Items = new List<Product>();
 

@@ -6,7 +6,8 @@
     <title>@ViewBag.Title</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
-    <script src='https://www.google.com/recaptcha/api.js'></script>
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
 </head>
 <body>
     <div id="fb-root"></div>
@@ -41,7 +42,14 @@
 
 
             <div class="navbar-collapse collapse js-navbar-collapse">
-                @Html.Partial("_Menu")
+                @if (!Request.IsAuthenticated)
+                {
+                    @Html.Partial("_Menu")
+                }
+                else
+                {
+                    @Html.Partial("_MenuUser")
+                }
            </div>
         </div><!--end navigation-->
         <div class="container row">
@@ -61,8 +69,8 @@
     </div>
 
 
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
+   
+    
     <link href="/Content/css/jquery-ui.css" rel="stylesheet" />
     <script src="~/Scripts/jquery-ui.js"></script>
     @RenderSection("scripts", required: false)

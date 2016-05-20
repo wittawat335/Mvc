@@ -5,10 +5,10 @@
 .glyphicon-shopping-cart{color:#fff;}
 .glyphicon-shopping-cart:hover{color:#fff;}
 .btn-default{
-	background:#ed6f6f;
+	background:#81BEF7;
 	}
 .btn-default:hover{
-background:#7ccfc4;
+background:#FF0000;
 }
 input:focus{
 	 border: 1px solid #7ccfc4 !important;
@@ -152,7 +152,7 @@ mega-dropdown a:hover{
 
 
 .nn-megamenu-sidebar-title {
-background-color: #7ccfc4;
+background-color: #424242;
 position: relative;
 padding-left:80px;
 padding-top:1px;
@@ -275,7 +275,7 @@ color: #fff;
 }
 .nn-block-product-sidebar-name a:hover{
 	
-	color:#7ccfc4;
+	color:#81BEF7;
 	
 }
 .nn-block-product-sidebar-name{

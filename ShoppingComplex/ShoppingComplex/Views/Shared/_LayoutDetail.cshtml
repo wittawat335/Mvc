@@ -49,7 +49,14 @@
 
 
             <div class="navbar-collapse collapse js-navbar-collapse">
+               @if (!Request.IsAuthenticated)
+               {
                 @Html.Partial("_Menu")
+               }
+               else
+               {
+                @Html.Partial("_MenuUser")
+               }
             </div>
         </div><!--end navigation-->
         <div class="container row">

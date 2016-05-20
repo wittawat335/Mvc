@@ -31,7 +31,6 @@ namespace ShoppingComplex.Controllers
 
         public UserManager<ApplicationUser> UserManager { get; private set; }
 
-        //
         // GET: /Account/Login
         [AllowAnonymous]
         public ActionResult Login(string returnUrl)
@@ -40,7 +39,6 @@ namespace ShoppingComplex.Controllers
             return View();
         }
 
-        //
         // POST: /Account/Login
         [HttpPost]
         [AllowAnonymous]
@@ -49,7 +47,8 @@ namespace ShoppingComplex.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = await UserManager.FindAsync(model.UserName, model.Password); if (user != null)
+                var user = await UserManager.FindAsync(model.ID, model.Password);
+                if (user != null)
                 {
                     if (user.ConfirmedEmail == true)
                     {
@@ -57,19 +56,18 @@ namespace ShoppingComplex.Controllers
                     }
                     else
                     {
-                        ModelState.AddModelError("", "Confirm Email Address.");
+                        ModelState.AddModelError("", "กรุณา Confirm Email Address ก่อนค่ะ");
                     }
                 }
                 else
                 {
-                    ModelState.AddModelError("", "Invalid username or password.");
+                    ModelState.AddModelError("", "username หรือ password ไม่ถูกต้องค่ะ");
                 }
             }
             // If we got this far, something failed, redisplay form
             return View(model);
         }
 
-        //
         // GET: /Account/Register
         [AllowAnonymous]
         public ActionResult Register()
@@ -77,13 +75,18 @@ namespace ShoppingComplex.Controllers
             return View();
         }
 
-        //
+        
         // POST: /Account/Register
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Register(RegisterViewModel model)
         {
+            if (!XCaptcha.IsValid)
+            {
+                ModelState.AddModelError("", "Invalid security code !");
+                return View(model);
+            }
             if (ModelState.IsValid)
             {
                 var user = new ApplicationUser() { UserName = model.ID };
@@ -134,6 +137,7 @@ namespace ShoppingComplex.Controllers
             ViewBag.Email = Email;
             return View();
         }
+        
         // GET: /Account/ConfirmEmail
         [AllowAnonymous]
         public async Task<ActionResult> ConfirmEmail(string Token, string Email)
@@ -181,7 +185,6 @@ namespace ShoppingComplex.Controllers
             return RedirectToAction("Manage", new { Message = message });
         }
 
-        //
         // GET: /Account/Manage
         public ActionResult Manage(ManageMessageId? message)
         {
@@ -196,7 +199,6 @@ namespace ShoppingComplex.Controllers
             return View();
         }
 
-        //
         // POST: /Account/Manage
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -247,7 +249,6 @@ namespace ShoppingComplex.Controllers
             return View(model);
         }
 
-        //
         // POST: /Account/ExternalLogin
         [HttpPost]
         [AllowAnonymous]
@@ -258,7 +259,6 @@ namespace ShoppingComplex.Controllers
             return new ChallengeResult(provider, Url.Action("ExternalLoginCallback", "Account", new { ReturnUrl = returnUrl }));
         }
 
-        //
         // GET: /Account/ExternalLoginCallback
         [AllowAnonymous]
         public async Task<ActionResult> ExternalLoginCallback(string returnUrl)
@@ -285,7 +285,6 @@ namespace ShoppingComplex.Controllers
             }
         }
 
-        //
         // POST: /Account/LinkLogin
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -295,7 +294,6 @@ namespace ShoppingComplex.Controllers
             return new ChallengeResult(provider, Url.Action("LinkLoginCallback", "Account"), User.Identity.GetUserId());
         }
 
-        //
         // GET: /Account/LinkLoginCallback
         public async Task<ActionResult> LinkLoginCallback()
         {
@@ -312,7 +310,6 @@ namespace ShoppingComplex.Controllers
             return RedirectToAction("Manage", new { Message = ManageMessageId.Error });
         }
 
-        //
         // POST: /Account/ExternalLoginConfirmation
         [HttpPost]
         [AllowAnonymous]
@@ -350,17 +347,16 @@ namespace ShoppingComplex.Controllers
             return View(model);
         }
 
-        //
         // POST: /Account/LogOff
-        [HttpPost]
-        [ValidateAntiForgeryToken]
+        
+        
         public ActionResult LogOff()
         {
             AuthenticationManager.SignOut();
+            Session.Abandon();
             return RedirectToAction("Index", "Home");
         }
 
-        //
         // GET: /Account/ExternalLoginFailure
         [AllowAnonymous]
         public ActionResult ExternalLoginFailure()

@@ -32,8 +32,8 @@ namespace ShoppingComplex.Models
     public class LoginViewModel
     {
         [Required]
-        [Display(Name = "User name")]
-        public string UserName { get; set; }
+        [Display(Name = "Username")]
+        public string ID { get; set; }
 
         [Required]
         [DataType(DataType.Password)]
@@ -47,7 +47,7 @@ namespace ShoppingComplex.Models
     public class RegisterViewModel
     {
         [Required]
-        [Display(Name = "User name")]
+        [Display(Name = "Username")]
         public string ID { get; set; }
 
         [Required]
@@ -62,6 +62,7 @@ namespace ShoppingComplex.Models
         public string ConfirmPassword { get; set; }
 
         [Required]
+        [Display(Name = "ชื่อ-นามสกุล")]
         public string FullName { get; set; }
 
         [Required]
@@ -69,8 +70,10 @@ namespace ShoppingComplex.Models
         [Display(Name = "E-mail")]
         public string Email { get; set; }
 
+        [Display(Name = "ที่อยู่")]
         public string Address { get; set; }
 
+        [Display(Name = "เบอร์โทรติดต่อ")]
         public string Tel { get; set; }
     }
 }

@@ -1,10 +1,15 @@
     using System;
     using System.Collections.Generic;
-    
-    public partial class OrderDetail
+    using System.ComponentModel.DataAnnotations;
+
+public partial class OrderDetail
     {
         public int Id { get; set; }
+
+        [Display(Name = "Order No.")]
         public int OrderId { get; set; }
+
+        
         public int ProductId { get; set; }
         public double UnitPrice { get; set; }
         public int Quantity { get; set; }

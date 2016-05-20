@@ -9,7 +9,7 @@
 @using (Html.BeginForm("Purchase", "Order")) 
 {
     <div class="form-horizontal">
-
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group">
             <label class="control-label col-md-2">Customer Name</label>
             <div class="col-md-10">
@@ -20,16 +20,19 @@
         <div class="form-group">
             <label class="control-label col-md-2">Order Date</label>
             <div class="col-md-10">
-                @Html.EditorFor(model => model.OrderDate, new { @class = "form-control" })
+                @Html.EditorFor(model => model.OrderDate, new {@class = "form-control"})
             </div>
         </div>
 
         <div class="form-group">
-            <label class="control-label col-md-2">Required Date</label>
+            @Html.LabelFor(model => model.RequireDate, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.RequireDate, new { @class = "form-control" })
+                @Html.EditorFor(model => model.RequireDate, new { htmlAttributes = new { @class = "form-control myDate" } })
+                @Html.ValidationMessageFor(model => model.RequireDate, "", new { @class = "text-danger" })
             </div>
         </div>
+
+        
 
         <div class="form-group">
             <label class="control-label col-md-2">Receiver Name</label>
@@ -73,38 +76,10 @@
         </div>
     </div>
 }
-<h2>The Selected Items</h2>
-<table class="table table-hover">
-    <tr>
-        <th>Id</th>
-        <th>Name</th>
-        <th>Unit Price</th>
-        <th>Discount</th>
-        <th>Quantity</th>
-        <th>Amount</th>
-    </tr>
-    <tr>
-        <td>1000</td>
-        <td>Nokia</td>
-        <td>$100</td>
-        <td>5%</td>
-        <td>2</td>
-        <td>$190</td>
-    </tr>
-    <tr>
-        <td>1000</td>
-        <td>Nokia</td>
-        <td>$100</td>
-        <td>5%</td>
-        <td>2</td>
-        <td>$190</td>
-    </tr>
-    <tr>
-        <td>1000</td>
-        <td>Nokia</td>
-        <td>$100</td>
-        <td>5%</td>
-        <td>2</td>
-        <td>$190</td>
-    </tr>
-</table>
+
+
+<script type="text/javascript">
+    $(function() {
+        $('.myDate').datepicker();
+    });
+</script>
