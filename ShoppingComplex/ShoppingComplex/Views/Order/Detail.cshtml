@@ -9,28 +9,28 @@
 <div class="form-horizontal">
 
     <div class="form-group">
-        <label class="control-label col-md-2">Customer Name</label>
+        <label class="control-label col-md-2">ชื่อลูกค้า</label>
         <div class="col-md-10">
             @Model.Customer.FullName
         </div>
     </div>
 
     <div class="form-group">
-        <label class="control-label col-md-2">Order Date</label>
+        <label class="control-label col-md-2">วันที่สั่งสินค้า</label>
         <div class="col-md-10">
             @Html.FormatValue(Model.OrderDate, "{0:yyyy-MM-dd}")
         </div>
     </div>
 
     <div class="form-group">
-        <label class="control-label col-md-2">Required Date</label>
+        <label class="control-label col-md-2">วันที่สะดวกรับสินค้า</label>
         <div class="col-md-10">
             @Html.FormatValue(Model.RequireDate, "{0:yyyy-MM-dd}")
         </div>
     </div>
 
     <div class="form-group">
-        <label class="control-label col-md-2">Receiver Name</label>
+        <label class="control-label col-md-2">ชื่อผู้รับ</label>
         <div class="col-md-10">
             @Model.Receiver
         </div>
@@ -44,14 +44,14 @@
     </div>
 
     <div class="form-group">
-        <label class="control-label col-md-2">Total Amount</label>
+        <label class="control-label col-md-2">ราคารวมทั้งสิ้น</label>
         <div class="col-md-10">
             @Html.FormatValue(Model.Amount, "{0:c}"))
         </div>
     </div>
 
     <div class="form-group">
-        <label class="control-label col-md-2">Description</label>
+        <label class="control-label col-md-2">ที่อยู่จัดส่ง</label>
         <div class="col-md-10">
             @Model.Description
         </div>
@@ -61,12 +61,12 @@
 <h2>Order Details</h2>
 <table class="table table-hover">
     <tr>
-        <th>Id</th>
-        <th>Name</th>
-        <th>Unit Price</th>
-        <th>Discount</th>
-        <th>Quantity</th>
-        <th>Amount</th>
+        <th>รหัสสินค้า</th>
+        <th>ชื่อสินค้า</th>
+        <th>ราคา</th>
+        <th>ส่วนลด</th>
+        <th>จำนวน</th>
+        <th>ราคารวม</th>
     </tr>
     @foreach (var d in Model.OrderDetails) { 
     <tr>

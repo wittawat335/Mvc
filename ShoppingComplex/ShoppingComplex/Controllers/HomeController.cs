@@ -60,7 +60,7 @@ namespace ShoppingComplex.Controllers
         //Download source code tại Sharecode.vn
         public ActionResult Saleoff()
         {
-            var model = db.Products.Where(p => p.Discount > 0).Take(1);
+            var model = db.Products.Where(p => p.Discount > 0).Take(4);
             return PartialView("_Saleoff", model);
         }
     }

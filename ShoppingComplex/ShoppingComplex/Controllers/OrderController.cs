@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Mail;
 using System.Web;
 using System.Web.Mvc;
 using ShoppingComplex.Models;
@@ -22,6 +23,7 @@ namespace ShoppingComplex.Controllers
             model.CustomerId = User.Identity.Name;
             model.OrderDate = DateTime.Now.Date;
             model.Amount = ShoppingCart.Cart.Total;
+           
 
             return View(model);
         }
@@ -46,13 +48,8 @@ namespace ShoppingComplex.Controllers
             }
             db.SaveChanges();
             
-            // Thanh toán trực tuyến
-            //var api = new WebApiClient<AccountInfo>();
-            //var data = new AccountInfo { 
-            //    Id=Request["BankAccount"],
-            //    Balance = cart.Total
-            //};
-            //api.Put("api/Bank/nn", data);
+            
+           
             return RedirectToAction("Detail", new { id = model.Id });
         }
 

@@ -113,7 +113,9 @@ namespace ShoppingComplex.Controllers
                         new MailAddress("wittawat27021991@gmail.com", "Web Registration"),
                         new MailAddress(user.Email));
                     m.Subject = "Email confirmation";
-                    m.Body = string.Format("Dear {0}<BR/>Thank you for your registration, please click on the below link to complete your registration: <a href=\"{1}\" title=\"User Email Confirm\">{1}</a>", user.UserName, Url.Action("ConfirmEmail", "Account", new { Token = user.Id, Email = user.Email }, Request.Url.Scheme));
+                    m.Body = string.Format("Dear {0}<BR/>Thank you for your registration, please click on the below link to complete your " +
+                                           "registration: <a href=\"{1}\" title=\"User Email Confirm\">{1}</a>"
+                                           , user.UserName, Url.Action("ConfirmEmail", "Account", new { Token = user.Id, Email = user.Email }, Request.Url.Scheme));
                     m.IsBodyHtml = true;
                     SmtpClient smtp = new SmtpClient("smtp.gmail.com", 587);
                     smtp.Credentials = new System.Net.NetworkCredential("wittawat27021991@gmail.com", "ewlohvhtidpszbxo");

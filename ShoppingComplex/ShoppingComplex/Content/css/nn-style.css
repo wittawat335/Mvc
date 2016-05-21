@@ -4,6 +4,11 @@
 .glyphicon-search:hover{color:#fff;}
 .glyphicon-shopping-cart{color:#fff;}
 .glyphicon-shopping-cart:hover{color:#fff;}
+
+.imgProduct {
+    width: 200px;
+    height: 200px;
+}
 .btn-default{
 	background:#81BEF7;
 	}
