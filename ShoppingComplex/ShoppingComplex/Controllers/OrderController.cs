@@ -47,9 +47,7 @@ namespace ShoppingComplex.Controllers
                 db.OrderDetails.Add(d);
             }
             db.SaveChanges();
-            
-            
-           
+
             return RedirectToAction("Detail", new { id = model.Id });
         }
 

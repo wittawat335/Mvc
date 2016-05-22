@@ -10,9 +10,11 @@
     height: 200px;
 }
 .btn-default{
+    color: whitesmoke;
 	background:#81BEF7;
 	}
 .btn-default:hover{
+    color: whitesmoke;
 background:#FF0000;
 }
 input:focus{
@@ -41,7 +43,7 @@ input[type=text]{
 	width:50px;
 	}
 .nn-top-cart-contain{
-	background:#ed6f6f;
+	background:#101010;
 }
 .nn-glyphicon-shopping-cart-larger{
 	font-size:25px;
@@ -50,7 +52,7 @@ input[type=text]{
 }
 .nn-top-cart-title{
 	padding:5px 5px;
-	font-color:#fff;
+	color:#fff;
 }
 .nn-top-cart-title a{
 	
@@ -81,7 +83,7 @@ input[type=text]{
 	text-transform:uppercase;
 }
 mega-dropdown a:hover{
-	text-color:#7ccfc4;
+	color:#7ccfc4;
 }
 .navbar-default .navbar-nav>a:hover{
 	color:#fff; 
@@ -321,7 +323,7 @@ color: #fff;
 	margin-bottom:20px;
 	}
 .nn-hover-zoom{
-	webkit-transition: 0.3s all ease-in-out;
+	-webkit-transition: 0.3s all ease-in-out;
 	transition: 0.3s all ease-in-out;
 	-webkit-backface-visibility: hidden;
 	-webkit-perspective: 1000;

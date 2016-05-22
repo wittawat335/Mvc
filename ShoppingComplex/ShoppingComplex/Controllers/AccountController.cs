@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Net.Mail;
 using System.Security.Claims;
@@ -30,6 +31,21 @@ namespace ShoppingComplex.Controllers
         }
 
         public UserManager<ApplicationUser> UserManager { get; private set; }
+
+        public ActionResult Edit()
+        {
+            var model = db.Customers.Find(User.Identity.Name);
+            return View(model);
+        }
+        [HttpPost]
+        public ActionResult Edit(Customer model)
+        {
+          
+            db.Entry(model).State = EntityState.Modified;
+            db.SaveChanges();
+
+            return View(model);
+        }
 
         // GET: /Account/Login
         [AllowAnonymous]

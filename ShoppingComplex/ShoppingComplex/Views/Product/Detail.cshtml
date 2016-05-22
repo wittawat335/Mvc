@@ -5,191 +5,195 @@
 }
 
 <div class="container">
-    <div class="row">
-        <div class="nn-product-view-right col-sm-3 nn-margin-bottom">
-            <aside>
-                <h3>OUR OFFERS</h3>
-                <div id="demo5" class="scroll-img">
-                    <ul>
-                        @foreach (var s in Model.Supplier.Products.OrderBy(p => Guid.NewGuid()).Skip(1).Take(10))
-                        {
-                            <li>
-                                <div class="row">
+<div class="row">
+    <div class="nn-product-view-right col-sm-3 nn-margin-bottom">
+        <aside>
+            @*Side Left*@
+            <h3>OUR OFFERS</h3>
+            <div id="demo5" class="scroll-img">
+                <ul>
+                    @foreach (var s in Model.Supplier.Products.OrderBy(p => Guid.NewGuid()).Skip(1).Take(10))
+                    {
+                        <li>
+                            <div class="row">
 
-                                    <div class="nn-product-box">
-                                        <a href="/Product/Detail/@s.Id">
+                                <div class="nn-product-box">
+                                    <a href="/Product/Detail/@s.Id">
 
-                                            <img class="img-responsive" title="@s.Name" src="/Content/img/products/@s.Image" alt="@Model.Name"/>
-                                        </a>
-                                        <div class="nn-product-box-descriptions">
-                                            <h3 class="nn-product-box-name">
-                                                <a href="" title="@s.Name">@s.Name</a>
-                                            </h3>
-                                            <div class="nn-product-box-price ">
-                                                <span class="">฿ @s.UnitPrice</span>
-                                            </div>
-                                            <div class="nn-product-box-actions">
-                                                <button type="button" title="Add to Cart" class="btn btn-default add-to-cart" data-id="@s.Id">
-                                                    <span>เพิ่มลงตะกร้า</span>
-                                                </button>
-                                            </div>
+                                        <img class="img-responsive" title="@s.Name" src="/Content/img/products/@s.Image" alt="@Model.Name"/>
+                                    </a>
+                                    <div class="nn-product-box-descriptions">
+                                        <h3 class="nn-product-box-name">
+                                            <a href="/Product/Detail/@s.Id" title="@s.Name">@s.Name</a>
+                                        </h3>
+                                        <div class="nn-product-box-price ">
+                                            <span class="">฿ @s.UnitPrice</span>
                                         </div>
-                                    </div><!--end nn-product-box-->
-                                </div>
-                            </li>
-                        }
-                    </ul>
-                </div>
-                <div id="demo5-btn" class="text-center">
-                    <button class="btn" id="demo5-backward"><i class="icon-chevron-left"></i> Backward</button>
-                    <button class="btn" id="demo5-forward">Forward <i class="icon-chevron-right"></i></button>
-                </div>
-            </aside>
-        </div>
+                                        <div class="nn-product-box-actions">
+                                            <button type="button" title="Add to Cart" class="btn btn-default add-to-cart" data-id="@s.Id">
+                                                <span>Add to Cart</span>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div><!--end nn-product-box-->
+                            </div>
+                        </li>
+                    }
+                </ul>
+            </div>
+            <div id="demo5-btn" class="text-center">
+                <button class="btn" id="demo5-backward"><i class="icon-chevron-left"></i> Backward</button>
+                <button class="btn" id="demo5-forward">Forward <i class="icon-chevron-right"></i></button>
+            </div>
+        </aside>
+    </div>
 
-        <div class="col-sm-9">
-            <div class="nn-product-essential">
-                <div class="nn-Product-detail-image col-sm-4">
-                    <img id="zoom_mw" src="/Content/img/products/@Model.Image" data-zoom-image="/Content/img/products/Large/@Model.ImageLarge" class="img-responsive" /> 
-                 
+    @*Side Right*@
+    <div class="col-sm-9">
+        <div class="nn-product-essential">
+            <div class="nn-Product-detail-image col-sm-4">
+                <img id="zoom_mw" src="/Content/img/products/@Model.Image" data-zoom-image="/Content/img/products/Large/@Model.ImageLarge" class="img-responsive"/>
+
+            </div>
+            <div class="col-sm-8">
+                <div class="product-name">
+                    <h1>@Model.Name</h1>
                 </div>
-                <div class="col-sm-8">
-                    <div class="product-name">
-                        <h1>@Model.Name</h1>
-                    </div>
-                    <span class="sku_wrapper">
-                        <span class="item-title">Product Code:</span>
+                <span class="sku_wrapper">
+                        <span class="item-title">รหัสสินค้า:</span>
                         <span>
                             <strong>
                                 @Model.Name - @Model.Id
                             </strong>
                         </span>
                     </span>
-                    <span><br /></span>
-                    <span class="category-url-wrapper">
-                        <span class="item-title">Category: </span>
+                <span><br /></span>
+                <span class="category-url-wrapper">
+                        <span class="item-title">ประเภสินค้า: </span>
                         <a href="/Product/Category?CategoryID=@Model.CategoryId">@Model.Category.Name </a>
                     </span>
-                    <p class="no-rating"><a href="#comments" onclick="gotoAddReviews()">Be the first to comments this product</a></p>
+                <p class="no-rating"><a href="#comments" onclick="gotoAddReviews()">Be the first to comments this product</a>
+                </p>
 
-                    <div class="short-description">
-                        <div class="std">
-                            <h5>
+                <div class="short-description">
+                    <div class="std">
+                        <h5>
 
-                                <strong></strong>
+                            <strong></strong>
 
-                            </h5><br>
+                        </h5><br>
 
-                        </div>
                     </div>
+                </div>
 
-                    <p class="availability in-stock">
-                        <span class="item-title">
-                            <i>Availability: </i>
+                <p class="availability in-stock">
+                    <span class="item-title">
+                            <i>จำนวนสินค้าใน Stock: </i>
                         </span>
-                        <span>
+                    <span>
                             <strong>
                                 @Model.Quantity
                             </strong>
                         </span>
-                        In stock
-                    </p>
-                    <div class="price-box">
+                    In stock
+                </p>
+                <div class="price-box">
 
-                        <h3>@Model.UnitPrice</h3>
-
-
-                    </div>
-                    <div class="add-to-box">
-                        <div class="add-to-cart nn-margin-bottom">
-                            <div class="qty-box form-inline">
-                                <label for="qty">จำนวน : </label>
-                                <input type="text" style="width:50px" class="form-control" name="qty" id="qty" maxlength="12" value="1" title="Qty">
-
-                            </div>
-                        </div>
-
-                        <button type="button" title="Add to Cart" class="btn btn-primary add-to-cart" data-id="@Model.Id">
-                            <span>Add to Cart</span>
-                        </button>
+                    <h3>@Model.UnitPrice</h3>
 
 
-                    </div>
                 </div>
-            </div>
-            <div class="clearfix"></div>
-            <div class="row">
-                <!-- Nav tabs -->
-                <ul class="nav nav-tabs" role="tablist" id="myTab">
-                    <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">รายละเอียด</a></li>
-                    <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Profile</a></li>
-                    <li role="presentation"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">Comment</a></li>
-                </ul>
-                <!-- Tab panes -->
-                <div class="tab-content">
-                    <div role="tabpanel" class="tab-pane fade in active" id="home">
-                        <div>
-                            <p>@Model.Description</p>
-                        </div>
-                    </div>
-                    <div role="tabpanel" class="tab-pane fade row" id="profile">
-                        <h2 class="h2"> รายละเอียดสินค้า</h2>
-                        <div class="col-md-6">
-                            <table class="table table-hover">
-                                <tr>
-                                    <td>รหัสสินค้า:</td>
-                                    <td>@Model.Name - @Model.Id</td>
-                                </tr>
-                                <tr>
-                                    <td>ชื่อสินค้า:</td>
-                                    <td>@Model.Name</td>
-                                </tr>
-                                <tr>
-                                    <td>มีสินค้า:</td>
-                                    <td>@Model.Available</td>
-                                </tr>
-                                <tr>
-                                    <td>ประเภทสินค้า:</td>
-                                    <td>@Model.Category.Name</td>
-                                </tr>
-                                <tr>
-                                    <td>ส่วนลด:</td>
-                                    <td>@Model.Discount</td>
-                                </tr>
-                                <tr>
-                                    <td>วันที่ผลิต:</td>
-                                    <td>@Model.ProductDate</td>
-                                </tr>
-                                <tr>
-                                    <td>ผู้ผลิต:</td>
-                                    <td>@Model.Supplier.Name</td>
-                                </tr>
-                                <tr>
-                                    <td>UnitBrief:</td>
-                                    <td>@Model.UnitBrief</td>
-                                </tr>
-                                <tr>
-                                    <td>Views:</td>
-                                    <td>@Model.Views</td>
-                                </tr>
-                            </table>
-                        </div>
-                        <div class="col-md-6"></div>
-                    </div>
-                    <div role="tabpanel" class="tab-pane" id="messages">
-                        <div class="fb-comments" data-href="/Product/Detail/@Model.Id" data-numposts="5"></div>
-                    </div>
-                </div>
+                <div class="add-to-box">
+                    <div class="add-to-cart nn-margin-bottom">
+                        <div class="qty-box form-inline">
+                            <label for="qty">จำนวน : </label>
+                            <input type="text" style="width: 50px" class="form-control" name="qty" id="qty" maxlength="12" value="1" title="Qty">
 
-                <script>
-                    $(function() {
-                        $('#myTab a:last').tab('show')
-                    })
-                </script>
+                        </div>
+                    </div>
+
+                    <button type="button" title="Add to Cart" class="btn btn-default add-to-cart" data-id="@Model.Id">
+                        <span>Add to Cart</span>
+                    </button>
+
+
+                </div>
             </div>
         </div>
+        <div class="clearfix"></div>
+        <div class="row">
+            <!-- Nav tabs -->
+            <ul class="nav nav-tabs" role="tablist" id="myTab">
+                <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">รายละเอียด</a></li>
+                <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Profile</a></li>
+                <li role="presentation"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">Comment</a></li>
+            </ul>
+            <!-- Tab panes -->
+            <div class="tab-content">
+                <div role="tabpanel" class="tab-pane fade in active" id="home">
+                    <div>
+                        <p>@Model.Description</p>
+                    </div>
+                </div>
+                <div role="tabpanel" class="tab-pane fade row" id="profile">
+                    <h2 class="h2"> รายละเอียดสินค้า</h2>
+                    <div class="col-md-6">
+                        <table class="table table-hover">
+                            <tr>
+                                <td>รหัสสินค้า:</td>
+                                <td>@Model.Name - @Model.Id</td>
+                            </tr>
+                            <tr>
+                                <td>ชื่อสินค้า:</td>
+                                <td>@Model.Name</td>
+                            </tr>
+                            <tr>
+                                <td>มีสินค้า:</td>
+                                <td>@Model.Available</td>
+                            </tr>
+                            <tr>
+                                <td>ประเภทสินค้า:</td>
+                                <td>@Model.Category.Name</td>
+                            </tr>
+                            <tr>
+                                <td>ส่วนลด:</td>
+                                <td>@Model.Discount</td>
+                            </tr>
+                            <tr>
+                                <td>วันที่ผลิต:</td>
+                                <td>@Model.ProductDate</td>
+                            </tr>
+                            <tr>
+                                <td>ผู้ผลิต:</td>
+                                <td>@Model.Supplier.Name</td>
+                            </tr>
+                            <tr>
+                                <td>UnitBrief:</td>
+                                <td>@Model.UnitBrief</td>
+                            </tr>
+                            <tr>
+                                <td>Views:</td>
+                                <td>@Model.Views</td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="col-md-6"></div>
+                </div>
+                <div role="tabpanel" class="tab-pane" id="messages">
+                    <div class="fb-comments" data-href="/Product/Detail/@Model.Id" data-numposts="5"></div>
+                </div>
+            </div>
 
+            <script>
+                $(function() {
+                    $('#myTab a:last').tab('show')
+                })
+            </script>
+        </div>
     </div>
+
+</div>
+@*
     <div class="row">
         <fieldset class="nn-relate">
             <legend>Same Supplier</legend>
@@ -218,7 +222,9 @@
                 </div>
             }
         </fieldset>
-    </div>
+    </div>*@
+
+@*
     <div class="row">
         <fieldset class="nn-relate">
             <legend>Same Category</legend>
@@ -248,6 +254,8 @@
             }
         </fieldset>
     </div>
+    *@
+
     <div class="row">
         <fieldset class="nn-relate">
             <legend>Top 10 Viewed </legend>
