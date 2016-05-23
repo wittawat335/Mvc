@@ -25,11 +25,19 @@ namespace ShoppingComplex
                       "~/Scripts/respond.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
-                     
                       "~/Content/css/bootstrap.css",
                       "~/Content/css/nn-style.css",
                       "~/Content/css/jquery-ui.css",
                       "~/Content/site.css"));
+            
+            //Admin  ///////////////////////////////////////////////////////////////////////////////////////////////
+            bundles.Add(new StyleBundle("~/AdminContent/css").Include(
+                      "~/Areas/AdminTheme/Content/bootstrap.css",
+                      "~/Areas/AdminTheme/Content/sb-admin.css"));
+
+            bundles.Add(new ScriptBundle("~/AdminContent/Scripts").Include(
+                     "~/Areas/AdminTheme/Scripts/bootstrap.js",
+                     "~/Areas/AdminTheme/Scripts/respond.js"));
         }
     }
 }

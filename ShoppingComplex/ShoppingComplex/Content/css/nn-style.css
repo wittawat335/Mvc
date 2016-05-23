@@ -6,8 +6,9 @@
 .glyphicon-shopping-cart:hover{color:#fff;}
 
 .imgProduct {
-    width: 200px;
-    height: 200px;
+    padding: 5px 0 5px 0;
+	width: 235px;
+	height: 287px;
 }
 .btn-default{
     color: whitesmoke;
