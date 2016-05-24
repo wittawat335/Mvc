@@ -16,21 +16,21 @@ namespace ShoppingComplex.Areas.Admin.Controllers
         public ActionResult Logoff()
         {
             AuthenticationManager.SignOut();
-            return RedirectToAction("Login");
+            return RedirectToAction("SignIn");
         }
 
-        public ActionResult Login(String returnUrl)
+        public ActionResult SignIn(String returnUrl)
         {
             if (returnUrl.Contains("/Admin/"))
             {
-                Response.Redirect("/Admin/Account/Login?returnUrl=" + returnUrl);
+                Response.Redirect("/Admin/Account/SignIn?returnUrl=" + returnUrl);
             }
             ViewBag.ReturnUrl = returnUrl;
             return View();
         }
 
         [HttpPost]
-        public async Task<ActionResult> Login(String UserName, String Password, string returnUrl)
+        public async Task<ActionResult> SignIn(String UserName, String Password, string returnUrl)
         {
             var user = await UserManager.FindAsync(UserName, Password);
             if (user != null)

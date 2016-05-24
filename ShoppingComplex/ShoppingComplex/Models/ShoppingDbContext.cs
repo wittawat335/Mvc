@@ -8,7 +8,7 @@ namespace ShoppingComplex.Models
 {
     public class ShoppingDbContext : DbContext
     {
-        public ShoppingDbContext() : base("name=DefaultConnection") { }
+        public ShoppingDbContext() : base("name=MvcShoppingComplex") { }
 
        
         public virtual DbSet<Category> Categories { get; set; }

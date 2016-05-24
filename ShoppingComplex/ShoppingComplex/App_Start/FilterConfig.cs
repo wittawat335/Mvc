@@ -1,5 +1,6 @@
 ﻿using System.Web;
 using System.Web.Mvc;
+using ShoppingComplex.Controllers;
 
 namespace ShoppingComplex
 {
@@ -8,6 +9,7 @@ namespace ShoppingComplex
         public static void RegisterGlobalFilters(GlobalFilterCollection filters)
         {
             filters.Add(new HandleErrorAttribute());
+            filters.Add(new SecurityActionFilterAttribute());
         }
     }
 }

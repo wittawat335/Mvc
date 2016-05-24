@@ -5,7 +5,8 @@ using System.Web;
 using System.Web.Mvc;
 
 namespace ShoppingComplex.Controllers
-{
+{ 
+    [Authorize]
     public class CartController : Controller
     {
         public ActionResult Index()
