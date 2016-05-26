@@ -67,7 +67,7 @@ namespace MultiShop.Areas.Admin.Controllers
 
             foreach (var ur in user.Roles.ToList())
             {
-                UserManager.RemoveFromRole(user.Id, ur.RoleId);
+                UserManager.RemoveFromRole(user.Id, ur.Role.Name);
             }
 
             sdb.Users.Remove(user);
