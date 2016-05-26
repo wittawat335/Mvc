@@ -1,10 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
-using Microsoft.AspNet.Identity;
+﻿using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
+using System;
+using System.Data.Entity;
+using System.Data.Entity.Infrastructure;
+using System.IO;
+using System.Threading;
+using System.Web.Mvc;
+
+using System.Linq;
+
 using ShoppingComplex.Models;
 
 namespace ShoppingComplex.Controllers
@@ -13,7 +17,7 @@ namespace ShoppingComplex.Controllers
     public sealed class SecurityActionFilterAttribute : ActionFilterAttribute
     {
         ApplicationDbContext sdb = new ApplicationDbContext();
-
+        
         public UserManager<ApplicationUser> UserManager { get; private set; }
         public SecurityActionFilterAttribute()
         {
@@ -22,11 +26,27 @@ namespace ShoppingComplex.Controllers
 
         public override void OnActionExecuting(ActionExecutingContext context)
         {
-           
+            if (sdb.Roles.ToList().Count == 0)
+            {
+                var role = new ApplicationRole()
+                {
+                    Name = "Administration"
+                };
+                sdb.Roles.Add(role);
+
+                var user = new ApplicationUser()
+                {
+                    UserName = "Admin"
+                };
+                UserManager.Create(user, "123456");
+
+                UserManager.AddToRole(user.Id, role.Name);
+                sdb.SaveChanges();
+            }
             //Download source code tại Sharecode.vn
             var uri = context.HttpContext.Request.Url.AbsoluteUri;
-            if (uri.ToLower().Contains("/admin/"))
-            {
+            if (uri.ToLower().Contains("/admin/")) 
+            { 
                 var ControllerName = context.ActionDescriptor.ControllerDescriptor.ControllerName;
                 var ActionName = context.ActionDescriptor.ActionName;
 
@@ -34,7 +54,7 @@ namespace ShoppingComplex.Controllers
                 {
                     if (!uri.ToLower().Contains("/login"))
                     {
-                        context.HttpContext.Response.Redirect("/Admin/Account/SignIn?returnUrl=" + uri);
+                        context.HttpContext.Response.Redirect("/Admin/Account/Login?returnUrl=" + uri);
                     }
                 }
                 else
@@ -42,21 +62,21 @@ namespace ShoppingComplex.Controllers
                     var user = UserManager.FindByName(context.HttpContext.User.Identity.Name);
                     if (user.Roles.Count == 0) // không cấp vai trò -> không phải web master
                     {
-                        context.HttpContext.Response.Redirect("/Admin/Account/SignIn?returnUrl=" + uri);
+                        context.HttpContext.Response.Redirect("/Admin/Account/Login?returnUrl=" + uri);
                     }
                     else
                     {
                         var roleIds = user.Roles.Select(r => r.RoleId).ToList();
                         var perms = sdb.Permissions
                             .Where(p => roleIds.Contains(p.RoleId))
-                            .Where(p => p.Action.Name == ActionName
+                            .Where(p => p.Action.Name == ActionName 
                                 && p.Action.Controller == ControllerName).ToList();
                         if (perms.Count == 0) // chưa được nhập vào CSDL -> Không xử lý
                         {
                         }
                         else if (!perms.First().Allowable) // Không cho phép
                         {
-                            context.HttpContext.Response.Redirect("/Admin/Account/SignIn?returnUrl=" + uri);
+                            context.HttpContext.Response.Redirect("/Admin/Account/Login?returnUrl=" + uri);
                         }
                         else // Cho phép
                         {

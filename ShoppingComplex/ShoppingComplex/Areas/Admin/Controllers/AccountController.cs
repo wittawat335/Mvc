@@ -1,36 +1,38 @@
-﻿using System;
+﻿using ShoppingComplex.Models;
+using ShoppingComplex.Controllers;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
+using Microsoft.Owin.Security;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
-using Microsoft.Owin.Security;
-using ShoppingComplex.Models;
-using Microsoft.AspNet.Identity;
 
 namespace ShoppingComplex.Areas.Admin.Controllers
 {
     public class AccountController : SecurityController
     {
-        // GET: Admin/Account
         public ActionResult Logoff()
         {
             AuthenticationManager.SignOut();
-            return RedirectToAction("SignIn");
+            return RedirectToAction("Login");
         }
 
-        public ActionResult SignIn(String returnUrl)
+        public ActionResult Login(String returnUrl)
         {
             if (returnUrl.Contains("/Admin/"))
             {
-                Response.Redirect("/Admin/Account/SignIn?returnUrl=" + returnUrl);
+                Response.Redirect("/Admin/Account/Login?returnUrl=" + returnUrl);
             }
             ViewBag.ReturnUrl = returnUrl;
             return View();
         }
 
         [HttpPost]
-        public async Task<ActionResult> SignIn(String UserName, String Password, string returnUrl)
+        public async Task<ActionResult> Login(String UserName, String Password, string returnUrl)
         {
             var user = await UserManager.FindAsync(UserName, Password);
             if (user != null)
@@ -63,5 +65,5 @@ namespace ShoppingComplex.Areas.Admin.Controllers
             var identity = await UserManager.CreateIdentityAsync(user, DefaultAuthenticationTypes.ApplicationCookie);
             AuthenticationManager.SignIn(new AuthenticationProperties() { IsPersistent = isPersistent }, identity);
         }
-    }
+	}
 }

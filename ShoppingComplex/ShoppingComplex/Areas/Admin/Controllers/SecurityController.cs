@@ -1,11 +1,12 @@
-﻿using System;
+﻿using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
+using Microsoft.Owin.Security;
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using Microsoft.AspNet.Identity;
-using Microsoft.AspNet.Identity.EntityFramework;
-using Microsoft.Owin.Security;
 using ShoppingComplex.Models;
 
 namespace ShoppingComplex.Areas.Admin.Controllers
@@ -57,5 +58,5 @@ namespace ShoppingComplex.Areas.Admin.Controllers
             }
             base.Dispose(disposing);
         }
-    }
+	}
 }
