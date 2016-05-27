@@ -26,23 +26,7 @@ namespace ShoppingComplex.Controllers
 
         public override void OnActionExecuting(ActionExecutingContext context)
         {
-            if (sdb.Roles.ToList().Count == 0)
-            {
-                var role = new ApplicationRole()
-                {
-                    Name = "Administration"
-                };
-                sdb.Roles.Add(role);
-
-                var user = new ApplicationUser()
-                {
-                    UserName = "Admin"
-                };
-                UserManager.Create(user, "123456");
-
-                UserManager.AddToRole(user.Id, role.Name);
-                sdb.SaveChanges();
-            }
+           
             //Download source code tại Sharecode.vn
             var uri = context.HttpContext.Request.Url.AbsoluteUri;
             if (uri.ToLower().Contains("/admin/")) 

@@ -8,7 +8,7 @@ using System.Web.Mvc;
 using ShoppingComplex.Areas.Admin.Controllers;
 using ShoppingComplex.Models;
 
-namespace MultiShop.Areas.Admin.Controllers
+namespace ShoppingComplex.Areas.Admin.Controllers
 {
     public class MasterController : SecurityController
     {

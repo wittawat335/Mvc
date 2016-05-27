@@ -13,7 +13,7 @@
 <body>
     <div id="wrapper">
         @*@Html.Action("Navbar", "Navbar", new { controller = ViewContext.RouteData.Values["Controller"].ToString(), action = ViewContext.RouteData.Values["Action"].ToString() })*@
-
+        @Html.Partial("_Navbar")
         <div id="page-wrapper">
             @RenderBody()
         </div>

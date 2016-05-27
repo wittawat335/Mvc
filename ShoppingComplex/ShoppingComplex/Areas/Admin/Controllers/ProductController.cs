@@ -6,7 +6,7 @@ using System.Web;
 using System.Web.Mvc;
 using ShoppingComplex.Models;
 
-namespace MultiShop.Areas.Admin.Controllers
+namespace ShoppingComplex.Areas.Admin.Controllers
 {
     public class ProductController : Controller
     {

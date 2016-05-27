@@ -15,17 +15,20 @@ namespace ShoppingComplex.Areas.Admin.Controllers
 {
     public class AccountController : SecurityController
     {
-        public ActionResult Logoff()
+        public ActionResult Logoff(String returnUrl)
         {
             AuthenticationManager.SignOut();
-            return RedirectToAction("Login");
+            
+            return Redirect("Home/Index");
         }
 
         public ActionResult Login(String returnUrl)
         {
+           
             if (returnUrl.Contains("/Admin/"))
             {
                 Response.Redirect("/Admin/Account/Login?returnUrl=" + returnUrl);
+                
             }
             ViewBag.ReturnUrl = returnUrl;
             return View();
