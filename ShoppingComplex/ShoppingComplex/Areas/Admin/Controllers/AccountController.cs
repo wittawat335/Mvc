@@ -19,7 +19,7 @@ namespace ShoppingComplex.Areas.Admin.Controllers
         {
             AuthenticationManager.SignOut();
             
-            return Redirect("Home/Index");
+            return RedirectToAction("Login");
         }
 
         public ActionResult Login(String returnUrl)
