@@ -1206,6 +1206,7 @@
     <Content Include="Areas\Admin\Views\Revenue\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Supplier\Index.cshtml" />
     <Content Include="Areas\Admin\Views\WebAction\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\_Product.cshtml" />
     <None Include="Scripts\jquery-2.2.3.intellisense.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />

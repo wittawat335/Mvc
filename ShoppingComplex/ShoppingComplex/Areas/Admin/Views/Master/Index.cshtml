@@ -5,13 +5,25 @@
 
 <fieldset>
     <legend>Role Management</legend>
-    @using (Html.BeginForm()){
-        @Html.DropDownList("OldRoleName")
-        <input type="submit" value="Remove" onclick="form.action = '/Admin/Master/RemoveRole'" />
-        
-        @Html.TextBox("NewRoleName")
-        <input type="submit" value="Add" onclick="form.action = '/Admin/Master/AddRole'" />
-    }
+    <form class="form-inline">
+        @using (Html.BeginForm())
+        {
+            <div class="form-group col-md-2">
+                @Html.DropDownList("OldRoleName", null, new {@class = "form-control"})
+                
+            </div>
+            <div class="form-group col-md-1">
+                <input type="submit" value="Remove" class="btn btn-danger" onclick="form.action = '/Admin/Master/RemoveRole'" />
+            </div>
+
+            <div class="form-group col-md-2">
+                @Html.TextBox("NewRoleName", null, new {@class = "form-control"})
+            </div>
+            <div class="form-group col-md-2">
+                <input type="submit" value="Add" class="btn btn-success" onclick="form.action = '/Admin/Master/AddRole'"/>
+            </div>
+        }
+    </form>
 </fieldset>
 <hr />
 
@@ -19,12 +31,14 @@
     <legend>User Management</legend>
     @using (Html.BeginForm())
     {
-        <div>User Name</div>
-        @Html.TextBox("UserName")
-        
-        <div>Password</div>
-        @Html.TextBox("Password")
-        
+        <div class="col-md-4">User Name
+        @Html.TextBox("UserName", null, new { @class = "form-control" })
+        </div>
+
+        <div class="col-md-4">Password
+        @Html.TextBox("Password", null, new { @class = "form-control" })
+        </div>
+
         <div>Roles</div>
         foreach(var r in ViewBag.Roles){
             <label>
@@ -33,7 +47,7 @@
             </label>
         }
         <hr />
-        <input type="submit" value="Add" onclick="form.action = '/Admin/Master/AddUser'" />
+        <input type="submit" value="Add" class="btn btn-info btn-block" onclick="form.action = '/Admin/Master/AddUser'" />
     }
     <hr />
     <table class="table table-bordered">
@@ -58,7 +72,7 @@
                     }
                 </td>
                 <td>
-                    <a href="/Admin/Master/RemoveUser?UserName=@u.UserName">Delete</a>
+                    <a href="/Admin/Master/RemoveUser?UserName=@u.UserName" class="btn btn-danger">Delete</a>
                 </td>
             </tr>
         }

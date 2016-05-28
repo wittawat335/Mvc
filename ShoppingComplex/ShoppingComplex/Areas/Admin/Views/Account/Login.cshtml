@@ -27,12 +27,17 @@
                         {
                             <h2 class="form-signin-heading">Please sign in</h2>
                             <hr/>
-                            <div><i class="fa fa-user"></i></div>
-                            @Html.TextBox("UserName", null, new {@class = "form-control", placeholder = "UserName"})
 
-                            <div>Password</div>
-                            @Html.Password("Password", null, new {@class = "form-control", placeholder = "Password"})
-                            <br />
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-user fa-fw"></i></span>
+                                @Html.TextBox("UserName", null, new {@class = "form-control", placeholder = "UserName"})
+                            </div><br />
+
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-key fa-fw"></i></span>
+                                @Html.Password("Password", null, new {@class = "form-control", placeholder = "Password"})
+                            </div><br/>
+
                             <input type="hidden" name="returnUrl" value="@ViewBag.ReturnUrl"/>
                             <input type="submit" value="Log in" class="btn btn-lg btn-info btn-block"/>
                         }

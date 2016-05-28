@@ -1,9 +1,9 @@
 ﻿@model ShoppingComplex.Models.WebAction
 @{
-    ViewBag.Title = "Quản lý action";
+    ViewBag.Title = "Web Action";
 }
 
-<h2>Quản lý action</h2>
+<h2>Web Action</h2>
 
 <!-- Nav tabs -->
 <ul class="nav nav-tabs" role="tablist">
@@ -22,21 +22,21 @@
             @Html.HiddenFor(m => m.Id)
 
             <div class="form-group">
-                @Html.LabelFor(m => m.Name, new { @class = "col-md-4 control-label" })
-                <div class="col-md-8">
+                @Html.LabelFor(m => m.Name, new { @class = "col-md-3 control-label" })
+                <div class="col-md-3">
                     @Html.TextBoxFor(m => m.Name, new { @class = "form-control" })
                 </div>
             </div>
 
             <div class="form-group">
-                @Html.LabelFor(m => m.Controller, new { @class = "col-md-4 control-label" })
-                <div class="col-md-8">
+                @Html.LabelFor(m => m.Controller, new { @class = "col-md-3 control-label" })
+                <div class="col-md-3">
                     @Html.TextBoxFor(m => m.Controller, new { @class = "form-control" })
                 </div>
             </div>
 
             <div class="form-group">
-                <div class="col-md-offset-4 col-md-8">
+                <div class="col-md-offset-3 col-md-9">
                     <button onclick="form.action = '/Admin/WebAction/Insert'" class="btn btn-default">Insert</button>
                     <button onclick="form.action = '/Admin/WebAction/Update'" class="btn btn-default">Update</button>
                     <button onclick="form.action = '/Admin/WebAction/Delete'" class="btn btn-default">Delete</button>
@@ -46,13 +46,13 @@
         }
     </div>
     <div class="tab-pane" id="list-tab">
-        <table class="table table-bordered">
+        <table class="table">
             <tr>
                 <th>Id</th>
                 <th>Name</th>
                 <th>Controller</th>
                 <th></th>
-                <th></th>
+
             </tr>
             @foreach (ShoppingComplex.Models.WebAction c in ViewBag.WebActions)
             {
@@ -61,13 +61,27 @@
                     <td>@c.Name</td>
                     <td>@c.Controller</td>
                     <td>
-                        <a href="/Admin/WebAction/Delete/@c.Id">Xóa</a>
+                        <a href="/Admin/WebAction/Edit/@c.Id" class="btn btn-success">Edit</a>
+                        <a href="/Admin/WebAction/Delete/@c.Id" class="btn btn-danger">Delete</a>
                     </td>
-                    <td>
-                        <a href="/Admin/WebAction/Edit/@c.Id">Sửa</a>
-                    </td>
+
                 </tr>
             }
         </table>
     </div>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br />
 </div>
