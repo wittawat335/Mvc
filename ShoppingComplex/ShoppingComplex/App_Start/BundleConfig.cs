@@ -10,8 +10,7 @@ namespace ShoppingComplex
         {
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
                          "~/Scripts/jquery-{version}.js",
-                        "~/Scripts/jquery-ui.js"));
-
+                        "~/js/jquery-ui.js"));
             bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
                         "~/Scripts/jquery.validate*"));
 
@@ -33,6 +32,7 @@ namespace ShoppingComplex
             //Admin  ///////////////////////////////////////////////////////////////////////////////////////////////
             bundles.Add(new StyleBundle("~/AdminContent/css").Include(
                       "~/Areas/AdminTheme/Content/bootstrap.css",
+                      "~/Content/css/jquery-ui.css",
                       "~/Areas/AdminTheme/Content/sb-admin.css"));
 
             bundles.Add(new ScriptBundle("~/AdminContent/Scripts").Include(
