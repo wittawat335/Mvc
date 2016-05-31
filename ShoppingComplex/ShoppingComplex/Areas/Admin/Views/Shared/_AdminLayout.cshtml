@@ -7,7 +7,8 @@
     @Styles.Render("~/AdminContent/css")
     @Scripts.Render("~/bundles/modernizr")
     <link href="@Url.Content("/Areas/AdminTheme/Content/plugins/morris.css")" rel="stylesheet" type="text/css" />
-    <link href="@Url.Content("/Areas/AdminTheme/Content/font-awesome-4.1.0/css/font-awesome.min.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("/Areas/AdminTheme/Content/font-awesome-4.1.0/css/font-awesome.min.css")" rel="stylesheet" type="text/css"/>
+    <link href="~/Areas/AdminTheme/Content/plugins/dataTables.bootstrap.css" rel="stylesheet" />
 </head>
 
 <body>
@@ -22,7 +23,16 @@
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     <script src="~/Content/js/jquery-ui.js"></script>
-
+    <script src="~/Areas/AdminTheme/Scripts/plugins/jquery.dataTables.js"></script>
+    <script src="~/Areas/AdminTheme/Scripts/plugins/dataTables.bootstrap.min.js"></script>
     @RenderSection("scripts", required: false)
+   
+    
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('#myTable').DataTable();
+    });
+</script>
+
 </body>
 </html>

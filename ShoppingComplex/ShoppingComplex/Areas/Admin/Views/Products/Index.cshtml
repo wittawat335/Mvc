@@ -1,0 +1,51 @@
+﻿@model Product
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+
+
+
+<table class="table table-responsive" id="myTable">
+    <thead>
+    <tr>
+        <th>Id</th>
+        <th>Name</th>
+        <th>UnitPrice</th>
+        <th>UnitBrief</th>
+        <th>Quantity</th>
+        <th>Image</th>
+        <th></th>
+    </tr>
+    </thead>
+    
+    <tbody>
+        @foreach (Product p in ViewBag.Products)
+        {
+            <tr>
+                <td>@p.Id</td>
+                <td>@p.Name</td>
+                <td>@p.UnitPrice</td>
+                <td>@p.UnitBrief</td>
+                <td>@p.Quantity</td>
+                <td><img src="@Url.Content("~/Content/img/Products/")@p.Image" width="120" height="100" /></td>
+                <td>
+                    <a href="/Admin/Product/Edit/@p.Id">
+                        <img src="/Content/img/icons/Edit.png" width="24" height="24" />
+                    </a>
+                    <a href="/Admin/Product/Delete/@p.Id">
+                        <img src="/Content/img/icons/Task%20list.png" />
+                    </a>
+                </td>
+
+            </tr>
+        }
+    </tbody>
+</table>
+
+
+
+

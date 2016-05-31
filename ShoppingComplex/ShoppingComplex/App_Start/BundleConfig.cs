@@ -9,8 +9,8 @@ namespace ShoppingComplex
         public static void RegisterBundles(BundleCollection bundles)
         {
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
-                         "~/Scripts/jquery-{version}.js",
-                        "~/js/jquery-ui.js"));
+                         "~/Content/js/jquery-{version}.js",
+                        "~/Content/js/jquery-ui.js"));
             bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
                         "~/Scripts/jquery.validate*"));
 
