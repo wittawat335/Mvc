@@ -39,7 +39,7 @@ namespace ShoppingComplex.Areas.Admin.Controllers
         // GET: Admin/Products/Create
         public ActionResult Create()
         {
-            ViewBag.CategoryId = new SelectList(db.Categories, "Id", "NameVN");
+            ViewBag.CategoryId = new SelectList(db.Categories, "Id", "Name");
             ViewBag.SupplierId = new SelectList(db.Suppliers, "Id", "Name");
             return View();
         }
@@ -58,7 +58,7 @@ namespace ShoppingComplex.Areas.Admin.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewBag.CategoryId = new SelectList(db.Categories, "Id", "NameVN", product.CategoryId);
+            ViewBag.CategoryId = new SelectList(db.Categories, "Id", "Name", product.CategoryId);
             ViewBag.SupplierId = new SelectList(db.Suppliers, "Id", "Name", product.SupplierId);
             return View(product);
         }
@@ -75,7 +75,7 @@ namespace ShoppingComplex.Areas.Admin.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.CategoryId = new SelectList(db.Categories, "Id", "NameVN", product.CategoryId);
+            ViewBag.CategoryId = new SelectList(db.Categories, "Id", "Name", product.CategoryId);
             ViewBag.SupplierId = new SelectList(db.Suppliers, "Id", "Name", product.SupplierId);
             return View(product);
         }
@@ -93,7 +93,7 @@ namespace ShoppingComplex.Areas.Admin.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.CategoryId = new SelectList(db.Categories, "Id", "NameVN", product.CategoryId);
+            ViewBag.CategoryId = new SelectList(db.Categories, "Id", "Name", product.CategoryId);
             ViewBag.SupplierId = new SelectList(db.Suppliers, "Id", "Name", product.SupplierId);
             return View(product);
         }
