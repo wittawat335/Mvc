@@ -61,10 +61,16 @@ namespace ShoppingComplex.Areas.Admin.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Name,Logo,Email,Phone")] Supplier supplier)
+        public ActionResult Create([Bind(Include = "Id,Name,Logo,Email,Phone")] Supplier supplier, HttpPostedFileBase fileLogo)
         {
             if (ModelState.IsValid)
             {
+                string path = Server.MapPath("~/Content/img/suppliers/");
+                string extensionName = Path.GetExtension(fileLogo.FileName);
+                string finalFileName = DateTime.Now.Ticks.ToString() + extensionName;
+                fileLogo.SaveAs(path + finalFileName);
+
+                supplier.Logo = finalFileName;
                 db.Suppliers.Add(supplier);
                 db.SaveChanges();
                 return RedirectToAction("Index");
