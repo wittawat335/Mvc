@@ -1,0 +1,46 @@
+﻿
+
+@{
+    ViewBag.Title = "Index";
+}
+
+
+<div class="navbar-right">
+    @Html.ActionLink("Add", "create", null, new { @class = "btn btn-info" })
+    @Html.ActionLink("Upload Logo", "upload", null, new { @class = "btn btn-success"})
+</div><br/><br/>
+
+<table class="table table-responsive table-bordered" id="myTable">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Phone</th>
+            <th>Logo</th>
+            <th></th>
+           
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (Supplier s in ViewBag.Suppliers)
+        {
+            <tr>
+                <td>@s.Id</td>
+                <td>@s.Name</td>
+                <td>@s.Email</td>
+                <td>@s.Phone</td>
+                <td>
+                    <img class="img-responsive" src="/Content/img/suppliers/@s.Logo" width="120" height="100" />
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new {id = s.Id}, new {@class = "btn btn-warning"})
+                    @Html.ActionLink("Delete", "Delete", new { id = s.Id }, new { @class = "btn btn-danger" })
+                </td>
+             
+
+            </tr>
+        }
+    </tbody>
+</table>
