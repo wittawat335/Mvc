@@ -65,8 +65,8 @@ namespace ShoppingComplex.Models
         [Display(Name = "ชื่อ-นามสกุล")]
         public string FullName { get; set; }
 
-        [Required]
-        [EmailAddress]
+        [Required(ErrorMessage = "The email address is required")]
+        [EmailAddress(ErrorMessage = "Invalid Email Address")]
         [Display(Name = "E-mail")]
         public string Email { get; set; }
 

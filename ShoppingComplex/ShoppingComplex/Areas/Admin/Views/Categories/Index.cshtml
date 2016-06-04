@@ -1,0 +1,45 @@
+﻿
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table table-responsive table-bordered" id="myTable">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>NameTH</th>
+            <th>Name</th>
+            <th>Image</th>
+            <th>Icon</th>
+            <th></th>
+
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (Category c in ViewBag.Categories)
+        {
+            <tr>
+                <td>@c.Id</td>
+                <td>@c.NameVN</td>
+                <td>@c.Name</td>
+                <td>@c.Image</td>
+                <td>
+                    <img class="img-responsive" src="/Content/img/Icons/@c.Icon" width="50" height="25" />
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = c.Id }, new { @class = "btn btn-warning" })
+                    @Html.ActionLink("Delete", "Delete", new { id = c.Id }, new { @class = "btn btn-danger" })
+                </td>
+
+
+            </tr>
+        }
+    </tbody>
+</table>

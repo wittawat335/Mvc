@@ -1,13 +1,25 @@
     using System;
     using System.Collections.Generic;
-    
-    public partial class Product
+    using System.ComponentModel.DataAnnotations;
+
+public partial class Product
     {
         public int Id { get; set; }
         
+        [Required]
+        [Display(Name = "ชื่อสินค้า")]
         public string Name { get; set; }
+
+        [Required]
+        [Display(Name = "ขนาด")]
         public string UnitBrief { get; set; }
+
+        [Required]
+        [Display(Name = "ราคา")]
         public double UnitPrice { get; set; }
+
+        [Required]
+        [Display(Name = "รูปสินค้า")]
         public string Image { get; set; }
         public string ImageLarge { get; set; }
         public System.DateTime ProductDate { get; set; }

@@ -16,7 +16,7 @@
         <th>Quantity</th>
         <th>Image</th>
         <th></th>
-        <th></th>
+       
     </tr>
     </thead>
     
@@ -31,15 +31,10 @@
                 <td>@p.Quantity</td>
                 <td><img src="@Url.Content("~/Content/img/Products/")@p.Image" width="120" height="100" /></td>
                 <td>
-                    <a href="/Admin/Product/Edit/@p.Id">
-                        <img src="/Content/img/icons/Edit.png" width="24" height="24"/>
-                    </a>
+                    @Html.ActionLink("Edit", "Edit", new { id = p.Id }, new { @class = "btn btn-warning" })
+                    @Html.ActionLink("Delete", "Delete", new { id = p.Id }, new { @class = "btn btn-danger" })
                 </td>
-                <td>
-                    <a href="/Admin/Product/Delete">
-                        <img src="/Content/img/icons/Task%20list.png" />
-                    </a>
-                </td>
+               
 
             </tr>
         }

@@ -11,122 +11,114 @@ using ShoppingComplex.Models;
 
 namespace ShoppingComplex.Areas.Admin.Controllers
 {
-    public class ProductsController : Controller
+    public class CategoriesController : Controller
     {
         private ShoppingDbContext db = new ShoppingDbContext();
 
-        // GET: Admin/Products
+        // GET: Admin/Categories
         public ActionResult Index()
         {
-            ViewBag.Products = db.Products.ToList();
+            ViewBag.Categories = db.Categories.ToList();
             return View();
         }
 
-        // GET: Admin/Products/Details/5
+        // GET: Admin/Categories/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Product product = db.Products.Find(id);
-            if (product == null)
+            Category category = db.Categories.Find(id);
+            if (category == null)
             {
                 return HttpNotFound();
             }
-            return View(product);
+            return View(category);
         }
 
-        // GET: Admin/Products/Create
+        // GET: Admin/Categories/Create
         public ActionResult Create()
         {
-            ViewBag.CategoryId = new SelectList(db.Categories, "Id", "Name");
-            ViewBag.SupplierId = new SelectList(db.Suppliers, "Id", "Name");
             return View();
         }
 
-        // POST: Admin/Products/Create
+        // POST: Admin/Categories/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Name,UnitBrief,UnitPrice,Image,ImageLarge,ProductDate,Available,Description,CategoryId,SupplierId,Quantity,Discount,Special,Latest,Views")] Product product, HttpPostedFileBase fileImage)
+        public ActionResult Create([Bind(Include = "Id,NameVN,Name,Image,Icon")] Category category, HttpPostedFileBase fileIcon)
         {
             if (ModelState.IsValid)
             {
-                string path = Server.MapPath("~/Content/img/products/");
-                string extensionName = Path.GetFileName(fileImage.FileName);
+                string path = Server.MapPath("~/Content/img/icons/");
+                string extensionName = Path.GetExtension(fileIcon.FileName);
                 string finalFileName = DateTime.Now.Ticks.ToString() + extensionName;
-                fileImage.SaveAs(path + finalFileName);
+                fileIcon.SaveAs(path + finalFileName);
 
-                product.Image = finalFileName;
-                db.Products.Add(product);
+                category.Icon = finalFileName;
+                db.Categories.Add(category);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.CategoryId = new SelectList(db.Categories, "Id", "Name", product.CategoryId);
-            ViewBag.SupplierId = new SelectList(db.Suppliers, "Id", "Name", product.SupplierId);
-            return View(product);
+            return View(category);
         }
 
-        // GET: Admin/Products/Edit/5
+        // GET: Admin/Categories/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Product product = db.Products.Find(id);
-            if (product == null)
+            Category category = db.Categories.Find(id);
+            if (category == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.CategoryId = new SelectList(db.Categories, "Id", "Name", product.CategoryId);
-            ViewBag.SupplierId = new SelectList(db.Suppliers, "Id", "Name", product.SupplierId);
-            return View(product);
+            return View(category);
         }
 
-        // POST: Admin/Products/Edit/5
+        // POST: Admin/Categories/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Name,UnitBrief,UnitPrice,Image,ImageLarge,ProductDate,Available,Description,CategoryId,SupplierId,Quantity,Discount,Special,Latest,Views")] Product product)
+        public ActionResult Edit([Bind(Include = "Id,NameVN,Name,Image,Icon")] Category category)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(product).State = EntityState.Modified;
+                db.Entry(category).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.CategoryId = new SelectList(db.Categories, "Id", "Name", product.CategoryId);
-            ViewBag.SupplierId = new SelectList(db.Suppliers, "Id", "Name", product.SupplierId);
-            return View(product);
+            return View(category);
         }
 
-        // GET: Admin/Products/Delete/5
+        // GET: Admin/Categories/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Product product = db.Products.Find(id);
-            if (product == null)
+            Category category = db.Categories.Find(id);
+            if (category == null)
             {
                 return HttpNotFound();
             }
-            return View(product);
+            return View(category);
         }
 
-        // POST: Admin/Products/Delete/5
+        // POST: Admin/Categories/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Product product = db.Products.Find(id);
-            db.Products.Remove(product);
+            Category category = db.Categories.Find(id);
+            db.Categories.Remove(category);
             db.SaveChanges();
             return RedirectToAction("Index");
         }
