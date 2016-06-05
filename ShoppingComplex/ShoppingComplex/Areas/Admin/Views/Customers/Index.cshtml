@@ -1,4 +1,5 @@
-﻿@model IEnumerable<ShoppingComplex.Models.Customer>
+﻿@using ShoppingComplex.Models
+
 
 @{
     ViewBag.Title = "Index";
@@ -9,49 +10,32 @@
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
-<table class="table">
+<table class="table table-responsive table-bordered" id="myTable">
+    <thead>
     <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Password)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.FullName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Email)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Address)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Tel)
-        </th>
-        <th></th>
+        <td>Id</td>
+        <td>Password</td>
+        <td>CustomerName</td>
+        <td>E-mail</td>
+        <td>Address</td>
+        <td>Tel.</td>
+        <td></td>
     </tr>
-
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Password)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.FullName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Email)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Address)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Tel)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.ID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
-        </td>
-    </tr>
+    </thead>
+    <tbody>
+        @foreach (Customer c in ViewBag.Customers) {
+            <tr>
+                <td>@c.ID</td>
+                <td>@c.Password</td>
+                <td>@c.FullName</td>
+                <td>@c.Email</td>
+                <td>@c.Address</td>
+                <td>@c.Tel</td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = c.ID }, new { @class = "btn btn-warning" })
+                    @Html.ActionLink("Delete", "Delete", new { id = c.ID }, new { @class = "btn btn-danger" })
+                </td>
+            </tr>
 }
-
+    </tbody>
 </table>

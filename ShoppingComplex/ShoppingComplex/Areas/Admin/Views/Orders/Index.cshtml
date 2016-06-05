@@ -1,0 +1,42 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table table-responsive table-bordered" id="myTable">
+    <thead>
+    <tr>
+        <th>OrderId</th>
+        <th>Customer</th>
+        <th>OrderDate</th>
+        <th>RequireDate</th>
+        <th>Receiver</th>
+        <th>ราคารวมทั้งสิ้น</th>
+        <th></th>
+    </tr>
+    </thead>
+
+    <tbody>
+    @foreach (Order o in ViewBag.Orders)
+    {
+        <tr>
+            <td>@o.Id</td>
+            <td>@o.CustomerId</td>
+            <td>@o.OrderDate</td>
+            <td>@o.RequireDate</td>
+            <td>@o.Receiver</td>
+            <td>@o.Amount</td>
+            <td>
+                @Html.ActionLink("Detail", "Details", new {id = o.Id}, new {@class = "btn btn-info"})
+                @Html.ActionLink("Edit", "Edit", new {id = o.Id}, new {@class = "btn btn-warning"})
+                @Html.ActionLink("Delete", "Delete", new {id = o.Id}, new {@class = "btn btn-danger"})
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>
