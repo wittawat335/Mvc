@@ -6,69 +6,91 @@
 
 <h2>Details</h2>
 
-<div>
-    <h4>Order</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Customer.Password)
-        </dt>
+<div class="form-horizontal">
 
-        <dd>
-            @Html.DisplayFor(model => model.Customer.Password)
-        </dd>
+    <div class="form-group">
+        <label class="control-label col-md-3">OrderId </label>
+        <div class="col-md-4">
+            @Html.TextBoxFor(model => model.Id, new {@class = "form-control required", @disabled = "disabled"})
+        </div>
+    </div>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.OrderDate)
-        </dt>
+    <div class="form-group">
+        <label class="control-label col-md-3">CustomerName </label>
+        <div class="col-md-4">
+            @Html.TextBoxFor(model => model.Customer.FullName, new {@class = "form-control required", @disabled = "disabled"})
+        </div>
+    </div>
 
-        <dd>
-            @Html.DisplayFor(model => model.OrderDate)
-        </dd>
+    <div class="form-group">
+        <label class="control-label col-md-3">Tel </label>
+        <div class="col-md-4">
+            @Html.TextBoxFor(model => model.Customer.Tel, new {@class = "form-control required", @disabled = "disabled"})
+        </div>
+    </div>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.RequireDate)
-        </dt>
+    <div class="form-group">
+        <label class="control-label col-md-3">OrderDate </label>
+        <div class="col-md-4">
+            @Html.TextBoxFor(model => model.OrderDate, new {@class = "form-control required", @disabled = "disabled"})
+        </div>
+    </div>
 
-        <dd>
-            @Html.DisplayFor(model => model.RequireDate)
-        </dd>
+    <div class="form-group">
+        <label class="control-label col-md-3">วันที่สะดวกรับสินค้า</label>
+        <div class="col-md-4">
+            @Html.TextBoxFor(model => model.RequireDate, new {@class = "form-control required", @disabled = "disabled"})
+        </div>
+    </div>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Receiver)
-        </dt>
+    <div class="form-group">
+        <label class="control-label col-md-3">ชื่อผู้รับ</label>
+        <div class="col-md-4">
+            @Html.TextBoxFor(model => model.Receiver, new {@class = "form-control required", @disabled = "disabled"})
+        </div>
+    </div>
 
-        <dd>
-            @Html.DisplayFor(model => model.Receiver)
-        </dd>
+    <div class="form-group">
+        <label class="control-label col-md-3">Address</label>
+        <div class="col-md-4">
+            @Html.TextBoxFor(model => model.Address, new {@class = "form-control required", @disabled = "disabled"})
+        </div>
+    </div>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Address)
-        </dt>
+    <div class="form-group">
+        <label class="control-label col-md-3">ราคารวมทั้งสิ้น</label>
+        <div class="col-md-4">
+            @Html.TextBoxFor(model => model.Amount, new {@class = "form-control required", @disabled = "disabled"})
+        </div>
+    </div>
 
-        <dd>
-            @Html.DisplayFor(model => model.Address)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Description)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Description)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Amount)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Amount)
-        </dd>
-
-    </dl>
+    <div class="form-group">
+        <label class="control-label col-md-3">รายละเอียดเพิ่มเติม</label>
+        <div class="col-md-4">
+            @Html.TextAreaFor(model => model.Description, new {@class = "form-control required", rows = "3", cols = "55" ,@disabled = "disabled"})
+        </div>
+    </div>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
+
+<h2>Order Details</h2>
+<table class="table table-hover">
+    <tr>
+        <th>รหัสสินค้า</th>
+        <th>ชื่อสินค้า</th>
+        <th>ราคา</th>
+        <th>ส่วนลด</th>
+        <th>จำนวน</th>
+        <th>ราคารวม</th>
+    </tr>
+    @foreach (var d in Model.OrderDetails)
+    {
+        <tr>
+            <td>@d.ProductId</td>
+            <td>@d.Product.Name</td>
+            <td>@d.UnitPrice</td>
+            <td>@d.Discount</td>
+            <td>@d.Quantity</td>
+            <td>@(d.UnitPrice * d.Quantity * (1 - d.Discount))</td>
+        </tr>
+    }
+</table>

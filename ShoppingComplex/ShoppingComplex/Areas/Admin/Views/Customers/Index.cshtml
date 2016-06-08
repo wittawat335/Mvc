@@ -25,15 +25,15 @@
     <tbody>
         @foreach (Customer c in ViewBag.Customers) {
             <tr>
-                <td>@c.ID</td>
+                <td>@c.Id</td>
                 <td>@c.Password</td>
                 <td>@c.FullName</td>
                 <td>@c.Email</td>
                 <td>@c.Address</td>
                 <td>@c.Tel</td>
                 <td>
-                    @Html.ActionLink("Edit", "Edit", new { id = c.ID }, new { @class = "btn btn-warning" })
-                    @Html.ActionLink("Delete", "Delete", new { id = c.ID }, new { @class = "btn btn-danger" })
+                    @Html.ActionLink("Edit", "Edit", new { id = c.Id }, new { @class = "btn btn-warning" })
+                    @Html.ActionLink("Delete", "Delete", new { id = c.Id }, new { @class = "btn btn-danger" })
                 </td>
             </tr>
 }

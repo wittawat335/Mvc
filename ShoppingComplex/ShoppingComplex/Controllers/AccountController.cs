@@ -51,11 +51,7 @@ namespace ShoppingComplex.Controllers
         [AllowAnonymous]
         public ActionResult Login(string returnUrl)
         {
-            if (returnUrl.Contains("/Admin/"))
-            {
-                Response.Redirect("/Admin/Account/Login?returnUrl=" + returnUrl);
-            }
-            ViewBag.ReturnUrl = returnUrl;
+          
             return View();
         }
 
@@ -117,7 +113,7 @@ namespace ShoppingComplex.Controllers
                 {
                     Customer customer = new Customer
                     {
-                        ID = model.ID,
+                        Id = model.ID,
                         Password = model.Password,
                         FullName = model.FullName,
                         Email = model.Email,

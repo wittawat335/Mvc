@@ -17,7 +17,7 @@ namespace ShoppingComplex.Areas.Admin.Controllers
         // GET: Admin/Orders
         public ActionResult Index()
         {
-            ViewBag.Orders = db.Orders.Include(o => o.Customer);
+            ViewBag.Orders = db.Orders.Include(o => o.Customer).Include(o => o.OrderDetails);
             return View();
         }
 
