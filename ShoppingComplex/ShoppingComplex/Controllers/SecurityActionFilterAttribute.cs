@@ -27,14 +27,14 @@ namespace ShoppingComplex.Controllers
         public override void OnActionExecuting(ActionExecutingContext context)
         {
            
-            //Download source code tại Sharecode.vn
+            
             var uri = context.HttpContext.Request.Url.AbsoluteUri;
             if (uri.ToLower().Contains("/admin/")) 
             { 
                 var ControllerName = context.ActionDescriptor.ControllerDescriptor.ControllerName;
                 var ActionName = context.ActionDescriptor.ActionName;
 
-                if (!context.HttpContext.Request.IsAuthenticated) // chưa đăng nhập
+                if (!context.HttpContext.Request.IsAuthenticated) 
                 {
                     if (!uri.ToLower().Contains("/login"))
                     {
@@ -44,7 +44,7 @@ namespace ShoppingComplex.Controllers
                 else
                 {
                     var user = UserManager.FindByName(context.HttpContext.User.Identity.Name);
-                    if (user.Roles.Count == 0) // không cấp vai trò -> không phải web master
+                    if (user.Roles.Count == 0) 
                     {
                         context.HttpContext.Response.Redirect("/Admin/Account/Login?returnUrl=" + uri);
                     }
@@ -55,10 +55,10 @@ namespace ShoppingComplex.Controllers
                             .Where(p => roleIds.Contains(p.RoleId))
                             .Where(p => p.Action.Name == ActionName 
                                 && p.Action.Controller == ControllerName).ToList();
-                        if (perms.Count == 0) // chưa được nhập vào CSDL -> Không xử lý
+                        if (perms.Count == 0) 
                         {
                         }
-                        else if (!perms.First().Allowable) // Không cho phép
+                        else if (!perms.First().Allowable) 
                         {
                             context.HttpContext.Response.Redirect("/Admin/Account/Login?returnUrl=" + uri);
                         }

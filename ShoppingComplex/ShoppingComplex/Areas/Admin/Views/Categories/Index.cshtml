@@ -34,8 +34,9 @@
                     <img class="img-responsive" src="/Content/img/Icons/@c.Icon" width="50" height="25" />
                 </td>
                 <td>
-                    @Html.ActionLink("Edit", "Edit", new { id = c.Id }, new { @class = "btn btn-warning" })
-                    @Html.ActionLink("Delete", "Delete", new { id = c.Id }, new { @class = "btn btn-danger" })
+                    <a href="/Admin/Categories/Details/@c.Id" title="Detail"><img src="/Content/img/icons/Search.png" /></a>
+                    <a href="/Admin/Categories/Edit/@c.Id" title="Edit"><img src="/content/img/icons/Edit.png" /></a>
+                    <a href="/Admin/Categories/Delete/@c.Id" title="Delete"><img src="/Content/img/icons/Trash.png" /></a>
                 </td>
 
 

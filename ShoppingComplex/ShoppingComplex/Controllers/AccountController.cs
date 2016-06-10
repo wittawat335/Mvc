@@ -51,7 +51,11 @@ namespace ShoppingComplex.Controllers
         [AllowAnonymous]
         public ActionResult Login(string returnUrl)
         {
-          
+            if (returnUrl.Contains("/Admin/"))
+            {
+                Response.Redirect("/Admin/Account/Login?returnUrl=" + returnUrl);
+            }
+            ViewBag.ReturnUrl = returnUrl;
             return View();
         }
 

@@ -1,6 +1,6 @@
 ﻿
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Tiitle = "Index";
 }
 
 <h2>Index</h2>
@@ -32,9 +32,9 @@
             <td>@o.Receiver</td>
             <td>@o.Amount</td>
             <td>
-                @Html.ActionLink("Detail", "Details", new {id = o.Id}, new {@class = "btn btn-info"})
-                @Html.ActionLink("Edit", "Edit", new {id = o.Id}, new {@class = "btn btn-warning"})
-                @Html.ActionLink("Delete", "Delete", new {id = o.Id}, new {@class = "btn btn-danger"})
+                <a href="/Admin/Orders/Details/@o.Id" title="Detail"><img src="/Content/img/icons/Search.png"/></a>
+                <a href="/Admin/Orders/Edit/@o.Id" title="Edit"><img src="/content/img/icons/Edit.png"/></a>
+                <a href="/Admin/Orders/Delete/@o.Id" title="Delete"><img src="/Content/img/icons/Trash.png"/></a>
             </td>
         </tr>
     }

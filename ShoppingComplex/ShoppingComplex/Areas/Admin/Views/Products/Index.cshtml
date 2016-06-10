@@ -31,8 +31,9 @@
                 <td>@p.Quantity</td>
                 <td><img src="@Url.Content("~/Content/img/Products/")@p.Image" width="120" height="100" /></td>
                 <td>
-                    @Html.ActionLink("Edit", "Edit", new { id = p.Id }, new { @class = "btn btn-warning" })
-                    @Html.ActionLink("Delete", "Delete", new { id = p.Id }, new { @class = "btn btn-danger" })
+                    <a href="/Admin/Products/Details/@p.Id" title="Detail"><img src="/Content/img/icons/Search.png" /></a>
+                    <a href="/Admin/products/Edit/@p.Id" title="Edit"><img src="/content/img/icons/Edit.png" /></a>
+                    <a href="/Admin/Products/Delete/@p.Id" title="Delete"><img src="/Content/img/icons/Trash.png" /></a>
                 </td>
                
 

@@ -15,8 +15,9 @@ namespace ShoppingComplex.Areas.Admin.Controllers
 {
     public class AccountController : SecurityController
     {
-        public ActionResult Logoff(String returnUrl)
+        public ActionResult Logoff()
         {
+            Session.Abandon();
             AuthenticationManager.SignOut();
             
             return RedirectToAction("Login");
@@ -25,11 +26,7 @@ namespace ShoppingComplex.Areas.Admin.Controllers
         public ActionResult Login(String returnUrl)
         {
            
-            if (returnUrl.Contains("/Admin/"))
-            {
-                Response.Redirect("/Admin/Account/Login?returnUrl=" + returnUrl);
-                
-            }
+            
             ViewBag.ReturnUrl = returnUrl;
             return View();
         }
@@ -41,16 +38,14 @@ namespace ShoppingComplex.Areas.Admin.Controllers
             if (user != null)
             {
                 await SignInAsync(user, false);
-                if (returnUrl == null)
+                if (Url.IsLocalUrl(returnUrl))
                 {
-                    returnUrl = "/Admin/Master";
+                    return Redirect(returnUrl);
                 }
-                return Redirect(returnUrl);
+                return RedirectToAction("index", "Home");
+
             }
-            else
-            {
-                ModelState.AddModelError("", "Invalid username or password.");
-            }
+            TempData["Message"] = "Invalid username or password.";
             return View();
         }
 

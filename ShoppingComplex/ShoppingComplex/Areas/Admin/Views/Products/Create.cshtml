@@ -100,10 +100,10 @@
         <div class="form-group">
             <label class="col-md-4 control-label">Features</label>
             <div class="col-md-4">
-                <div class="checkbox">
-                    @Html.CheckBoxFor(m => m.Available) @Html.LabelFor(m => m.Available)
-                    @Html.CheckBoxFor(m => m.Special) @Html.LabelFor(m => m.Special)
-                    @Html.CheckBoxFor(m => m.Latest) @Html.LabelFor(m => m.Latest)
+                <div>
+                    @Html.CheckBoxFor(m => m.Available ,new {@class = "check-box"})   @Html.LabelFor(m => m.Available)
+                    @Html.CheckBoxFor(m => m.Special, new { @class = "check-box" })   @Html.LabelFor(m => m.Special)
+                    @Html.CheckBoxFor(m => m.Latest, new { @class = "check-box" })   @Html.LabelFor(m => m.Latest)
                 </div>
             </div>
         </div>

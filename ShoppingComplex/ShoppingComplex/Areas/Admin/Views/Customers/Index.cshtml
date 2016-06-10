@@ -1,6 +1,7 @@
 ﻿@using ShoppingComplex.Models
 
 
+
 @{
     ViewBag.Title = "Index";
 }
@@ -32,8 +33,9 @@
                 <td>@c.Address</td>
                 <td>@c.Tel</td>
                 <td>
-                    @Html.ActionLink("Edit", "Edit", new { id = c.Id }, new { @class = "btn btn-warning" })
-                    @Html.ActionLink("Delete", "Delete", new { id = c.Id }, new { @class = "btn btn-danger" })
+                    <a href="/Admin/Customers/Details/@c.Id" title="Detail"><img src="/Content/img/icons/Search.png" /></a>
+                    <a href="/Admin/Customers/Edit/@c.Id" title="Edit"><img src="/content/img/icons/Edit.png" /></a>
+                    <a href="/Admin/Customers/Delete/@c.Id" title="Delete"><img src="/Content/img/icons/Trash.png" /></a>
                 </td>
             </tr>
 }

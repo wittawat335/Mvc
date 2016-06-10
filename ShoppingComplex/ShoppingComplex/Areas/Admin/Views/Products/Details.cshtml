@@ -6,133 +6,110 @@
 
 <h2>Details</h2>
 
-<div>
-    <h4>Product</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Category.NameVN)
-        </dt>
+<div class="form-horizontal">
 
-        <dd>
-            @Html.DisplayFor(model => model.Category.NameVN)
-        </dd>
+    <div class="form-group">
+        <label class="control-label col-md-3">Image </label>
+        <div class="col-md-4">
+            <img src="/Content//img/products/@Model.Image" class="img-thumbnail" width="200" height="225"/>
+        </div>
+    </div>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Supplier.Name)
-        </dt>
+    <div class="form-group">
+        <label class="control-label col-md-3">ImageZoom </label>
+        <div class="col-md-4">
+            @Html.TextBoxFor(model => model.ImageLarge, new { @class = "form-control required", @disabled = "disabled" })
+        </div>
+    </div>
 
-        <dd>
-            @Html.DisplayFor(model => model.Supplier.Name)
-        </dd>
+    <div class="form-group">
+        <label class="control-label col-md-3">ID </label>
+        <div class="col-md-4">
+            @Html.TextBoxFor(model => model.Id, new { @class = "form-control required", @disabled = "disabled" })
+        </div>
+    </div>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Name)
-        </dt>
+    <div class="form-group">
+        <label class="control-label col-md-3">Name </label>
+        <div class="col-md-4">
+            @Html.TextBoxFor(model => model.Name, new { @class = "form-control required", @disabled = "disabled" })
+        </div>
+    </div>
 
-        <dd>
-            @Html.DisplayFor(model => model.Name)
-        </dd>
+    <div class="form-group">
+        <label class="control-label col-md-3">Price</label>
+        <div class="col-md-4">
+            @Html.TextBoxFor(model => model.UnitPrice, new {@class = "form-control required", @disabled = "disabled"})
+        </div>
+    </div>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.UnitBrief)
-        </dt>
+    <div class="form-group">
+        <label class="control-label col-md-3">UnitBrief</label>
+        <div class="col-md-4">
+            @Html.TextBoxFor(model => model.UnitBrief, new {@class = "form-control required", @disabled = "disabled"})
+        </div>
+    </div>
 
-        <dd>
-            @Html.DisplayFor(model => model.UnitBrief)
-        </dd>
+    <div class="form-group">
+        <label class="control-label col-md-3">ProducttDate</label>
+        <div class="col-md-4">
+            @Html.TextBoxFor(model => model.ProductDate, new {@class = "form-control required", @disabled = "disabled"})
+        </div>
+    </div>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.UnitPrice)
-        </dt>
+    <div class="form-group">
+        <label class="control-label col-md-3">CategorID</label>
+        <div class="col-md-4">
+            @Html.TextBoxFor(model => model.Category.Name, new {@class = "form-control required", @disabled = "disabled"})
+        </div>
+    </div>
 
-        <dd>
-            @Html.DisplayFor(model => model.UnitPrice)
-        </dd>
+    <div class="form-group">
+        <label class="control-label col-md-3">SupplierID</label>
+        <div class="col-md-4">
+            @Html.TextBoxFor(model => model.Supplier.Name, new {@class = "form-control required", @disabled = "disabled"})
+        </div>
+    </div>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Image)
-        </dt>
+    <div class="form-group">
+        <label class="control-label col-md-3">Quantity in Stock</label>
+        <div class="col-md-4">
+            @Html.TextBoxFor(model => model.Quantity, new {@class = "form-control required", @disabled = "disabled"})
+        </div>
+    </div>
 
-        <dd>
-            @Html.DisplayFor(model => model.Image)
-        </dd>
+    <div class="form-group">
+        <label class="control-label col-md-3">Discount</label>
+        <div class="col-md-4">
+            @Html.TextBoxFor(model => model.Discount , new {@class = "form-control required", @disabled = "disabled"})
+        </div>
+    </div>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.ImageLarge)
-        </dt>
+    <div class="form-group">
+        <label class="control-label col-md-3">Features</label>
+        <div class="col-md-4">
+            @Html.CheckBoxFor(m => m.Available ,new {@class="check-box", @disabled = "disabled"}) @Html.LabelFor(m => m.Available)
+            @Html.CheckBoxFor(m => m.Special ,new { @class = "check-box", @disabled = "disabled" }) @Html.LabelFor(m => m.Special)
+            @Html.CheckBoxFor(m => m.Latest, new { @class = "check-box", @disabled = "disabled" }) @Html.LabelFor(m => m.Latest)
+            
+        </div>
+    </div>
 
-        <dd>
-            @Html.DisplayFor(model => model.ImageLarge)
-        </dd>
+    <div class="form-group">
+        <label class="control-label col-md-3">Views</label>
+        <div class="col-md-4">
+            @Html.TextBoxFor(model => model.Views, new {@class = "form-control required", @disabled = "disabled"})
+        </div>
+    </div>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.ProductDate)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.ProductDate)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Available)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Available)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Description)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Description)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Quantity)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Quantity)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Discount)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Discount)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Special)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Special)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Latest)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Latest)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Views)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Views)
-        </dd>
-
-    </dl>
+    <div class="form-group">
+        <label class="control-label col-md-3">Description</label>
+        <div class="col-md-4">
+            @Html.TextBoxFor(model => model.Description, new { @class = "form-control required", @disabled = "disabled" })
+        </div>
+    </div>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+   
     @Html.ActionLink("Back to List", "Index")
 </p>

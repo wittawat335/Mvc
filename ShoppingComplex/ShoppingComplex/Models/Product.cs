@@ -20,6 +20,7 @@ public partial class Product
 
         [Required]
         [Display(Name = "รูปสินค้า")]
+        [FileExtensions(ErrorMessage = "ชนิดไฟล์ไม่ตรงกับที่กำหนดไว้ค่ะ (jpg, jpeg, png)", Extensions = "jpg,jpeg,png")]
         public string Image { get; set; }
         public string ImageLarge { get; set; }
         public System.DateTime ProductDate { get; set; }

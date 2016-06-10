@@ -6,45 +6,44 @@
 
 <h2>Details</h2>
 
-<div>
-    <h4>Category</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.NameVN)
-        </dt>
+<div class="form-horizontal">
 
-        <dd>
-            @Html.DisplayFor(model => model.NameVN)
-        </dd>
+    <div class="form-group">
+        <label class="control-label col-md-3">Logo </label>
+        <div class="col-md-4">
+            <img src="/content/img/icons/@Model.Icon" class="img-logo"/>
+        </div>
+    </div>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Name)
-        </dt>
+    <div class="form-group">
+        <label class="control-label col-md-3">ID </label>
+        <div class="col-md-4">
+            @Html.TextBoxFor(model => model.Id, new { @class = "form-control required", @disabled = "disabled" })
+        </div>
+    </div>
 
-        <dd>
-            @Html.DisplayFor(model => model.Name)
-        </dd>
+    <div class="form-group">
+        <label class="control-label col-md-3">NameTH </label>
+        <div class="col-md-4">
+            @Html.TextBoxFor(model => model.NameVN, new { @class = "form-control required", @disabled = "disabled" })
+        </div>
+    </div>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Image)
-        </dt>
+    <div class="form-group">
+        <label class="control-label col-md-3">Name </label>
+        <div class="col-md-4">
+            @Html.TextBoxFor(model => model.Name, new { @class = "form-control required", @disabled = "disabled" })
+        </div>
+    </div>
 
-        <dd>
-            @Html.DisplayFor(model => model.Image)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Icon)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Icon)
-        </dd>
-
-    </dl>
+    <div class="form-group">
+        <label class="control-label col-md-3">Image</label>
+        <div class="col-md-4">
+            @Html.TextBoxFor(model => model.Image, new { @class = "form-control required", @disabled = "disabled" })
+        </div>
+    </div>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    
     @Html.ActionLink("Back to List", "Index")
 </p>
