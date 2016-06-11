@@ -22,14 +22,18 @@ namespace ShoppingComplex.Areas.Admin.Controllers
             return View();
         }
 
-        public ActionResult Details(int id = 0)
+        public ActionResult Details(string id)
         {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
             Supplier supplier = db.Suppliers.Find(id);
             if (supplier == null)
             {
                 return HttpNotFound();
             }
-            return PartialView("_Details", supplier);
+            return View(supplier);
         }
 
         // GET: Admin/Suppliers/Create

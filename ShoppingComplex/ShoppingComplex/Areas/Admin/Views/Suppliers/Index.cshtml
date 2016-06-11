@@ -35,9 +35,9 @@
                 <img class="img-responsive" src="/Content/img/suppliers/@s.Logo" width="120" height="100"/>
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new {id = s.Id}, new {@class = "btn btn-warning"})
-                @Html.ActionLink("Delete", "Delete", new {id = s.Id}, new {@class = "btn btn-danger"})
-                @Html.ActionLink("Details", "Details", new {id = s.Id}, new {@class = "btn btnModal"})
+                <a href="/Admin/Suppliers/Details/@s.Id" title="Detail"><img src="/Content/img/icons/Search.png" /></a>
+                <a href="/Admin/Suppliers/Edit/@s.Id" title="Edit"><img src="/content/img/icons/Edit.png" /></a>
+                <a href="/Admin/Suppliers/Delete/@s.Id" title="Delete"><img src="/Content/img/icons/Trash.png" /></a>
             </td>
 
 
@@ -46,46 +46,4 @@
     </tbody>
 </table>
 
-@Scripts.Render("~/bundles/modalform")
 
-<script type="text/javascript">
-
-
-    $(function () {
-        $.ajaxSetup({ cache: false });
-
-        $("btnModal").on("click", function (e) {
-            // hide dropdown if any (this is used wehen invoking modal from link in bootstrap dropdown )
-            //$(e.target).closest('.btn-group').children('.dropdown-toggle').dropdown('toggle');
-
-            $('#myModalContent').load(this.href, function () {
-                $('#myModal').modal({
-                    /*backdrop: 'static',*/
-                    keyboard: true
-                }, 'show');
-                bindForm(this);
-            });
-            return false;
-        });
-    });
-
-    function bindForm(dialog) {
-        $('form', dialog).submit(function () {
-            $.ajax({
-                url: this.action,
-                type: this.method,
-                data: $(this).serialize(),
-                success: function (result) {
-                    if (result.success) {
-                        $('#myModal').modal('hide');
-                        $('#replacetarget').load(result.url); //  Load data from the server and place the returned HTML into the matched element
-                    } else {
-                        $('#myModalContent').html(result);
-                        bindForm(dialog);
-                    }
-                }
-            });
-            return false;
-        });
-    }
-</script>

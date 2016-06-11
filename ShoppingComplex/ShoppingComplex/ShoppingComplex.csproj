@@ -1259,7 +1259,7 @@
     <Content Include="Areas\Admin\Views\Orders\Details.cshtml" />
     <Content Include="Areas\Admin\Views\Orders\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\Orders\Index.cshtml" />
-    <Content Include="Areas\Admin\Views\Suppliers\_Details.cshtml" />
+    <Content Include="Areas\Admin\Views\Suppliers\Details.cshtml" />
     <None Include="Scripts\jquery-2.2.3.intellisense.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />

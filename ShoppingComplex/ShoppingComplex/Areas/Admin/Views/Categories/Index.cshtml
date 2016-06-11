@@ -4,7 +4,17 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<ol class="breadcrumb">
+    <li>
+        <i class="fa fa-dashboard"></i> <a href="/Admin/Home">Dashboard</a>
+    </li>
+    <li>
+        <i class="fa fa-heart"></i> Management
+    </li>
+    <li class="active">
+        <i class="fa fa-table"></i> Category
+    </li>
+</ol>
 
 <p>
     @Html.ActionLink("Create New", "Create")

@@ -1,4 +1,4 @@
-﻿@model Category
+﻿@model Supplier
 
 @{
     ViewBag.Title = "Details";
@@ -11,7 +11,7 @@
     <div class="form-group">
         <label class="control-label col-md-3">Logo </label>
         <div class="col-md-4">
-            <img src="/content/img/icons/@Model.Icon" class="img-logo img-thumbnail"/>
+            <img src="/content/img/suppliers/@Model.Logo" class="img-logo img-thumbnail" />
         </div>
     </div>
 
@@ -23,13 +23,6 @@
     </div>
 
     <div class="form-group">
-        <label class="control-label col-md-3">NameTH </label>
-        <div class="col-md-4">
-            @Html.TextBoxFor(model => model.NameVN, new { @class = "form-control required", @disabled = "disabled" })
-        </div>
-    </div>
-
-    <div class="form-group">
         <label class="control-label col-md-3">Name </label>
         <div class="col-md-4">
             @Html.TextBoxFor(model => model.Name, new { @class = "form-control required", @disabled = "disabled" })
@@ -37,13 +30,20 @@
     </div>
 
     <div class="form-group">
-        <label class="control-label col-md-3">Image</label>
+        <label class="control-label col-md-3">E-Mail </label>
         <div class="col-md-4">
-            @Html.TextBoxFor(model => model.Image, new { @class = "form-control required", @disabled = "disabled" })
+            @Html.TextBoxFor(model => model.Email, new { @class = "form-control required", @disabled = "disabled" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label col-md-3">Tel</label>
+        <div class="col-md-4">
+            @Html.TextBoxFor(model => model.Phone, new { @class = "form-control required", @disabled = "disabled" })
         </div>
     </div>
 </div>
 <p>
-    
+  
     @Html.ActionLink("Back to List", "Index")
 </p>
