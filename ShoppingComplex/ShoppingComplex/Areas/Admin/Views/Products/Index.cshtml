@@ -3,44 +3,71 @@
     ViewBag.Title = "Index";
 }
 
-<div class="navbar-right">
-@Html.ActionLink("Add", "Create",null ,new {@class = "btn btn-info"})
-</div><br/><br/>
-<table class="table table-responsive table-bordered" id="myTable">
-    <thead>
-    <tr>
-        <th>Id</th>
-        <th>Name</th>
-        <th>UnitPrice</th>
-        <th>UnitBrief</th>
-        <th>Quantity</th>
-        <th>Image</th>
-        <th></th>
-       
-    </tr>
-    </thead>
-    
-    <tbody>
-        @foreach (Product p in ViewBag.Products)
-        {
-            <tr>
-                <td>@p.Id</td>
-                <td>@p.Name</td>
-                <td>@p.UnitPrice</td>
-                <td>@p.UnitBrief</td>
-                <td>@p.Quantity</td>
-                <td><img src="@Url.Content("~/Content/img/Products/")@p.Image" width="120" height="100" /></td>
-                <td>
-                    <a href="/Admin/Products/Details/@p.Id" title="Detail"><img src="/Content/img/icons/Search.png" /></a>
-                    <a href="/Admin/products/Edit/@p.Id" title="Edit"><img src="/content/img/icons/Edit.png" /></a>
-                    <a href="/Admin/Products/Delete/@p.Id" title="Delete"><img src="/Content/img/icons/Trash.png" /></a>
-                </td>
-               
+<ol class="breadcrumb">
+    <li>
+        <i class="fa fa-dashboard"></i> <a href="/Admin/Home">Dashboard</a>
+    </li>
+    <li class="active">
+        <i class="fa fa-reorder"></i> Products
+    </li>
+</ol>
 
-            </tr>
-        }
-    </tbody>
-</table>
+<p>
+    @Html.ActionLink("Create New", "Create", null, new { @class = "btn btn-success animated tada" })
+</p>
+
+<div class="row">
+    <div class="box col-md-12">
+        <div class="box-inner">
+            <div class="box-header well">
+
+            </div>
+            <div class="box-content">
+                <table class="table table-responsive table-bordered" id="myTable">
+                    <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>Name</th>
+                            <th>UnitPrice</th>
+                            <th>UnitBrief</th>
+                            <th>Quantity</th>
+                            <th>Image</th>
+                            <th></th>
+
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        @foreach (Product p in ViewBag.Products)
+                        {
+                            <tr>
+                                <td>@p.Id</td>
+                                <td>@p.Name</td>
+                                <td>@p.UnitPrice</td>
+                                <td>@p.UnitBrief</td>
+                                <td>@p.Quantity</td>
+                                <td><img src="@Url.Content("~/Content/img/Products/")@p.Image" width="120" height="100" /></td>
+                                <td>
+                                    <a href="/Admin/Products/Details/@p.Id" title="Detail" class="btn btn-success">
+                                        <i class="fa fa-search icon-white"></i> Detail
+                                    </a>
+                                    <a href="/Admin/Products/Edit/@p.Id" title="Edit" class="btn btn-info">
+                                        <i class="fa fa-edit"></i> Edit
+                                    </a>
+                                    <a href="/Admin/Products/Delete/@p.Id" title="Delete" class="btn btn-danger">
+                                        <i class="fa fa-trash-o"></i> Delete
+                                    </a>
+                            </td>
+                        </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <!--/span-->
+
+</div>
 
 
 

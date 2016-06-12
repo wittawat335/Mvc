@@ -3,39 +3,73 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Revenue</h2>
+<style>
+    .ui-datepicker .ui-datepicker-title select {
+    color: #000;
+}
+</style>
+
+<ol class="breadcrumb">
+    <li>
+        <i class="fa fa-dashboard"></i> <a href="/Admin/Home">Dashboard</a>
+    </li>
+    <li class="active">
+        <i class="fa fa-dollar"></i> รายได้
+    </li>
+</ol>
 
 @using (Html.BeginForm()){
-    <fieldset>
-        <legend>Thời gian</legend>
-        From: @Html.TextBox("Min")
-        To: @Html.TextBox("Max")
-        <input type="submit" value="View" />
+    <fieldset class="form-inline">
+        <legend>รายได้</legend>
+        
+        @Html.TextBox("Min", null, new {@class = "form-control col-md-2", @placeholder = "From" })
+        
+        @Html.TextBox("Max", null, new { @class = "form-control col-md-2", @placeholder = "To" })
+        <input type="submit" value="View" class="btn btn-primary animated tada col-md-2" />
     </fieldset>
 }
-<hr />
 
-<table class="table table-bordered">
-    <tr>
-        <th>Group</th>
-        <th>Count</th>
-        <th>Sum</th>
-        <th>Min Price</th>
-        <th>Max Price</th>
-        <th>Avg Price</th>
-    </tr>
-    @foreach (var r in Model)
-    {
-        <tr>
-            <td>@r.Group @if(r.iGroup != 0){@r.iGroup}</td>
-            <td>@r.Count</td>
-            <td>@Html.FormatValue(r.Sum, "{0:c}")</td>
-            <td>@Html.FormatValue(r.Min, "{0:c}")</td>
-            <td>@Html.FormatValue(r.Max, "{0:c}")</td>
-            <td>@Html.FormatValue(r.Avg, "{0:c}")</td>
-        </tr>
-    }
-</table>
+
+<div class="row">
+    <div class="box col-md-12">
+        <div class="box-inner">
+            <div class="box-header well"></div>
+            <div class="box-content">
+                <table class="table table-bordered" id="myTable">
+                    <thead>
+                    <tr>
+                        <th>Group</th>
+                        <th>Count</th>
+                        <th>Sum</th>
+                        <th>Min Price</th>
+                        <th>Max Price</th>
+                        <th>Avg Price</th>
+                    </tr>
+                    </thead>
+
+                    <tbody>
+                        @foreach (var r in Model)
+                        {
+                            <tr>
+                                <td>
+                                    @r.Group @if (r.iGroup != 0)
+                                    {@r.iGroup}
+                                </td>
+                                <td>@r.Count</td>
+                                <td>@Html.FormatValue(r.Sum, "{0:c}")</td>
+                                <td>@Html.FormatValue(r.Min, "{0:c}")</td>
+                                <td>@Html.FormatValue(r.Max, "{0:c}")</td>
+                                <td>@Html.FormatValue(r.Avg, "{0:c}")</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <!--/span-->
+
+</div>
 
 <hr />
 
@@ -45,7 +79,10 @@
     <script>
         $(function () {
             $("fieldset #Min, fieldset #Max").datepicker({
-                dateFormat: 'yy-mm-dd'
+                dateFormat: 'yy-mm-dd',
+                changeMonth: true,
+                changeYear: true,
+                yearRange:"2005:2020"
             });
         });
     </script>
@@ -63,7 +100,7 @@
             ]);
 
         var options = {
-            title: 'Doanh so ban hang',
+            title: 'กราฟ',
             is3D: true,
         };
 

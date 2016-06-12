@@ -1,43 +1,66 @@
 ﻿@using ShoppingComplex.Models
-
-
-
 @{
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<ol class="breadcrumb">
+    <li>
+        <i class="fa fa-dashboard"></i> <a href="/Admin/Home">Dashboard</a>
+    </li>
+    <li class="active">
+        <i class="fa fa-users"></i> Customer
+    </li>
+</ol>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Create New", "Create", null, new { @class = "btn btn-success animated tada" })
 </p>
-<table class="table table-responsive table-bordered" id="myTable">
-    <thead>
-    <tr>
-        <td>Id</td>
-        <td>Password</td>
-        <td>CustomerName</td>
-        <td>E-mail</td>
-        <td>Address</td>
-        <td>Tel.</td>
-        <td></td>
-    </tr>
-    </thead>
-    <tbody>
-        @foreach (Customer c in ViewBag.Customers) {
-            <tr>
-                <td>@c.Id</td>
-                <td>@c.Password</td>
-                <td>@c.FullName</td>
-                <td>@c.Email</td>
-                <td>@c.Address</td>
-                <td>@c.Tel</td>
-                <td>
-                    <a href="/Admin/Customers/Details/@c.Id" title="Detail"><img src="/Content/img/icons/Search.png" /></a>
-                    <a href="/Admin/Customers/Edit/@c.Id" title="Edit"><img src="/content/img/icons/Edit.png" /></a>
-                    <a href="/Admin/Customers/Delete/@c.Id" title="Delete"><img src="/Content/img/icons/Trash.png" /></a>
-                </td>
-            </tr>
-}
-    </tbody>
-</table>
+
+<div class="row">
+    <div class="box col-md-12">
+        <div class="box-inner">
+            <div class="box-header well"></div>
+            <div class="box-content">
+                <table class="table table-responsive table-bordered" id="myTable">
+                    <thead>
+                        <tr>
+                            <td>Id</td>
+                            <td>Password</td>
+                            <td>CustomerName</td>
+                            <td>E-mail</td>
+                            <td>Address</td>
+                            <td>Tel.</td>
+                            <td></td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (Customer c in ViewBag.Customers)
+                        {
+                            <tr>
+                                <td>@c.Id</td>
+                                <td>@c.Password</td>
+                                <td>@c.FullName</td>
+                                <td>@c.Email</td>
+                                <td>@c.Address</td>
+                                <td>@c.Tel</td>
+                                <td class="center">
+                                    <a href="/Admin/Customers/Details/@c.Id" title="Detail" class="btn btn-success">
+                                        <i class="fa fa-search icon-white"></i> Detail
+                                    </a>
+                                    <a href="/Admin/Customers/Edit/@c.Id" title="Edit" class="btn btn-info">
+                                        <i class="fa fa-edit"></i> Edit
+                                    </a>
+                                    <a href="/Admin/Customers/Delete/@c.Id" title="Delete" class="btn btn-danger">
+                                        <i class="fa fa-trash-o"></i> Delete
+                                    </a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <!--/span-->
+
+</div>

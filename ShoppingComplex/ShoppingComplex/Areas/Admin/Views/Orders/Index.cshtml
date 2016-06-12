@@ -2,41 +2,65 @@
 @{
     ViewBag.Tiitle = "Index";
 }
-
-<h2>Index</h2>
+<ol class="breadcrumb">
+    <li>
+        <i class="fa fa-dashboard"></i> <a href="/Admin/Home">Dashboard</a>
+    </li>
+    <li class="active">
+        <i class="fa fa-reorder"></i> Order
+    </li>
+</ol>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+   @Html.ActionLink("Create New", "Create", null, new { @class = "btn btn-success animated tada" })
 </p>
-<table class="table table-responsive table-bordered" id="myTable">
-    <thead>
-    <tr>
-        <th>OrderId</th>
-        <th>Customer</th>
-        <th>OrderDate</th>
-        <th>RequireDate</th>
-        <th>Receiver</th>
-        <th>ราคารวมทั้งสิ้น</th>
-        <th></th>
-    </tr>
-    </thead>
 
-    <tbody>
-    @foreach (Order o in ViewBag.Orders)
-    {
-        <tr>
-            <td>@o.Id</td>
-            <td>@o.CustomerId</td>
-            <td>@o.OrderDate</td>
-            <td>@o.RequireDate</td>
-            <td>@o.Receiver</td>
-            <td>@o.Amount</td>
-            <td>
-                <a href="/Admin/Orders/Details/@o.Id" title="Detail"><img src="/Content/img/icons/Search.png"/></a>
-                <a href="/Admin/Orders/Edit/@o.Id" title="Edit"><img src="/content/img/icons/Edit.png"/></a>
-                <a href="/Admin/Orders/Delete/@o.Id" title="Delete"><img src="/Content/img/icons/Trash.png"/></a>
-            </td>
-        </tr>
-    }
-    </tbody>
-</table>
+<div class="row">
+    <div class="box col-md-12">
+        <div class="box-inner">
+            <div class="box-header well"></div>
+            <div class="box-content">
+                <table class="table table-responsive table-bordered" id="myTable">
+                    <thead>
+                        <tr>
+                            <th>OrderId</th>
+                            <th>Customer</th>
+                            <th>OrderDate</th>
+                            <th>RequireDate</th>
+                            <th>Receiver</th>
+                            <th>ราคารวมทั้งสิ้น</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        @foreach (Order o in ViewBag.Orders)
+                        {
+                            <tr>
+                                <td>@o.Id</td>
+                                <td>@o.CustomerId</td>
+                                <td>@o.OrderDate</td>
+                                <td>@o.RequireDate</td>
+                                <td>@o.Receiver</td>
+                                <td>@o.Amount</td>
+                                <td>
+                                    <a href="/Admin/Orders/Details/@o.Id" title="Detail" class="btn btn-success">
+                                        <i class="fa fa-search icon-white"></i> Detail
+                                    </a>
+                                    <a href="/Admin/Orders/Edit/@o.Id" title="Edit" class="btn btn-info">
+                                        <i class="fa fa-edit"></i> Edit
+                                    </a>
+                                    <a href="/Admin/Orders/Delete/@o.Id" title="Delete" class="btn btn-danger">
+                                        <i class="fa fa-trash-o"></i> Delete
+                                    </a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <!--/span-->
+
+</div>

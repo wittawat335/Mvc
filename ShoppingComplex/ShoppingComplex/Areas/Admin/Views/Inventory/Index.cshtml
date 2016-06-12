@@ -3,26 +3,44 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Inventory</h2>
+<ol class="breadcrumb">
+    <li>
+        <i class="fa fa-dashboard"></i> <a href="/Admin/Home">Dashboard</a>
+    </li>
+    <li class="active">
+        <i class="fa fa-apple"></i> Customer
+    </li>
+</ol>
 
-<table class="table table-bordered">
-    <tr>
-        <th>Group</th>
-        <th>Count</th>
-        <th>Sum</th>
-        <th>Min Price</th>
-        <th>Max Price</th>
-        <th>Avg Price</th>
-    </tr>
-    @foreach (var r in Model)
-    {
-        <tr>
-            <td>@r.Group</td>
-            <td>@r.Count</td>
-            <td>@Html.FormatValue(r.Sum, "{0:c}")</td>
-            <td>@Html.FormatValue(r.Min, "{0:c}")</td>
-            <td>@Html.FormatValue(r.Max, "{0:c}")</td>
-            <td>@Html.FormatValue(r.Avg, "{0:c}")</td>
-        </tr>
-    }
-</table>
+<div class="row">
+    <div class="box col-md-12">
+        <div class="box-inner">
+            <div class="box-header well"></div>
+            <div class="box-content">
+                <table class="table table-bordered">
+                    <tr>
+                        <th>Group</th>
+                        <th>Count</th>
+                        <th>Sum</th>
+                        <th>Min Price</th>
+                        <th>Max Price</th>
+                        <th>Avg Price</th>
+                    </tr>
+                    @foreach (var r in Model)
+                    {
+                        <tr>
+                            <td>@r.Group</td>
+                            <td>@r.Count</td>
+                            <td>@Html.FormatValue(r.Sum, "{0:c}")</td>
+                            <td>@Html.FormatValue(r.Min, "{0:c}")</td>
+                            <td>@Html.FormatValue(r.Max, "{0:c}")</td>
+                            <td>@Html.FormatValue(r.Avg, "{0:c}")</td>
+                        </tr>
+                    }
+                </table>
+            </div>
+        </div>
+    </div>
+    <!--/span-->
+
+</div>

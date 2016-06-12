@@ -10,14 +10,17 @@
     @Scripts.Render("~/bundles/bootstrap")
     <link href="@Url.Content("/Areas/AdminTheme/Content/plugins/morris.css")" rel="stylesheet" type="text/css" />
     <link href="@Url.Content("/Areas/AdminTheme/Content/font-awesome-4.1.0/css/font-awesome.min.css")" rel="stylesheet" type="text/css"/>
-    <link href="~/Areas/AdminTheme/Content/plugins/dataTables.bootstrap.css" rel="stylesheet" />
+    <link href="~/Areas/AdminTheme/Content/plugins/dataTables.bootstrap.css" rel="stylesheet"/>
+
+    <link href="~/Areas/AdminTheme/Content/css/animate.min.css" rel="stylesheet" />
+    <link href="~/Areas/AdminTheme/Content/css/charisma-app.css" rel="stylesheet" />
 </head>
 
 <body>
     <div id="wrapper">
         @*@Html.Action("Navbar", "Navbar", new { controller = ViewContext.RouteData.Values["Controller"].ToString(), action = ViewContext.RouteData.Values["Action"].ToString() })*@
         @Html.Partial("_Navbar")
-        <div id="page-wrapper">
+        <div id="page-wrapper" class="container">
             @RenderBody()
         </div>
     </div>

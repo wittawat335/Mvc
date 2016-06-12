@@ -1,6 +1,4 @@
-﻿
-
-@{
+﻿@{
     ViewBag.Title = "Index";
 }
 
@@ -17,40 +15,59 @@
 </ol>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Create New", "Create", null ,new { @class = "btn btn-success animated tada" })
 </p>
-<table class="table table-responsive table-bordered" id="myTable">
-    <thead>
-        <tr>
-            <th>Id</th>
-            <th>NameTH</th>
-            <th>Name</th>
-            <th>Image</th>
-            <th>Icon</th>
-            <th></th>
+<div class="row">
+    <div class="box col-md-12">
+        <div class="box-inner">
+            <div class="box-header well">
+               
+            </div>
+            <div class="box-content">
+                <table class="table table-responsive table-bordered" id="myTable">
+                    <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>NameTH</th>
+                            <th>Name</th>
+                            <th>Image</th>
+                            <th>Icon</th>
+                            <th></th>
 
-        </tr>
-    </thead>
+                        </tr>
+                    </thead>
 
-    <tbody>
-        @foreach (Category c in ViewBag.Categories)
-        {
-            <tr>
-                <td>@c.Id</td>
-                <td>@c.NameVN</td>
-                <td>@c.Name</td>
-                <td>@c.Image</td>
-                <td>
-                    <img class="img-responsive" src="/Content/img/Icons/@c.Icon" width="50" height="25" />
-                </td>
-                <td>
-                    <a href="/Admin/Categories/Details/@c.Id" title="Detail"><img src="/Content/img/icons/Search.png" /></a>
-                    <a href="/Admin/Categories/Edit/@c.Id" title="Edit"><img src="/content/img/icons/Edit.png" /></a>
-                    <a href="/Admin/Categories/Delete/@c.Id" title="Delete"><img src="/Content/img/icons/Trash.png" /></a>
-                </td>
+                    <tbody>
+                        @foreach (Category c in ViewBag.Categories)
+                        {
+                            <tr>
+                                <td>@c.Id</td>
+                                <td>@c.NameVN</td>
+                                <td>@c.Name</td>
+                                <td>@c.Image</td>
+                                <td>
+                                    <img class="img-responsive" src="/Content/img/Icons/@c.Icon" width="50" height="25" />
+                                </td>
+                                <td class="center">
+                                    <a href="/Admin/Categories/Details/@c.Id" title="Detail" class="btn btn-success">
+                                        <i class="fa fa-search icon-white"></i> Detail
+                                    </a>
+                                    <a href="/Admin/Categories/Edit/@c.Id" title="Edit" class="btn btn-info">
+                                        <i class="fa fa-edit"></i> Edit
+                                    </a>
+                                    <a href="/Admin/Categories/Delete/@c.Id" title="Delete" class="btn btn-danger">
+                                        <i class="fa fa-trash-o"></i> Delete
+                                    </a>
+                                </td>
 
 
-            </tr>
-        }
-    </tbody>
-</table>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <!--/span-->
+
+</div><!--/row-->
