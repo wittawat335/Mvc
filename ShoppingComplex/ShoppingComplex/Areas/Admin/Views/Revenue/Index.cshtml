@@ -77,18 +77,21 @@
 
 @section scripts{
     <script>
-        $(function () {
+        $(function() {
             $("fieldset #Min, fieldset #Max").datepicker({
                 dateFormat: 'yy-mm-dd',
                 changeMonth: true,
                 changeYear: true,
-                yearRange:"2005:2020"
+                defaultDate: "+543y",
+                yearRange: "2539:2570"
             });
         });
     </script>
+    
+    @*เรียกใช้ฟังก์ชั้นกราฟ goolgeapi*@
     <script type="text/javascript" src="https://www.google.com/jsapi"></script>
     <script type="text/javascript">
-    google.load("visualization", "1", { packages: ["corechart"] });
+    google.load("visualization", "1", { packages: ["corechart"] }); //จบเการเรียกใช้
     google.setOnLoadCallback(drawChart);
     function drawChart() {
         var data = google.visualization.arrayToDataTable([
