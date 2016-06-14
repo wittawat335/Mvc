@@ -177,6 +177,7 @@
     <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
     <Compile Include="Areas\Admin\Controllers\InventoryController.cs" />
     <Compile Include="Areas\Admin\Controllers\MasterController.cs" />
+    <Compile Include="Areas\Admin\Controllers\Orders1Controller.cs" />
     <Compile Include="Areas\Admin\Controllers\OrdersController.cs" />
     <Compile Include="Areas\Admin\Controllers\PermissionController.cs" />
     <Compile Include="Areas\Admin\Controllers\ProductsController.cs" />
@@ -198,9 +199,9 @@
     <Compile Include="Helpers\XCaptcha.cs" />
     <Compile Include="Helpers\XMail.cs" />
     <Compile Include="Helpers\XString.cs" />
-    <Compile Include="Migrations\201606051034578_pp.cs" />
-    <Compile Include="Migrations\201606051034578_pp.Designer.cs">
-      <DependentUpon>201606051034578_pp.cs</DependentUpon>
+    <Compile Include="Migrations\201606141248156_oi.cs" />
+    <Compile Include="Migrations\201606141248156_oi.Designer.cs">
+      <DependentUpon>201606141248156_oi.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -350,6 +351,8 @@
     <Content Include="Content\img\contacts\dn.gif" />
     <Content Include="Content\img\contacts\hn.gif" />
     <Content Include="Content\img\contacts\sg.gif" />
+    <Content Include="Content\img\Gif\icon-new.png" />
+    <Content Include="Content\img\Gif\new_icon.gif" />
     <Content Include="Content\img\icons\Accept.png" />
     <Content Include="Content\img\icons\Add to basket.png" />
     <Content Include="Content\img\icons\Add.png" />
@@ -1288,6 +1291,11 @@
     <Content Include="Areas\Admin\Views\Orders\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\Orders\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Suppliers\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\Orders1\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\Orders1\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\Orders1\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\Orders1\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Orders1\Index.cshtml" />
     <None Include="Scripts\jquery-2.2.3.intellisense.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -1368,6 +1376,7 @@
     <Content Include="Views\Shared\_LayoutDetail.cshtml" />
     <Content Include="Views\Order\Index.cshtml" />
     <Content Include="Views\Account\Edit.cshtml" />
+    <Content Include="Views\Product\New.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -1380,8 +1389,8 @@
     <Content Include="Scripts\jquery-2.2.3.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201606051034578_pp.resx">
-      <DependentUpon>201606051034578_pp.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201606141248156_oi.resx">
+      <DependentUpon>201606141248156_oi.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

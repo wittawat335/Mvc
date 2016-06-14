@@ -18,7 +18,7 @@ public partial class Product
         [Display(Name = "ราคา")]
         public double UnitPrice { get; set; }
 
-        [Required]
+      
         [Display(Name = "รูปสินค้า")]
         [FileExtensions(ErrorMessage = "ชนิดไฟล์ไม่ตรงกับที่กำหนดไว้ค่ะ (jpg, jpeg, png)", Extensions = "jpg,jpeg,png")]
         public string Image { get; set; }

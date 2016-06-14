@@ -257,6 +257,34 @@ color: #fff;
 .nn-product-box-actions{
 	margin-bottom:10px;
 	}
+
+/*New*/
+.nn-box {
+   /*border-radius: 10px;*/
+    box-shadow: 0 0 5px gray;
+    text-align: center;
+    position: relative;
+    margin: 5px 0;
+}
+
+.nn-box-image {
+    height: 150px;
+    max-width: 100%;
+}
+
+.nn-box-feature {
+    position: absolute;
+    right: 0px;
+    top: 0px;
+}
+
+.nn-box-name {
+    font-size: small;
+    padding: 5px 0;
+}
+
+
+
 .nn-color-white{
 	color:#fff}	
 .nn-block-product ul li{

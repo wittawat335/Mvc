@@ -51,23 +51,30 @@
     </div>
 
     <div class="form-group">
-        <label class="control-label col-md-3">Address</label>
+        <label class="control-label col-md-3">ราคารวมทั้งสิ้น</label>
         <div class="col-md-4">
-            @Html.TextBoxFor(model => model.Address, new {@class = "form-control required", @disabled = "disabled"})
+            @Html.TextBoxFor(model => model.Amount, new { @class = "form-control required", @disabled = "disabled" })
         </div>
     </div>
 
     <div class="form-group">
-        <label class="control-label col-md-3">ราคารวมทั้งสิ้น</label>
+        <label class="control-label col-md-3">Address</label>
         <div class="col-md-4">
-            @Html.TextBoxFor(model => model.Amount, new {@class = "form-control required", @disabled = "disabled"})
+            @Html.TextAreaFor(model => model.Address, new {@class = "form-control required", @disabled = "disabled", rows = "3", cols="55"})
         </div>
     </div>
 
     <div class="form-group">
         <label class="control-label col-md-3">รายละเอียดเพิ่มเติม</label>
         <div class="col-md-4">
-            @Html.TextAreaFor(model => model.Description, new {@class = "form-control required", rows = "3", cols = "55" ,@disabled = "disabled"})
+            @Html.TextAreaFor(model => model.Description, new {@class = "form-control required", rows = "3", cols = "55", @disabled = "disabled"})
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label col-md-3">View</label>
+        <div class="col-md-4">
+            @Html.CheckBoxFor(model => model.view, new { @class = "check-box", @disabled = "disabled" })
         </div>
     </div>
 </div>

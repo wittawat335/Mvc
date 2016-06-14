@@ -14,7 +14,7 @@ namespace ShoppingComplex.Areas.Admin.Controllers
         // GET: /Admin/Home/
         public ActionResult Index()
         {
-            ViewBag.Order = db.Orders.Count();
+            ViewBag.Order = db.Orders.Count(o => o.view == false);
             ViewBag.Customers = db.Customers.Count();
             ViewBag.Products = db.Products.Count();
             ViewBag.Categories = db.Categories.Count();

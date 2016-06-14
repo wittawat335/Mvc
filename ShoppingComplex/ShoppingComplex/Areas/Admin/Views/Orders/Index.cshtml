@@ -1,6 +1,6 @@
 ﻿
 @{
-    ViewBag.Tiitle = "Index";
+    ViewBag.Tiitle = "Order";
 }
 <ol class="breadcrumb">
     <li>
@@ -29,6 +29,7 @@
                             <th>RequireDate</th>
                             <th>Receiver</th>
                             <th>ราคารวมทั้งสิ้น</th>
+                            <th>View</th>
                             <th></th>
                         </tr>
                     </thead>
@@ -43,6 +44,7 @@
                                 <td>@o.RequireDate</td>
                                 <td>@o.Receiver</td>
                                 <td>@o.Amount</td>
+                                <td>@Html.DisplayFor(modelItem => o.view)</td>
                                 <td>
                                     <a href="/Admin/Orders/Details/@o.Id" title="Detail" class="btn btn-success">
                                         <i class="fa fa-search icon-white"></i> Detail

@@ -6,21 +6,21 @@
 }
 
 
-<h2>Category</h2>
 
-<div>
-    @foreach (var p in Model)
-    {
-        <div class="col-md-3">
-            <div class="nn-product-box">
+
+@foreach (var p in Model)
+{
+   
+        <div class="col-md-4">
+            <div class="nn-box">
                 <a href="/Product/Detail/@p.Id">
-                    <img class="img-responsive" src="/Content/img/products/@p.Image"/>
+                    <img class="nn-box-image" src="/Content/img/products/@p.Image"/>
                 </a>
                 <div class="nn-product-box-descriptions">
-                    <h3 class="nn-product-box-name">
+                    <h3 class="nn-box-name">
                         <a href="/Product/Detail/@p.Id" title="@p.Name">@p.Name</a>
                     </h3>
-                    <div class="nn-product-box-price ">
+                    <div class="nn-product-box-price">
                         <span class="">฿ @p.UnitPrice</span>
                     </div>
                     <div class="nn-product-box-actions">
@@ -32,7 +32,7 @@
             </div>
         </div>
     }
-</div>
+
 
 
 @section scripts{

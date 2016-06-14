@@ -44,29 +44,22 @@
         </div>
 
         <div class="form-group">
-            <label class="control-label col-md-2">Email Address</label>
-            <div class="col-md-10">
-                @Html.TextBoxFor(model => model.Address, new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.Address, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
             <label class="control-label col-md-2">ราคารวมทั้งสิ้น</label>
             <div class="col-md-10">
-                @Html.TextBoxFor(model => model.Amount, new { @class = "form-control",@readonly="true" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            <label class="control-label col-md-2">Bank Account</label>
-            <div class="col-md-10">
-                @Html.TextBox("BankAccount", null, new { @class = "form-control" })
+                @Html.TextBoxFor(model => model.Amount, new {@class = "form-control", @readonly = "true"})
             </div>
         </div>
 
         <div class="form-group">
             <label class="control-label col-md-2">ที่อยู่จัดส่ง</label>
+            <div class="col-md-10">
+                @Html.TextAreaFor(model => model.Address, new { @class = "form-control", rows="5" })
+                @Html.ValidationMessageFor(model => model.Address, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2">รายละเอียดเพิ่มเติม</label>
             <div class="col-md-10">
                 @Html.TextAreaFor(model => model.Description, new { @class = "form-control", rows="5" })
                 @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })

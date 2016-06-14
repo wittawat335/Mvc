@@ -16,7 +16,7 @@
                 <span class="">฿ @p.UnitPrice</span>
             </div>
             <div class="nn-product-box-actions">
-                <button type="button" class="btn btn-default add-to-cart">
+                <button type="button" class="btn btn-default add-to-cart" title="Add to Cart" data-id="@p.Id">
                     <span class="nn-color-white">Add to Cart</span>
                 </button>
 
@@ -25,3 +25,33 @@
     </div>
      }
 </div><!--end block sale off-->
+
+
+@section scripts{
+    <script>
+        $(function () {
+            $(".add-to-cart").click(function () {
+                pid = $(this).attr("data-id");
+                $.ajax({
+                    url: "/Cart/Add",
+                    data: { id: pid },
+                    success: function (response) {
+                        alert("เพิ่มสินค้าลงในตะกร้าเรียบร้อยค่ะ");
+                        $("#nn-cart-count").html(response.Count);
+                        $("#nn-cart-total").html(response.Total);
+                    }
+                });
+
+
+                cssfly = ".fly-effect {background:url(?);background-size:100% 100%;}";
+                src = $("#i" + pid).attr("src");
+                newcssfly = cssfly.replace("?", src);
+                $("#cart-fly").html(newcssfly);
+
+                options = { to: "#nn-cart-image", className: "fly-effect" };
+                $("#i" + pid).effect("transfer", options, 500, function () { });
+            });
+        });
+    </script>
+}
+

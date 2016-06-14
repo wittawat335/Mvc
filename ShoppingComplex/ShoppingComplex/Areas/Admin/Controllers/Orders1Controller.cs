@@ -10,18 +10,18 @@ using ShoppingComplex.Models;
 
 namespace ShoppingComplex.Areas.Admin.Controllers
 {
-    public class OrdersController : Controller
+    public class Orders1Controller : Controller
     {
         private ShoppingDbContext db = new ShoppingDbContext();
 
-        // GET: Admin/Orders
+        // GET: Admin/Orders1
         public ActionResult Index()
         {
-            ViewBag.Orders = db.Orders.Include(o => o.Customer);
-            return View();
+            var orders = db.Orders.Include(o => o.Customer);
+            return View(orders.ToList());
         }
 
-        // GET: Admin/Orders/Details/5
+        // GET: Admin/Orders1/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -36,19 +36,19 @@ namespace ShoppingComplex.Areas.Admin.Controllers
             return View(order);
         }
 
-        // GET: Admin/Orders/Create
+        // GET: Admin/Orders1/Create
         public ActionResult Create()
         {
-            ViewBag.CustomerId = new SelectList(db.Customers, "ID", "Password");
+            ViewBag.CustomerId = new SelectList(db.Customers, "Id", "Password");
             return View();
         }
 
-        // POST: Admin/Orders/Create
+        // POST: Admin/Orders1/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,CustomerId,OrderDate,RequireDate,Receiver,Address,Description,Amount")] Order order)
+        public ActionResult Create([Bind(Include = "Id,CustomerId,OrderDate,RequireDate,Receiver,Address,Description,view,Amount")] Order order)
         {
             if (ModelState.IsValid)
             {
@@ -57,11 +57,11 @@ namespace ShoppingComplex.Areas.Admin.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewBag.CustomerId = new SelectList(db.Customers, "ID", "Password", order.CustomerId);
+            ViewBag.CustomerId = new SelectList(db.Customers, "Id", "Password", order.CustomerId);
             return View(order);
         }
 
-        // GET: Admin/Orders/Edit/5
+        // GET: Admin/Orders1/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -73,16 +73,16 @@ namespace ShoppingComplex.Areas.Admin.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.CustomerId = new SelectList(db.Customers, "ID", "Password", order.CustomerId);
+            ViewBag.CustomerId = new SelectList(db.Customers, "Id", "Password", order.CustomerId);
             return View(order);
         }
 
-        // POST: Admin/Orders/Edit/5
+        // POST: Admin/Orders1/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,CustomerId,OrderDate,RequireDate,Receiver,Address,Description,Amount,view")] Order order)
+        public ActionResult Edit([Bind(Include = "Id,CustomerId,OrderDate,RequireDate,Receiver,Address,Description,view,Amount")] Order order)
         {
             if (ModelState.IsValid)
             {
@@ -90,11 +90,11 @@ namespace ShoppingComplex.Areas.Admin.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.CustomerId = new SelectList(db.Customers, "ID", "Password", order.CustomerId);
+            ViewBag.CustomerId = new SelectList(db.Customers, "Id", "Password", order.CustomerId);
             return View(order);
         }
 
-        // GET: Admin/Orders/Delete/5
+        // GET: Admin/Orders1/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -109,7 +109,7 @@ namespace ShoppingComplex.Areas.Admin.Controllers
             return View(order);
         }
 
-        // POST: Admin/Orders/Delete/5
+        // POST: Admin/Orders1/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)

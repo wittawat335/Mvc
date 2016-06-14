@@ -13,6 +13,7 @@ namespace ShoppingComplex.Models
         public string Email { get; set; }
         public string Address { get; set; }
         public string Tel { get; set; }
+        public DateTime DateRegister { get; set; }
         public bool Activated { get; set; } 
     }
 }
