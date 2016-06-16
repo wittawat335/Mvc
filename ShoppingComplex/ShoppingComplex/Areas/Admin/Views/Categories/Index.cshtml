@@ -14,8 +14,19 @@
     </li>
 </ol>
 
+<div id='myModal' class='modal fade in'>
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div id='myModalContent'></div>
+        </div>
+    </div>
+</div>
+
 <p>
-    @Html.ActionLink("Create New", "Create", null ,new { @class = "btn btn-success animated tada" })
+    
+    <a href="/Admin/Categories/Create" title="Create" class="btn btn-success animated tada">
+        <i class="fa fa-plus icon-white"></i> Create
+    </a>
 </p>
 <div class="row">
     <div class="box col-md-12">
@@ -49,13 +60,13 @@
                                     <img class="img-responsive" src="/Content/img/Icons/@c.Icon" width="50" height="25" />
                                 </td>
                                 <td class="center">
-                                    <a href="/Admin/Categories/Details/@c.Id" title="Detail" class="btn btn-success">
+                                    <a href="/Admin/Categories/Details/@c.Id" title="Detail" class="btn btn-success btnModal">
                                         <i class="fa fa-search icon-white"></i> Detail
                                     </a>
-                                    <a href="/Admin/Categories/Edit/@c.Id" title="Edit" class="btn btn-info">
+                                    <a href="/Admin/Categories/Edit/@c.Id" title="Edit" class="btn btn-info btnModal">
                                         <i class="fa fa-edit"></i> Edit
                                     </a>
-                                    <a href="/Admin/Categories/Delete/@c.Id" title="Delete" class="btn btn-danger">
+                                    <a href="/Admin/Categories/Delete/@c.Id" title="Delete" class="btn btn-danger btnModal">
                                         <i class="fa fa-trash-o"></i> Delete
                                     </a>
                                 </td>
@@ -71,3 +82,5 @@
     <!--/span-->
 
 </div><!--/row-->
+
+

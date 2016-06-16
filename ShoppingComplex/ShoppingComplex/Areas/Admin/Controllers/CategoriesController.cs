@@ -93,7 +93,7 @@ namespace ShoppingComplex.Areas.Admin.Controllers
             {
                 db.Entry(category).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return Json(new { success = true });
             }
             return View(category);
         }
@@ -121,7 +121,7 @@ namespace ShoppingComplex.Areas.Admin.Controllers
             Category category = db.Categories.Find(id);
             db.Categories.Remove(category);
             db.SaveChanges();
-            return RedirectToAction("Index");
+            return Json(new { success = true });
         }
 
         protected override void Dispose(bool disposing)

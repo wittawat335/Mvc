@@ -20,5 +20,10 @@ namespace ShoppingComplex.Areas.Admin.Controllers
             ViewBag.Categories = db.Categories.Count();
             return View();
         }
+
+        public ActionResult TestModal()
+        {
+            return View();
+        }
 	}
 }
