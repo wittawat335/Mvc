@@ -9,29 +9,19 @@
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/jqueryval")
     @Scripts.Render("~/bundles/bootstrap")
-   
 </head>
 <body>
     <div id="fb-root"></div>
 
     <div class="container whiteBackground">
         <header class="nn-header">
-            <div class="col-sm-3 col-md-3 nn-text-align-center">
-                <h1 style="font-weight: bold">Logo</h1>
-            </div><!--end logo-->
-            <div class="col-md-6 col-sm-6">
+           <div class="col-md-4 col-sm-6 pull-right">
                 @Html.Partial("_Search")
             </div><!--end search box-->
-            <div class="nn-cart-box col-sm-3 col-md-3">
-                <div class="nn-top-cart-wrapper ">
-                    <div class="nn-top-cart-contain">
-                        @Html.Partial("_CartInfo")
-                    </div>
-                </div>
-            </div><!--end cart box-->
+            
         </header>
 
-        <div class="navbar navbar-inverse">
+        <div class="navbar navbar-inverse navbar-fixed-top">
             <div class="navbar-header">
                 <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".js-navbar-collapse">
                     <span class="sr-only">Toggle navigation</span>
@@ -56,10 +46,13 @@
         </div><!--end navigation-->
         <div class="container row">
             <div class="col-md-3 col-sm-3 col-lg-3 col-xs-12">
+                @Html.Partial("_CartInfo")
                 @Html.Action("Category", "Home")
+                <div class="hidden-xs">
                 @Html.Action("Saleoff", "Home")
                 @Html.Action("Special", "Home")
                 @Html.Partial("_Adbanner")
+                </div>
             </div><!--end left-sidebar-->
             <div class="col-md-9 col-sm-9 col-lg-9 col-xs-12">
                 @RenderBody()
@@ -72,20 +65,55 @@
 
 
    
-    
-  
+
+    <link href="~/Content/css/jquery-ui.css" rel="stylesheet" />
+    <script src="~/Scripts/jquery-ui.js"></script>
    
     @RenderSection("scripts", required: false)
 
     <!--Auto Complete-->
-    <script>
-        // search มาจาก id ของ input
-        $(function (){
-            $("#search").autocomplete({
-                source: "/Home/Search", /* controller/action */
-                minlength: 2
+<script>
+    // search มาจาก id ของ input
+    $(function() {
+        $("#search").autocomplete({
+            source: "/Home/Search", /* controller/action */
+            minlength: 2
+        });
+    })
+</script>
+
+
+<script>
+    //Shopping Cart
+    $(function () {
+        $(".add-to-cart").click(function () {
+            pid = $(this).attr("data-id");
+            $.ajax({
+                url: "/Cart/Add",
+                data: {id: pid},
+                success: function (response) {
+                    $("#nn-cart-count").html(response.Count);
+                    $("#nn-cart-total").html(response.Total);
+                }
             });
-        })
-    </script>
+
+            //CartEffect
+            cssfly = ".fly-effect {background:url(?);background-size:100% 100%;}";
+            src = $("#i" + pid).attr("src");
+            newcssfly = cssfly.replace("?", src);
+            $("#cart-fly").html(newcssfly);
+
+            options = { to: "#nn-cart-image", className: "fly-effect" };
+            $("#i"+pid).effect("transfer", options, 500, function () { });
+        });
+    });
+</script>
+
+    <style id="cart-fly">
+        .fly-effect {
+            background-size: 100% 100%;
+        }
+    </style>
+
 </body>
 </html>

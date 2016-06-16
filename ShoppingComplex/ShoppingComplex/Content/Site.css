@@ -42,3 +42,21 @@ textarea {
     font-weight: bold;
     
 }
+
+.h3 {
+    font: 15px Tahoma;
+    color: #04B404;
+    font-weight: bold;
+}
+
+.h4 {
+    font: 15px Tahoma;
+    color: #FF8000;
+    font-weight: bold;
+}
+
+.h5 {
+    font: 20px Tahoma;
+    color: #FE2E64;
+    font-weight: bold;
+}

@@ -17,26 +17,30 @@
 </head>
 
 <body>
-    <div id="wrapper">
-        @*@Html.Action("Navbar", "Navbar", new { controller = ViewContext.RouteData.Values["Controller"].ToString(), action = ViewContext.RouteData.Values["Action"].ToString() })*@
-        @Html.Partial("_Navbar")
-        <div id="page-wrapper" class="container">
-            @RenderBody()
-        </div>
+<div id="wrapper">
+    
+    @*@Html.Action("Navbar", "Navbar", new { controller = ViewContext.RouteData.Values["Controller"].ToString(), action = ViewContext.RouteData.Values["Action"].ToString() })*@
+    @Html.Partial("_Navbar")
+    <div id="page-wrapper" class="container">
+       
+        @RenderBody()
     </div>
+</div>
     <!-- /#wrapper -->
    
     <script src="~/Content/js/jquery-ui.js"></script>
     <script src="~/Areas/AdminTheme/Scripts/plugins/jquery.dataTables.js"></script>
     <script src="~/Areas/AdminTheme/Scripts/plugins/dataTables.bootstrap.min.js"></script>
     @RenderSection("scripts", required: false)
-   
-    
+
+
 <script type="text/javascript">
     $(document).ready(function() {
         $('#myTable').DataTable();
     });
 </script>
+
+    
 
 </body>
 </html>

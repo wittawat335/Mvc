@@ -1,0 +1,60 @@
+﻿@model PagedList.IPagedList<Product>
+@using PagedList.Mvc;
+@{
+    ViewBag.Title = "All";
+}
+
+
+<ol class="breadcrumb">
+    <li>
+        <a href="/Product/AllList">สินค้า</a>
+    </li>
+    <li class="active">
+        สินค้าทั้งหมด
+    </li>
+</ol>
+
+@foreach (var p in Model)
+{
+
+    <div class="col-md-4">
+        <div class="nn-box">
+            <a href="/Product/Detail/@p.Id">
+                <img id="i@(p.Id)" class="nn-box-image" src="/Content/img/products/@p.Image" />
+            </a>
+            <div class="nn-product-box-descriptions">
+                <h3 class="nn-box-name">
+                    <a href="/Product/Detail/@p.Id" title="@p.Name">@p.Name</a>
+                </h3>
+                <div class="nn-product-box-price">
+                    <span class="">฿ @p.UnitPrice</span>
+                </div>
+                <div class="nn-product-box-actions">
+                    <button type="button" class="btn btn-default add-to-cart" title="Add to Cart" data-id="@p.Id">
+                        <span>Add to Cart</span>
+                    </button>
+                </div>
+            </div>
+            @if (p.Special)
+                {
+                <img src="/Content/img/Gif/special_icon.gif" class="nn-box-feature" />
+            }
+            else if (p.Latest)
+            {
+                <img src="/content/img/Gif/icon-new.png" class="nn-box-feature" />
+            }
+
+            else if (p.Discount > 0)
+            {
+                <img src="/content/img/Gif/icon-onsale.png" class="nn-box-feature" />
+            }
+        </div>
+    </div>
+}
+<div class="pull-right">
+    @Html.PagedListPager(Model, page => Url.Action("All", new { page, pageSize = Model.PageSize }))
+    Showing @Model.FirstItemOnPage to @Model.LastItemOnPage of @Model.TotalItemCount Product
+</div>
+
+
+

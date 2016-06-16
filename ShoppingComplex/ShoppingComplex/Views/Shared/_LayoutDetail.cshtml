@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - MultiShop</title>
+    <title>@ViewBag.Title</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
     @Scripts.Render("~/bundles/jquery")
@@ -33,7 +33,7 @@
             <div class="nn-cart-box col-sm-3 col-md-3 ">
                 <div class="nn-top-cart-wrapper ">
                     <div class="nn-top-cart-contain">
-                        @Html.Partial("_CartInfo")
+                       
                     </div>
                 </div>
             </div><!--end cart box-->
@@ -63,7 +63,6 @@
             </div>
         </div><!--end navigation-->
         <div class="container row">
-
             <div class="row">
                 @RenderBody()
             </div>
@@ -73,9 +72,10 @@
         </div>
     </div>
 
+    <link href="~/Content/CartEffect/jquery-ui.css" rel="stylesheet" />
+    <script src="~/Content/CartEffect/jquery-ui.js"></script>
 
- 
-    @RenderSection("scripts", required: false)
+@RenderSection("scripts", required: false)
     <!--Auto Complete-->
     <script>
         // search มาจาก id ของ input

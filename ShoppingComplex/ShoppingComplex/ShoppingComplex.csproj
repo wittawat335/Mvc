@@ -69,6 +69,14 @@
       <HintPath>..\packages\Newtonsoft.Json.8.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="PagedList, Version=1.17.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\PagedList.1.17.0.0\lib\net40\PagedList.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="PagedList.Mvc, Version=4.5.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\PagedList.Mvc.4.5.0.0\lib\net40\PagedList.Mvc.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -177,7 +185,6 @@
     <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
     <Compile Include="Areas\Admin\Controllers\InventoryController.cs" />
     <Compile Include="Areas\Admin\Controllers\MasterController.cs" />
-    <Compile Include="Areas\Admin\Controllers\Orders1Controller.cs" />
     <Compile Include="Areas\Admin\Controllers\OrdersController.cs" />
     <Compile Include="Areas\Admin\Controllers\PermissionController.cs" />
     <Compile Include="Areas\Admin\Controllers\ProductsController.cs" />
@@ -272,6 +279,8 @@
     <Content Include="Areas\AdminTheme\Scripts\sb-admin-2.js" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\CartEffect\jquery-ui.css" />
+    <Content Include="Content\CartEffect\jquery-ui.js" />
     <Content Include="Content\css\bootstrap-theme.css" />
     <Content Include="Content\css\bootstrap-theme.min.css" />
     <Content Include="Content\css\bootstrap.css" />
@@ -306,6 +315,7 @@
     <Content Include="Content\css\jquery-ui-1.10.4.custom.css" />
     <Content Include="Content\css\jquery-ui.css" />
     <Content Include="Content\css\jquery-ui.min.css" />
+    <Content Include="Content\css\Nav\style.css" />
     <Content Include="Content\css\nn-style.css" />
     <Content Include="Content\css\site.css" />
     <Content Include="Content\css\Style.css" />
@@ -351,8 +361,15 @@
     <Content Include="Content\img\contacts\dn.gif" />
     <Content Include="Content\img\contacts\hn.gif" />
     <Content Include="Content\img\contacts\sg.gif" />
+    <Content Include="Content\img\Gif\cart.gif" />
+    <Content Include="Content\img\Gif\icon-best-seller.png" />
     <Content Include="Content\img\Gif\icon-new.png" />
+    <Content Include="Content\img\Gif\icon-onsale.png" />
+    <Content Include="Content\img\Gif\loader.gif" />
     <Content Include="Content\img\Gif\new_icon.gif" />
+    <Content Include="Content\img\Gif\shoppingcart.gif" />
+    <Content Include="Content\img\Gif\shopping_cart.png" />
+    <Content Include="Content\img\Gif\special_icon.gif" />
     <Content Include="Content\img\icons\Accept.png" />
     <Content Include="Content\img\icons\Add to basket.png" />
     <Content Include="Content\img\icons\Add.png" />
@@ -1301,6 +1318,7 @@
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\jquery-2.2.3.js" />
     <Content Include="Scripts\jquery-2.2.3.min.js" />
+    <Content Include="Scripts\jquery-scrolltofixed-min.js" />
     <Content Include="Scripts\jquery-ui.js" />
     <Content Include="Scripts\jquery-ui.min.js" />
     <Content Include="Scripts\jquery.elevatezoom.js" />
@@ -1377,6 +1395,9 @@
     <Content Include="Views\Order\Index.cshtml" />
     <Content Include="Views\Account\Edit.cshtml" />
     <Content Include="Views\Product\New.cshtml" />
+    <Content Include="Views\Product\BestSeller.cshtml" />
+    <Content Include="Views\Product\SaleOff.cshtml" />
+    <Content Include="Views\Product\All.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

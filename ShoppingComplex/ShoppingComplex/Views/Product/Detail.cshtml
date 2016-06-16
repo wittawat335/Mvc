@@ -4,11 +4,14 @@
     Layout = "~/Views/Shared/_LayoutDetail.cshtml";
 }
 
+
+
 <div class="container">
 <div class="row">
     <div class="nn-product-view-right col-sm-3 nn-margin-bottom">
         <aside>
             @*Side Left*@
+            @Html.Partial("_CartInfo")
             <h3>OUR OFFERS</h3>
             <div id="demo5" class="scroll-img">
                 <ul>
@@ -20,7 +23,7 @@
                                 <div class="nn-box">
                                     <a href="/Product/Detail/@s.Id">
 
-                                        <img class="nn-box-image" title="@s.Name" src="/Content/img/products/@s.Image" alt="@Model.Name"/>
+                                        <img id="i@(s.Id)" class="nn-box-image" title="@s.Name" src="/Content/img/products/@s.Image" alt="@Model.Name"/>
                                     </a>
                                     <div class="nn-product-box-descriptions">
                                         <h3 class="nn-box-name">
@@ -50,30 +53,38 @@
 
     @*Side Right*@
     <div class="col-sm-9">
+        <ol class="breadcrumb">
+            <li>
+                <a href="/Product/AllList">สินค้า</a>
+            </li>
+            <li class="active">
+                รายละเอียดสินค้า
+            </li>
+        </ol>
         <div class="nn-product-essential">
+
             <div class="nn-Product-detail-image col-sm-4">
-                <img id="zoom_mw" src="/Content/img/products/@Model.Image" data-zoom-image="/Content/img/products/Large/@Model.ImageLarge" class="img-responsive"/>
+                <img id="zoom_mw i@(Model.Id)" src="/Content/img/products/@Model.Image" data-zoom-image="/Content/img/products/Large/@Model.ImageLarge" class="img-responsive"/>
 
             </div>
             <div class="col-sm-8">
-                <div class="product-name">
+                <strong class="h5">
                     <h1>@Model.Name</h1>
-                </div>
+                </strong>
                 <span class="sku_wrapper">
                         <span class="item-title">รหัสสินค้า:</span>
                         <span>
-                            <strong>
-                                @Model.Name - @Model.Id
+                            <strong class="h4">
+                                @Model.Id
                             </strong>
                         </span>
                     </span>
                 <span><br /></span>
                 <span class="category-url-wrapper">
-                        <span class="item-title">ประเภสินค้า: </span>
+                        <span class="item-title">ประเภทสินค้า: </span>
                         <a href="/Product/Category?CategoryID=@Model.CategoryId">@Model.Category.Name </a>
                     </span>
-                <p class="no-rating"><a href="#comments" onclick="gotoAddReviews()">Be the first to comments this product</a>
-                </p>
+                
 
                 <div class="short-description">
                     <div class="std">
@@ -87,19 +98,19 @@
                 </div>
 
                 <p class="availability in-stock">
-                    <span class="item-title">
-                            <i>จำนวนสินค้าใน Stock: </i>
+                    <span>
+                          จำนวนสินค้าใน Stock: 
                         </span>
                     <span>
-                            <strong>
-                                @Model.Quantity
+                            <strong class="h3">
+                                @Model.Quantity ชิ้น
                             </strong>
                         </span>
-                    In stock
+                    
                 </p>
-                <div class="price-box">
+                <div class="nn-product-box-price">
 
-                    <h3>@Model.UnitPrice</h3>
+                    <h3>฿ @Model.UnitPrice</h3>
 
 
                 </div>
@@ -108,25 +119,22 @@
                         <div class="qty-box form-inline">
                             <label for="qty">จำนวน : </label>
                             <input type="text" style="width: 50px" class="form-control" name="qty" id="qty" maxlength="12" value="1" title="Qty">
-
+                            <button type="button" title="Add to Cart" class="btn btn-default add-to-cart" data-id="@Model.Id">
+                                <span>Add to Cart</span>
+                            </button>
                         </div>
                     </div>
-
-                    <button type="button" title="Add to Cart" class="btn btn-default add-to-cart" data-id="@Model.Id">
-                        <span>Add to Cart</span>
-                    </button>
-
-
                 </div>
             </div>
         </div>
+
         <div class="clearfix"></div>
         <div class="row">
             <!-- Nav tabs -->
             <ul class="nav nav-tabs" role="tablist" id="myTab">
                 <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">รายละเอียด</a></li>
                 <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Profile</a></li>
-                <li role="presentation"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">Comment</a></li>
+
             </ul>
             <!-- Tab panes -->
             <div class="tab-content">
@@ -141,7 +149,7 @@
                         <table class="table table-hover">
                             <tr>
                                 <td>รหัสสินค้า:</td>
-                                <td>@Model.Name - @Model.Id</td>
+                                <td>@Model.Id</td>
                             </tr>
                             <tr>
                                 <td>ชื่อสินค้า:</td>
@@ -179,11 +187,9 @@
                     </div>
                     <div class="col-md-6"></div>
                 </div>
-                <div role="tabpanel" class="tab-pane" id="messages">
-                    <div class="fb-comments" data-href="/Product/Detail/@Model.Id" data-numposts="5"></div>
-                </div>
-            </div>
 
+            </div>
+            
             <script>
                 $(function() {
                     $('#myTab a:last').tab('show')
@@ -264,7 +270,7 @@
                 <div class="col-md-3 col-sm-6 col-xs-12">
                     <div class="nn-box">
                         <a href="/Product/Detail/@p.Id">
-                            <img class="nn-box-image" src="/Content/img/products/@p.Image" />
+                            <img id="i@(p.Id)" class="nn-box-image" src="/Content/img/products/@p.Image" />
                         </a>
                         <div class="nn-product-box-descriptions">
                             <h3 class="nn-box-name">
@@ -309,53 +315,62 @@
 <script src="/Scripts/jquery.elevatezoom.js"></script>
 
 
-<script>
-    $(function() {
-        $('#demo5').scrollbox({
-            linear: false, // Scroll method
-            startDelay: 2, // Start delay (in seconds)
-            delay: 3, // Delay after each scroll event (in seconds)
-            step: 5, // Distance of each single step (in pixels)
-            speed: 32, // Delay after each single step (in milliseconds)
-            switchItems: 1, // Items to switch after each scroll event
-            direction: 'vertical',
-            distance: 'auto',
-            autoPlay: true,
-            onMouseOverPause: true,
-            paused: false,
-            queue: null
+    <script>
+        $(function() {
+            $('#demo5').scrollbox({
+                linear: false, // Scroll method
+                startDelay: 2, // Start delay (in seconds)
+                delay: 3, // Delay after each scroll event (in seconds)
+                step: 5, // Distance of each single step (in pixels)
+                speed: 32, // Delay after each single step (in milliseconds)
+                switchItems: 1, // Items to switch after each scroll event
+                direction: 'vertical',
+                distance: 'auto',
+                autoPlay: true,
+                onMouseOverPause: true,
+                paused: false,
+                queue: null
+            });
+            $('#demo5-backward').click(function() {
+                $('#demo5').trigger('backward');
+            });
+            $('#demo5-forward').click(function() {
+                $('#demo5').trigger('forward');
+            });
         });
-        $('#demo5-backward').click(function() {
-            $('#demo5').trigger('backward');
-        });
-        $('#demo5-forward').click(function() {
-            $('#demo5').trigger('forward');
-        });
-    });
-    $("#zoom_mw").elevateZoom();
+        $("#zoom_mw").elevateZoom();
+    </script>
 
+<script>
+    //Shopping Cart
     $(function () {
         $(".add-to-cart").click(function () {
             pid = $(this).attr("data-id");
             $.ajax({
                 url: "/Cart/Add",
-                data: { id: pid },
+                data: {id: pid},
                 success: function (response) {
-                    alert("เพิ่มสินค้าลงในตะกร้าเรียบร้อยค่ะ");
                     $("#nn-cart-count").html(response.Count);
                     $("#nn-cart-total").html(response.Total);
                 }
             });
 
-            // hieu ung bay vao gio
+            //CartEffect
             cssfly = ".fly-effect {background:url(?);background-size:100% 100%;}";
             src = $("#i" + pid).attr("src");
             newcssfly = cssfly.replace("?", src);
             $("#cart-fly").html(newcssfly);
 
             options = { to: "#nn-cart-image", className: "fly-effect" };
-            $("#i" + pid).effect("transfer", options, 500, function () { });
+            $("#i"+pid).effect("transfer", options, 500, function () { });
         });
     });
 </script>
+
+<style id="cart-fly">
+    .fly-effect {
+        background-size: 100% 100%;
+    }
+</style>
+
 }

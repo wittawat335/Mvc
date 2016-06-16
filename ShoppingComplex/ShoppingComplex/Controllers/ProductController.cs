@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using Microsoft.Owin.Security.Provider;
 using ShoppingComplex.Models;
+using PagedList;
 
 namespace ShoppingComplex.Controllers
 {
@@ -63,19 +64,42 @@ namespace ShoppingComplex.Controllers
                 var model = db.Products
                     .Where(p => p.Name.Contains(Keywords));
 
+               
                 return View(model);
             }
             return View(db.Products);
         }
 
-        public ActionResult New()
+        public ActionResult New(int page = 1, int pagesize = 15)
         {
-            DateTime myDate = Convert.ToDateTime("01-05-2559");
-            ViewBag.New = db.Products.Where(p => p.ProductDate >= myDate).ToList();
-
-            return View();
+            List<Product> listProduct = db.Products.Where(p => p.Latest).ToList();
+            PagedList<Product> model = new PagedList<Product>(listProduct, page, pagesize);
+           
+            return View(model);
         }
 
+        public ActionResult BestSeller(int page = 1, int pagesize = 15)
+        {
+            List<Product> listProduct = db.Products.Where(p => p.Special).ToList();
+            PagedList<Product> model = new PagedList<Product>(listProduct, page, pagesize);
+
+            return View(model);
+        }
+
+        public ActionResult SaleOff(int page = 1, int pagesize = 15)
+        {
+            List<Product> listProduct = db.Products.Where(p => p.Discount > 0).ToList();
+            PagedList<Product> model = new PagedList<Product>(listProduct, page, pagesize);
+         
+            return View(model);
+        }
+
+        public ActionResult All(int page = 1, int pagesize = 15)
+        {
+            List<Product> listProduct = db.Products.ToList();
+            PagedList<Product> model = new PagedList<Product>(listProduct, page, pagesize);
         
+            return View(model);
+        }
     }
 }

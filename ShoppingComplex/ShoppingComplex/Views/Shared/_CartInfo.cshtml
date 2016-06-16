@@ -1,15 +1,17 @@
-﻿<div class="nn-block-cart">
-    <div class="nn-top-cart-title">
-        <span id="nn-cart-image" class="glyphicon glyphicon-shopping-cart"></span>
-        <a href="/Cart/Index">
-            จำนวนสินค้า <span id="nn-cart-count"></span> ชิ้น<i class="caret"></i>
-            <br /><span>฿</span><span class="price" id="nn-cart-total"><strong></strong></span>
-        </a>
+﻿<div class="panel panel-default nn-cart">
+    <div class="panel-body">
+        <img id="nn-cart-image" class="col-md-5 img-responsive" src="~/Content/img/Gif/shoppingcart.gif" />
+        <ul class="col-md-7">
+            <li><span id="nn-cart-count">@ShoppingCart.Cart.Count</span> ชิ้น</li>
+            <li>฿ <span id="nn-cart-total">@ShoppingCart.Cart.Total</span></li>
+            <li><a href="/Cart/Index">View Cart</a></li>
+        </ul>
     </div>
-    <div class="nn-top-cart-content" style="overflow: hidden; display: none;">
-        <p class="empty">You have no items in your shopping cart.</p>
-        <div class="top-subtotal">Subtotal: <span class="price">฿ 0.00</span></div>
-    </div>
-
-
 </div>
+<style>
+    .nn-cart ul {
+        padding: 0px;
+        margin: 0px;
+        list-style: none;
+    }
+</style>

@@ -54,13 +54,13 @@ namespace ShoppingComplex.Controllers
 
         public ActionResult Special()
         {
-            var model = db.Products.Where(p => p.Special == true).Take(5);
+            var model = db.Products.Where(p => p.Special == true).Take(3).OrderBy(p => Guid.NewGuid()).ToList();
             return PartialView("_Special", model);
         }
-        //Download source code tại Sharecode.vn
+        
         public ActionResult Saleoff()
         {
-            var model = db.Products.Where(p => p.Discount > 0).Take(4);
+            var model = db.Products.Where(p => p.Discount > 0).Take(3).OrderBy(p => Guid.NewGuid()).ToList();
             return PartialView("_Saleoff", model);
         }
     }

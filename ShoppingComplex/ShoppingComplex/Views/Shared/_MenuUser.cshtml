@@ -1,12 +1,24 @@
 ﻿<ul class="nav navbar-nav">
-    <li><a href="#">Contact Us</a></li>
+    <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+            Product <span class="caret"></span>
+        </a>
+        <ul class="dropdown-menu">
+            <li><a href="/Product/New">สินค้ามาใหม่</a></li>
+            <li><a href="/Product/BestSeller">สินค้าขายดี</a></li>
+            <li><a href="/Product/SaleOff">สินค้าลดราคา</a></li>
+            <li><a href="/Product/All">สินค้าทั้งหมด</a></li>
+
+        </ul>
+    </li>
+    <li><a href="#">Contact</a></li>
     <li><a href="#">About Us</a></li>
     
 </ul>
 
 <ul class="nav navbar-nav navbar-right">
     <li class="dropdown">
-        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-user"></span>
            @User.Identity.Name
         </a>
         <ul class="dropdown-menu">
@@ -20,11 +32,11 @@
             else
             {
                 <li><a href="/Account/Manage">Manage</a></li>
-                <li><a href="/Account/Edit">Edit</a></li>
-                <li><a href="/Order/List">OrderList</a></li>
+                <li><a href="/Account/Edit"><span class="glyphicon glyphicon-cog"></span> Edit</a></li>
+                <li><a href="/Order/List"><span class="glyphicon glyphicon-list"></span> OrderList</a></li>
                 <li><a href="/Order/Products">Product</a></li>
                 <li class="divider"></li>
-                <li><a href="~/Account/LogOff">ออกจากระบบ</a></li>
+                <li><a href="~/Account/LogOff"><span class="glyphicon glyphicon-log-out"></span> ออกจากระบบ</a></li>
             }
         </ul>
     </li>

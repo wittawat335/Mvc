@@ -32,6 +32,14 @@ input[type=text]{
 	
 	}
 
+.nn-sheet{
+    box-shadow:0 0 5px lightgray;
+    border-radius:10px;
+    padding:5px;
+    position:relative;
+    top:-10px;
+}
+
 <!----------------->
 <!-- Top Cart Box -->
 <!----------------->
@@ -84,7 +92,7 @@ input[type=text]{
 	text-transform:uppercase;
 }
 mega-dropdown a:hover{
-	color:#7ccfc4;
+	color:#fff;
 }
 .navbar-default .navbar-nav>a:hover{
 	color:#fff; 
@@ -190,7 +198,7 @@ color: #fff;
 	padding:0;
 	margin:0;
 	height:50px;
-	background:#f5f5f5;	
+	background:#fff;	
 	}
 .nn-megamenu-sidebar ul li{
 	list-style:none;
@@ -209,10 +217,10 @@ color: #fff;
 }
 .nn-megamenu-sidebar ul li a:hover{
 	
-	color:#7ccfc4;
+	color:#81BEF7;
 }
 .nn-megamenu-sidebar ul li a:hover img{
-	color:#7ccfc4;
+	color:#81BEF7;
 }
 .nn-megamenu-sidebar a span img{
 	height:15px;
@@ -270,6 +278,7 @@ color: #fff;
 .nn-box-image {
     height: 150px;
     max-width: 100%;
+    
 }
 
 .nn-box-feature {
