@@ -62,7 +62,7 @@ namespace ShoppingComplex.Controllers
                         {
                             context.HttpContext.Response.Redirect("/Admin/Account/Login?returnUrl=" + uri);
                         }
-                        else // Cho phép
+                        else 
                         {
                             var actions = sdb.Permissions
                                 .Where(p => roleIds.Contains(p.RoleId))

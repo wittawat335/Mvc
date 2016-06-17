@@ -98,7 +98,7 @@ namespace ShoppingComplex.Areas.Admin.Controllers
             {
                 db.Entry(product).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return Json(new { success = true });
             }
             ViewBag.CategoryId = new SelectList(db.Categories, "Id", "Name", product.CategoryId);
             ViewBag.SupplierId = new SelectList(db.Suppliers, "Id", "Name", product.SupplierId);
@@ -128,7 +128,7 @@ namespace ShoppingComplex.Areas.Admin.Controllers
             Product product = db.Products.Find(id);
             db.Products.Remove(product);
             db.SaveChanges();
-            return RedirectToAction("Index");
+            return Json(new { success = true });
         }
 
         protected override void Dispose(bool disposing)

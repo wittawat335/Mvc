@@ -49,7 +49,7 @@ padding: 25px 0px;}
 }
 .brandcolumn{height:100%;width:200px;float:left;position:relative;margin:4px;font-size:8px;}
 .dont_miss{height:100%;width:200px;float:left;position:relative;}
-h2{text-transform:uppercase;font-size:14px;color:#09f; border-bottom:1px dashed blue;}
+
 
 /******dropdown-menu-MEN-WATCHES********/
 #dm-men-watches{height:auto;width:750px;}
@@ -80,6 +80,10 @@ h2{text-transform:uppercase;font-size:14px;color:#09f; border-bottom:1px dashed 
 
 .info {
     border-left:5px solid #00BFFF !important;
+}
+
+.blue {
+    border-left:5px solid #2E2EFE !important;
 }
 .field-validation-error
 {

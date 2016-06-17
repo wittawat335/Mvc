@@ -1,7 +1,8 @@
 ﻿
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Supplier";
+    
 }
 
 <ol class="breadcrumb">
@@ -16,10 +17,20 @@
     </li>
 </ol>
 
-<p>
-    @Html.ActionLink("Create New", "Create", null, new { @class = "btn btn-success animated tada" })
-</p>
+<div id='myModal' class='modal fade in'>
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div id='myModalContent'></div>
+        </div>
+    </div>
+</div>
 
+<p>
+
+    <a href="/Admin/Suppliers/Create" title="Create" class="btn btn-success animated tada">
+        <i class="fa fa-plus icon-white"></i> Create
+    </a>
+</p>
 <div class="row">
     <div class="box col-md-12">
         <div class="box-inner">
@@ -53,20 +64,17 @@
                                 </td>
                                 
                                 <td class="center">
-                                    <a href="/Admin/Suppliers/Details/@s.Id" title="Detail" class="btn btn-success">
+                                    <a href="/Admin/Suppliers/Details/@s.Id" title="Detail" class="btn btn-success btnModal">
                                         <i class="fa fa-search icon-white"></i> Detail
                                     </a>
-                                    <a href="/Admin/Suppliers/Edit/@s.Id" title="Edit" class="btn btn-info">
+                                    <a href="/Admin/Suppliers/Edit/@s.Id" title="Edit" class="btn btn-info btnModal">
                                         <i class="fa fa-edit"></i> Edit
                                     </a>
-                                    <a href="/Admin/Suppliers/Delete/@s.Id" title="Delete" class="btn btn-danger">
+                                    <a href="/Admin/Suppliers/Delete/@s.Id" title="Delete" class="btn btn-danger btnModal">
                                         <i class="fa fa-trash-o"></i> Delete
                                     </a>
                                 </td>
-                               
-
-
-                            </tr>
+                          </tr>
                         }
                     </tbody>
                 </table>
@@ -78,3 +86,40 @@
 </div>
 
 
+<script>
+    $(function () {
+        $.ajaxSetup({ cache: false });
+        $(".btnModal").on("click", function (e) {
+            $('#myModalContent').load(this.href, function () {
+                $('#myModal').modal({
+                    keyboard: true
+                }, 'show');
+                bindForm(this);
+            });
+            return false;
+        });
+    });
+
+    function bindForm(dialog) {
+        $('form', dialog).submit(function () {
+            $('#progress').show();
+            $.ajax({
+                url: this.action,
+                type: this.method,
+                data: $(this).serialize(),
+                success: function (result) {
+                    if (result.success) {
+                        $('#myModal').modal('hide');
+                        $('#progress').hide();
+                        location.reload();
+                    } else {
+                        $('#progress').hide();
+                        $('#myModalContent').html(result);
+                        bindForm();
+                    }
+                }
+            });
+            return false;
+        });
+    }
+</script>

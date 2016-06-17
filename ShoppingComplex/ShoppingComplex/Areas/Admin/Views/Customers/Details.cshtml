@@ -2,47 +2,68 @@
 
 @{
     ViewBag.Title = "Details";
+    Layout = null;
 }
 
-<h2>Details</h2>
+<div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+    <h3 class="modal-title">Detail Customer</h3>
+</div>
 
-<div class="form-horizontal">
+<div class="modal-body">
+    <div class="form-horizontal">
 
-    <div class="form-group">
-        <label class="control-label col-md-3">ID </label>
-        <div class="col-md-4">
-            @Html.TextBoxFor(model => model.Id, new { @class = "form-control required", @disabled = "disabled" })
+        <div class="form-group">
+            <label class="control-label col-md-4">ID </label>
+            <div class="col-md-6">
+                @Html.TextBoxFor(model => model.Id, new {@class = "form-control valid", @disabled = "disabled"})
+            </div>
         </div>
-    </div>
 
-    <div class="form-group">
-        <label class="control-label col-md-3">Password </label>
-        <div class="col-md-4">
-            @Html.TextBoxFor(model => model.Password, new { @class = "form-control required", @disabled = "disabled" })
+        <div class="form-group">
+            <label class="control-label col-md-4">Password </label>
+            <div class="col-md-6">
+                @Html.TextBoxFor(model => model.Password, new {@class = "form-control valid", @disabled = "disabled"})
+            </div>
         </div>
-    </div>
 
-    <div class="form-group">
-        <label class="control-label col-md-3">E-mail </label>
-        <div class="col-md-4">
-            @Html.TextBoxFor(model => model.Email, new { @class = "form-control required", @disabled = "disabled" })
+        <div class="form-group">
+            <label class="control-label col-md-4">E-mail </label>
+            <div class="col-md-6">
+                @Html.TextBoxFor(model => model.Email, new {@class = "form-control valid", @disabled = "disabled"})
+            </div>
         </div>
-    </div>
 
-    <div class="form-group">
-        <label class="control-label col-md-3">Address </label>
-        <div class="col-md-4">
-            @Html.TextBoxFor(model => model.Address, new { @class = "form-control required", @disabled = "disabled" })
+        <div class="form-group">
+            <label class="control-label col-md-4">Address </label>
+            <div class="col-md-6">
+                @Html.TextBoxFor(model => model.Address, new {@class = "form-control valid", @disabled = "disabled"})
+            </div>
         </div>
-    </div>
 
-    <div class="form-group">
-        <label class="control-label col-md-3">Tel</label>
-        <div class="col-md-4">
-            @Html.TextBoxFor(model => model.Tel, new { @class = "form-control required", @disabled = "disabled" })
+        <div class="form-group">
+            <label class="control-label col-md-4">Tel</label>
+            <div class="col-md-6">
+                @Html.TextBoxFor(model => model.Tel, new {@class = "form-control valid", @disabled = "disabled"})
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-4">Date Register</label>
+            <div class="col-md-6">
+                @Html.TextBoxFor(model => model.DateRegister, new {@class = "form-control valid", @disabled = "disabled"})
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-4">Activated</label>
+            <div class="col-md-4">
+                @Html.CheckBoxFor(model => model.Activated, new { @class = "check-box", @disabled = "disabled" })
+            </div>
         </div>
     </div>
 </div>
-<p>
-    @Html.ActionLink("Back to List", "Index")
-</p>
+
+<div class="modal-footer">
+    <button class="btn btn-warning" data-dismiss="modal">Close</button>
+</div>

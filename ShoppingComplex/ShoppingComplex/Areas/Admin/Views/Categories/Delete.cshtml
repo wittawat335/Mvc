@@ -7,7 +7,7 @@
 
 <div class="modal-header">
     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-    <h3 class="modal-title">Delete Phone</h3>
+    <h3 class="modal-title">Delete Category</h3>
 </div>
 
 @using (Html.BeginForm())
@@ -17,35 +17,35 @@
         <div class="form-horizontal">
             <div class="form-group">
                 <label class="control-label col-md-4">Logo </label>
-                <div class="col-md-4">
-                    <img src="/content/img/icons/@Model.Icon" class="img-logo img-thumbnail" />
+                <div class="col-md-6">
+                    <img src="/content/img/icons/@Model.Icon" class="img-logo img-thumbnail animated rollIn" />
                 </div>
             </div>
 
             <div class="form-group">
                 <label class="control-label col-md-4">ID </label>
-                <div class="col-md-4">
+                <div class="col-md-6">
                     @Html.TextBoxFor(model => model.Id, new { @class = "form-control required", @disabled = "disabled" })
                 </div>
             </div>
 
             <div class="form-group">
                 <label class="control-label col-md-4">NameTH </label>
-                <div class="col-md-4">
+                <div class="col-md-6">
                     @Html.TextBoxFor(model => model.NameVN, new { @class = "form-control required", @disabled = "disabled" })
                 </div>
             </div>
 
             <div class="form-group">
                 <label class="control-label col-md-4">Name </label>
-                <div class="col-md-4">
+                <div class="col-md-6">
                     @Html.TextBoxFor(model => model.Name, new { @class = "form-control required", @disabled = "disabled" })
                 </div>
             </div>
 
             <div class="form-group">
                 <label class="control-label col-md-4">Image</label>
-                <div class="col-md-4">
+                <div class="col-md-6">
                     @Html.TextBoxFor(model => model.Image, new {@class = "form-control required", @disabled = "disabled"})
                 </div>
             </div>

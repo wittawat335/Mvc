@@ -91,7 +91,7 @@ namespace ShoppingComplex.Areas.Admin.Controllers
             {
                 db.Entry(supplier).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return Json(new { success = true });
             }
             return View(supplier);
         }
@@ -119,7 +119,7 @@ namespace ShoppingComplex.Areas.Admin.Controllers
             Supplier supplier = db.Suppliers.Find(id);
             db.Suppliers.Remove(supplier);
             db.SaveChanges();
-            return RedirectToAction("Index");
+            return Json(new { success = true });
         }
 
         protected override void Dispose(bool disposing)

@@ -12,8 +12,19 @@
     </li>
 </ol>
 
+<div id='myModal' class='modal fade in'>
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div id='myModalContent'></div>
+        </div>
+    </div>
+</div>
+
 <p>
-    @Html.ActionLink("Create New", "Create", null, new { @class = "btn btn-success animated tada" })
+
+    <a href="/Admin/Customers/Create" title="Create" class="btn btn-success animated tada">
+        <i class="fa fa-plus icon-white"></i> Create
+    </a>
 </p>
 
 <div class="row">
@@ -23,39 +34,43 @@
             <div class="box-content">
                 <table class="table table-responsive table-bordered" id="myTable">
                     <thead>
-                        <tr>
-                            <td>Id</td>
-                            <td>Password</td>
-                            <td>CustomerName</td>
-                            <td>E-mail</td>
-                            <td>Address</td>
-                            <td>Tel.</td>
-                            <td></td>
-                        </tr>
+                    <tr>
+                        <td>Id</td>
+                        <td>Password</td>
+                        <td>CustomerName</td>
+                        <td>E-mail</td>
+                        <td>Address</td>
+                        <td>Tel.</td>
+                        <td>DateRegister</td>
+                        <td>Activated</td>
+                        <td></td>
+                    </tr>
                     </thead>
                     <tbody>
-                        @foreach (Customer c in ViewBag.Customers)
-                        {
-                            <tr>
-                                <td>@c.Id</td>
-                                <td>@c.Password</td>
-                                <td>@c.FullName</td>
-                                <td>@c.Email</td>
-                                <td>@c.Address</td>
-                                <td>@c.Tel</td>
-                                <td class="center">
-                                    <a href="/Admin/Customers/Details/@c.Id" title="Detail" class="btn btn-success">
-                                        <i class="fa fa-search icon-white"></i> Detail
-                                    </a>
-                                    <a href="/Admin/Customers/Edit/@c.Id" title="Edit" class="btn btn-info">
-                                        <i class="fa fa-edit"></i> Edit
-                                    </a>
-                                    <a href="/Admin/Customers/Delete/@c.Id" title="Delete" class="btn btn-danger">
-                                        <i class="fa fa-trash-o"></i> Delete
-                                    </a>
-                                </td>
-                            </tr>
-                        }
+                    @foreach (Customer c in ViewBag.Customers)
+                    {
+                        <tr>
+                            <td>@c.Id</td>
+                            <td>@c.Password</td>
+                            <td>@c.FullName</td>
+                            <td>@c.Email</td>
+                            <td>@c.Address</td>
+                            <td>@c.Tel</td>
+                            <td>@c.DateRegister</td>
+                            <td>@Html.DisplayFor(modelItem => c.Activated)</td>
+                            <td class="center">
+                                <a href="/Admin/Customers/Details/@c.Id" title="Detail" class="btn btn-success btnModal">
+                                    <i class="fa fa-search icon-white"></i> Detail
+                                </a>
+                                <a href="/Admin/Customers/Edit/@c.Id" title="Edit" class="btn btn-info btnModal">
+                                    <i class="fa fa-edit"></i> Edit
+                                </a>
+                                <a href="/Admin/Customers/Delete/@c.Id" title="Delete" class="btn btn-danger btnModal">
+                                    <i class="fa fa-trash-o"></i> Delete
+                                </a>
+                            </td>
+                        </tr>
+                    }
                     </tbody>
                 </table>
             </div>
@@ -64,3 +79,41 @@
     <!--/span-->
 
 </div>
+
+<script>
+    $(function () {
+        $.ajaxSetup({ cache: false });
+        $(".btnModal").on("click", function (e) {
+            $('#myModalContent').load(this.href, function () {
+                $('#myModal').modal({
+                    keyboard: true
+                }, 'show');
+                bindForm(this);
+            });
+            return false;
+        });
+    });
+
+    function bindForm(dialog) {
+        $('form', dialog).submit(function () {
+            $('#progress').show();
+            $.ajax({
+                url: this.action,
+                type: this.method,
+                data: $(this).serialize(),
+                success: function (result) {
+                    if (result.success) {
+                        $('#myModal').modal('hide');
+                        $('#progress').hide();
+                        location.reload();
+                    } else {
+                        $('#progress').hide();
+                        $('#myModalContent').html(result);
+                        bindForm();
+                    }
+                }
+            });
+            return false;
+        });
+    }
+</script>

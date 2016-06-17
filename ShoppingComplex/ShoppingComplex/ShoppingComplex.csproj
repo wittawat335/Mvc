@@ -1308,11 +1308,6 @@
     <Content Include="Areas\Admin\Views\Orders\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\Orders\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Suppliers\Details.cshtml" />
-    <Content Include="Areas\Admin\Views\Orders1\Create.cshtml" />
-    <Content Include="Areas\Admin\Views\Orders1\Delete.cshtml" />
-    <Content Include="Areas\Admin\Views\Orders1\Details.cshtml" />
-    <Content Include="Areas\Admin\Views\Orders1\Edit.cshtml" />
-    <Content Include="Areas\Admin\Views\Orders1\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Home\TestModal.cshtml" />
     <None Include="Scripts\jquery-2.2.3.intellisense.js" />
     <Content Include="Scripts\bootstrap.js" />

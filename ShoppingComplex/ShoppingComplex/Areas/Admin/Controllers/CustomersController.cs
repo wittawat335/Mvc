@@ -79,13 +79,13 @@ namespace ShoppingComplex.Areas.Admin.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,Password,FullName,Email,Address,Tel")] Customer customer)
+        public ActionResult Edit([Bind(Include = "ID,Password,FullName,Email,Address,Tel,DateRegister,Activated")] Customer customer)
         {
             if (ModelState.IsValid)
             {
                 db.Entry(customer).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return Json(new { success = true });
             }
             return View(customer);
         }
@@ -113,7 +113,7 @@ namespace ShoppingComplex.Areas.Admin.Controllers
             Customer customer = db.Customers.Find(id);
             db.Customers.Remove(customer);
             db.SaveChanges();
-            return RedirectToAction("Index");
+            return Json(new { success = true });
         }
 
         protected override void Dispose(bool disposing)

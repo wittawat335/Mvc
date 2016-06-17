@@ -2,102 +2,111 @@
 
 @{
     ViewBag.Title = "Details";
+    Layout = null;
 }
-
-<h2>Details</h2>
-
-<div class="form-horizontal">
-
-    <div class="form-group">
-        <label class="control-label col-md-3">OrderId </label>
-        <div class="col-md-4">
-            @Html.TextBoxFor(model => model.Id, new {@class = "form-control required", @disabled = "disabled"})
-        </div>
-    </div>
-
-    <div class="form-group">
-        <label class="control-label col-md-3">CustomerName </label>
-        <div class="col-md-4">
-            @Html.TextBoxFor(model => model.Customer.FullName, new {@class = "form-control required", @disabled = "disabled"})
-        </div>
-    </div>
-
-    <div class="form-group">
-        <label class="control-label col-md-3">Tel </label>
-        <div class="col-md-4">
-            @Html.TextBoxFor(model => model.Customer.Tel, new {@class = "form-control required", @disabled = "disabled"})
-        </div>
-    </div>
-
-    <div class="form-group">
-        <label class="control-label col-md-3">OrderDate </label>
-        <div class="col-md-4">
-            @Html.TextBoxFor(model => model.OrderDate, new {@class = "form-control required", @disabled = "disabled"})
-        </div>
-    </div>
-
-    <div class="form-group">
-        <label class="control-label col-md-3">วันที่สะดวกรับสินค้า</label>
-        <div class="col-md-4">
-            @Html.TextBoxFor(model => model.RequireDate, new {@class = "form-control required", @disabled = "disabled"})
-        </div>
-    </div>
-
-    <div class="form-group">
-        <label class="control-label col-md-3">ชื่อผู้รับ</label>
-        <div class="col-md-4">
-            @Html.TextBoxFor(model => model.Receiver, new {@class = "form-control required", @disabled = "disabled"})
-        </div>
-    </div>
-
-    <div class="form-group">
-        <label class="control-label col-md-3">ราคารวมทั้งสิ้น</label>
-        <div class="col-md-4">
-            @Html.TextBoxFor(model => model.Amount, new { @class = "form-control required", @disabled = "disabled" })
-        </div>
-    </div>
-
-    <div class="form-group">
-        <label class="control-label col-md-3">Address</label>
-        <div class="col-md-4">
-            @Html.TextAreaFor(model => model.Address, new {@class = "form-control required", @disabled = "disabled", rows = "3", cols="55"})
-        </div>
-    </div>
-
-    <div class="form-group">
-        <label class="control-label col-md-3">รายละเอียดเพิ่มเติม</label>
-        <div class="col-md-4">
-            @Html.TextAreaFor(model => model.Description, new {@class = "form-control required", rows = "3", cols = "55", @disabled = "disabled"})
-        </div>
-    </div>
-
-    <div class="form-group">
-        <label class="control-label col-md-3">View</label>
-        <div class="col-md-4">
-            @Html.CheckBoxFor(model => model.view, new { @class = "check-box", @disabled = "disabled" })
-        </div>
-    </div>
+<div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+    <h3 class="modal-title">Detail Order</h3>
 </div>
 
-<h2>Order Details</h2>
-<table class="table table-hover">
-    <tr>
-        <th>รหัสสินค้า</th>
-        <th>ชื่อสินค้า</th>
-        <th>ราคา</th>
-        <th>ส่วนลด</th>
-        <th>จำนวน</th>
-        <th>ราคารวม</th>
-    </tr>
-    @foreach (var d in Model.OrderDetails)
-    {
+<div class="modal-body">
+    <div class="form-horizontal">
+
+        <div class="form-group">
+            <label class="control-label col-md-4">OrderId </label>
+            <div class="col-md-6">
+                @Html.TextBoxFor(model => model.Id, new {@class = "form-control valid", @disabled = "disabled"})
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-4">CustomerName </label>
+            <div class="col-md-6">
+                @Html.TextBoxFor(model => model.Customer.FullName, new {@class = "form-control valid", @disabled = "disabled"})
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-4">Tel </label>
+            <div class="col-md-6">
+                @Html.TextBoxFor(model => model.Customer.Tel, new {@class = "form-control valid", @disabled = "disabled"})
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-4">OrderDate </label>
+            <div class="col-md-6">
+                @Html.TextBoxFor(model => model.OrderDate, new {@class = "form-control valid", @disabled = "disabled"})
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-4">วันที่สะดวกรับสินค้า</label>
+            <div class="col-md-6">
+                @Html.TextBoxFor(model => model.RequireDate, new {@class = "form-control valid", @disabled = "disabled"})
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-4">ชื่อผู้รับ</label>
+            <div class="col-md-6">
+                @Html.TextBoxFor(model => model.Receiver, new {@class = "form-control valid", @disabled = "disabled"})
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-4">ราคารวมทั้งสิ้น</label>
+            <div class="col-md-6">
+                @Html.TextBoxFor(model => model.Amount, new {@class = "form-control valid", @disabled = "disabled"})
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-4">Address</label>
+            <div class="col-md-6">
+                @Html.TextAreaFor(model => model.Address, new {@class = "form-control valid", @disabled = "disabled", rows = "3", cols = "55"})
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-4">รายละเอียดเพิ่มเติม</label>
+            <div class="col-md-6">
+                @Html.TextAreaFor(model => model.Description, new {@class = "form-control valid", rows = "3", cols = "55", @disabled = "disabled"})
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-4">View</label>
+            <div class="col-md-6">
+                @Html.CheckBoxFor(model => model.view, new {@class = "check-box", @disabled = "disabled"})
+            </div>
+        </div>
+    </div>
+
+
+    <table class="table table-hover">
         <tr>
-            <td>@d.ProductId</td>
-            <td>@d.Product.Name</td>
-            <td>@d.UnitPrice</td>
-            <td>@d.Discount</td>
-            <td>@d.Quantity</td>
-            <td>@(d.UnitPrice * d.Quantity * (1 - d.Discount))</td>
+            <th>รหัสสินค้า</th>
+            <th>ชื่อสินค้า</th>
+            <th>ราคา</th>
+            <th>ส่วนลด</th>
+            <th>จำนวน</th>
+            <th>ราคารวม</th>
         </tr>
-    }
-</table>
+        @foreach (var d in Model.OrderDetails)
+        {
+            <tr>
+                <td>@d.ProductId</td>
+                <td>@d.Product.Name</td>
+                <td>@d.UnitPrice</td>
+                <td>@d.Discount</td>
+                <td>@d.Quantity</td>
+                <td>@(d.UnitPrice*d.Quantity*(1 - d.Discount))</td>
+            </tr>
+        }
+    </table>
+</div>
+
+<div class="modal-footer">
+    <button class="btn btn-warning" data-dismiss="modal">Close</button>
+</div>

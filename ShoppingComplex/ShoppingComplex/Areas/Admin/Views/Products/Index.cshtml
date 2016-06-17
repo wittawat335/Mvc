@@ -1,6 +1,6 @@
 ﻿
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Proudct";
 }
 
 <ol class="breadcrumb">
@@ -12,8 +12,19 @@
     </li>
 </ol>
 
+<div id='myModal' class='modal fade in'>
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div id='myModalContent'></div>
+        </div>
+    </div>
+</div>
+
 <p>
-    @Html.ActionLink("Create New", "Create", null, new { @class = "btn btn-success animated tada" })
+
+    <a href="/Admin/Products/Create" title="Create" class="btn btn-success animated tada">
+        <i class="fa fa-plus icon-white"></i> Create
+    </a>
 </p>
 
 <div class="row">
@@ -25,41 +36,41 @@
             <div class="box-content">
                 <table class="table table-responsive table-bordered" id="myTable">
                     <thead>
-                        <tr>
-                            <th>Id</th>
-                            <th>Name</th>
-                            <th>UnitPrice</th>
-                            <th>UnitBrief</th>
-                            <th>Quantity</th>
-                            <th>Image</th>
-                            <th></th>
+                    <tr>
+                        <th>Id</th>
+                        <th>Name</th>
+                        <th>UnitPrice</th>
+                        <th>UnitBrief</th>
+                        <th>Quantity</th>
+                        <th>Image</th>
+                        <th></th>
 
-                        </tr>
+                    </tr>
                     </thead>
 
                     <tbody>
-                        @foreach (Product p in ViewBag.Products)
-                        {
-                            <tr>
-                                <td>@p.Id</td>
-                                <td>@p.Name</td>
-                                <td>@p.UnitPrice</td>
-                                <td>@p.UnitBrief</td>
-                                <td>@p.Quantity</td>
-                                <td><img src="@Url.Content("~/Content/img/Products/")@p.Image" width="120" height="100" /></td>
-                                <td>
-                                    <a href="/Admin/Products/Details/@p.Id" title="Detail" class="btn btn-success">
-                                        <i class="fa fa-search icon-white"></i> Detail
-                                    </a>
-                                    <a href="/Admin/Products/Edit/@p.Id" title="Edit" class="btn btn-info">
-                                        <i class="fa fa-edit"></i> Edit
-                                    </a>
-                                    <a href="/Admin/Products/Delete/@p.Id" title="Delete" class="btn btn-danger">
-                                        <i class="fa fa-trash-o"></i> Delete
-                                    </a>
+                    @foreach (Product p in ViewBag.Products)
+                    {
+                        <tr>
+                            <td>@p.Id</td>
+                            <td>@p.Name</td>
+                            <td>@p.UnitPrice</td>
+                            <td>@p.UnitBrief</td>
+                            <td>@p.Quantity</td>
+                            <td><img src="@Url.Content("~/Content/img/Products/")@p.Image" width="120" height="100"/></td>
+                            <td>
+                                <a href="/Admin/Products/Details/@p.Id" title="Detail" class="btn btn-success btnModal">
+                                    <i class="fa fa-search icon-white"></i> Detail
+                                </a>
+                                <a href="/Admin/Products/Edit/@p.Id" title="Edit" class="btn btn-info btnModal">
+                                    <i class="fa fa-edit"></i> Edit
+                                </a>
+                                <a href="/Admin/Products/Delete/@p.Id" title="Delete" class="btn btn-danger btnModal">
+                                    <i class="fa fa-trash-o"></i> Delete
+                                </a>
                             </td>
                         </tr>
-                        }
+                    }
                     </tbody>
                 </table>
             </div>
@@ -68,6 +79,44 @@
     <!--/span-->
 
 </div>
+
+<script>
+    $(function () {
+        $.ajaxSetup({ cache: false });
+        $(".btnModal").on("click", function (e) {
+            $('#myModalContent').load(this.href, function () {
+                $('#myModal').modal({
+                    keyboard: true
+                }, 'show');
+                bindForm(this);
+            });
+            return false;
+        });
+    });
+
+    function bindForm(dialog) {
+        $('form', dialog).submit(function () {
+            $('#progress').show();
+            $.ajax({
+                url: this.action,
+                type: this.method,
+                data: $(this).serialize(),
+                success: function (result) {
+                    if (result.success) {
+                        $('#myModal').modal('hide');
+                        $('#progress').hide();
+                        location.reload();
+                    } else {
+                        $('#progress').hide();
+                        $('#myModalContent').html(result);
+                        bindForm();
+                    }
+                }
+            });
+            return false;
+        });
+    }
+</script>
 
 
 

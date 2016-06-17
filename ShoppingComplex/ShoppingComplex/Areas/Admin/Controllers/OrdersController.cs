@@ -17,8 +17,8 @@ namespace ShoppingComplex.Areas.Admin.Controllers
         // GET: Admin/Orders
         public ActionResult Index()
         {
-            ViewBag.Orders = db.Orders.Include(o => o.Customer);
-            return View();
+            List<Order> model = db.Orders.Include(o => o.Customer).ToList();
+            return View(model);
         }
 
         // GET: Admin/Orders/Details/5
@@ -88,7 +88,7 @@ namespace ShoppingComplex.Areas.Admin.Controllers
             {
                 db.Entry(order).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return Json(new { success = true });
             }
             ViewBag.CustomerId = new SelectList(db.Customers, "ID", "Password", order.CustomerId);
             return View(order);
@@ -117,7 +117,7 @@ namespace ShoppingComplex.Areas.Admin.Controllers
             Order order = db.Orders.Find(id);
             db.Orders.Remove(order);
             db.SaveChanges();
-            return RedirectToAction("Index");
+            return Json(new { success = true });
         }
 
         protected override void Dispose(bool disposing)

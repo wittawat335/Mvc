@@ -11,8 +11,20 @@
     </li>
 </ol>
 
+
+<div id='myModal' class='modal fade in'>
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div id='myModalContent'></div>
+        </div>
+    </div>
+</div>
+
 <p>
-   @Html.ActionLink("Create New", "Create", null, new { @class = "btn btn-success animated tada" })
+
+    <a href="/Admin/Orders/Create" title="Create" class="btn btn-success animated tada">
+        <i class="fa fa-plus icon-white"></i> Create
+    </a>
 </p>
 
 <div class="row">
@@ -22,42 +34,42 @@
             <div class="box-content">
                 <table class="table table-responsive table-bordered" id="myTable">
                     <thead>
-                        <tr>
-                            <th>OrderId</th>
-                            <th>Customer</th>
-                            <th>OrderDate</th>
-                            <th>RequireDate</th>
-                            <th>Receiver</th>
-                            <th>ราคารวมทั้งสิ้น</th>
-                            <th>View</th>
-                            <th></th>
-                        </tr>
+                    <tr>
+                        <th>OrderId</th>
+                        <th>Customer</th>
+                        <th>OrderDate</th>
+                        <th>RequireDate</th>
+                        <th>Receiver</th>
+                        <th>ราคารวมทั้งสิ้น</th>
+                        <th>View</th>
+                        <th></th>
+                    </tr>
                     </thead>
 
                     <tbody>
-                        @foreach (Order o in ViewBag.Orders)
-                        {
-                            <tr>
-                                <td>@o.Id</td>
-                                <td>@o.CustomerId</td>
-                                <td>@o.OrderDate</td>
-                                <td>@o.RequireDate</td>
-                                <td>@o.Receiver</td>
-                                <td>@o.Amount</td>
-                                <td>@Html.DisplayFor(modelItem => o.view)</td>
-                                <td>
-                                    <a href="/Admin/Orders/Details/@o.Id" title="Detail" class="btn btn-success">
-                                        <i class="fa fa-search icon-white"></i> Detail
-                                    </a>
-                                    <a href="/Admin/Orders/Edit/@o.Id" title="Edit" class="btn btn-info">
-                                        <i class="fa fa-edit"></i> Edit
-                                    </a>
-                                    <a href="/Admin/Orders/Delete/@o.Id" title="Delete" class="btn btn-danger">
-                                        <i class="fa fa-trash-o"></i> Delete
-                                    </a>
-                                </td>
-                            </tr>
-                        }
+                    @foreach (Order o in Model)
+                    {
+                        <tr>
+                            <td>@o.Id</td>
+                            <td>@o.CustomerId</td>
+                            <td>@o.OrderDate</td>
+                            <td>@o.RequireDate</td>
+                            <td>@o.Receiver</td>
+                            <td>@o.Amount</td>
+                            <td>@Html.DisplayFor(modelItem => o.view)</td>
+                            <td>
+                                <a href="/Admin/Orders/Details/@o.Id" title="Detail" class="btn btn-success btnModal">
+                                    <i class="fa fa-search icon-white"></i> Detail
+                                </a>
+                                <a href="/Admin/Orders/Edit/@o.Id" title="Edit" class="btn btn-info btnModal">
+                                    <i class="fa fa-edit"></i> Edit
+                                </a>
+                                <a href="/Admin/Orders/Delete/@o.Id" title="Delete" class="btn btn-danger btnModal">
+                                    <i class="fa fa-trash-o"></i> Delete
+                                </a>
+                            </td>
+                        </tr>
+                    }
                     </tbody>
                 </table>
             </div>
@@ -66,3 +78,41 @@
     <!--/span-->
 
 </div>
+
+<script>
+    $(function () {
+        $.ajaxSetup({ cache: false });
+        $(".btnModal").on("click", function (e) {
+            $('#myModalContent').load(this.href, function () {
+                $('#myModal').modal({
+                    keyboard: true
+                }, 'show');
+                bindForm(this);
+            });
+            return false;
+        });
+    });
+
+    function bindForm(dialog) {
+        $('form', dialog).submit(function () {
+            $('#progress').show();
+            $.ajax({
+                url: this.action,
+                type: this.method,
+                data: $(this).serialize(),
+                success: function (result) {
+                    if (result.success) {
+                        $('#myModal').modal('hide');
+                        $('#progress').hide();
+                        location.reload();
+                    } else {
+                        $('#progress').hide();
+                        $('#myModalContent').html(result);
+                        bindForm();
+                    }
+                }
+            });
+            return false;
+        });
+    }
+</script>

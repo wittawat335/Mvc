@@ -47,17 +47,17 @@ namespace ShoppingComplex.Areas.Admin.Controllers
         {
             var user = new ApplicationUser();
             user.UserName = UserName;
-
-            var result = UserManager.Create(user, Password);
-
-            if (result.Succeeded)
-            {
-                foreach (var role in Roles)
+           
+                var result = UserManager.Create(user, Password);
+                if (result.Succeeded)
                 {
-                    UserManager.AddToRole(user.Id, role);
+                    foreach (var role in Roles)
+                    {
+                        UserManager.AddToRole(user.Id, role);
+                    }
                 }
-            }
-
+            
+            TempData["Message"] = "Username exist";
             return RedirectToAction("Index");
         }
 
@@ -74,21 +74,24 @@ namespace ShoppingComplex.Areas.Admin.Controllers
 
             sdb.SaveChanges();
 
+            TempData["Message"] = "Remove Complete";
             return RedirectToAction("Index");
         }
 
         public ActionResult UpdateRole(String Name, bool Status, String UserName)
         {
-            var user = UserManager.FindByName(UserName);
-            if (Status == true)
-            {
-                UserManager.AddToRole(user.Id, Name);
-            }
-            else
-            {
-                UserManager.RemoveFromRole(user.Id, Name);
-            }
-            return Content("Update successfully !");
+                var user = UserManager.FindByName(UserName);
+          
+                if (Status == true)
+                {
+                    UserManager.AddToRole(user.Id, Name);
+                }
+                else
+                {
+                    UserManager.RemoveFromRole(user.Id, Name);
+                }
+            TempData["Message"] = "Update Complete!";
+            return RedirectToAction("Index");
         }
 	}
 }

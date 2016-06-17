@@ -3,13 +3,22 @@
     ViewBag.Title = "Index";
 }
 
+<div class="alert-info">
+    @if (TempData["Message"] != null)
+    {
+        <div class="alert alert-warning">
+            @TempData["Message"].ToString()
+        </div>
+    }
+</div>
+
 <fieldset>
     <legend>Role Management</legend>
     <form class="form-inline">
         @using (Html.BeginForm())
         {
             <div class="form-group col-md-2">
-                @Html.DropDownList("OldRoleName", null, new {@class = "form-control"})
+                @Html.DropDownList("OldRoleName", null, new {@class = "form-control valid"})
                 
             </div>
             <div class="form-group col-md-1">
@@ -17,7 +26,7 @@
             </div>
 
             <div class="form-group col-md-2">
-                @Html.TextBox("NewRoleName", null, new {@class = "form-control"})
+                @Html.TextBox("NewRoleName", null, new {@class = "form-control required"})
             </div>
             <div class="form-group col-md-2">
                 <input type="submit" value="Add" class="btn btn-success" onclick="form.action = '/Admin/Master/AddRole'"/>
@@ -32,11 +41,11 @@
     @using (Html.BeginForm())
     {
         <div class="col-md-4">User Name
-        @Html.TextBox("UserName", null, new { @class = "form-control" })
+        @Html.TextBox("UserName", null, new { @class = "form-control valid" })
         </div>
 
         <div class="col-md-4">Password
-        @Html.TextBox("Password", null, new { @class = "form-control" })
+        @Html.TextBox("Password", null, new { @class = "form-control required" })
         </div>
 
         <div>Roles</div>
@@ -47,7 +56,7 @@
             </label>
         }
         <hr />
-        <input type="submit" value="Add" class="btn btn-info btn-block" onclick="form.action = '/Admin/Master/AddUser'" />
+        <input type="submit" value="Add" class="btn btn-info btn-block animated tada" onclick="form.action = '/Admin/Master/AddUser'" />
     }
     <hr />
     <table class="table table-bordered">
