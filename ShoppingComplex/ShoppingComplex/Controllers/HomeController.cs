@@ -13,9 +13,13 @@ namespace ShoppingComplex.Controllers
         public ActionResult Index()
         {
             var model = db.Categories
-                .Where(c => c.Products.Count >= 4)
-                .OrderBy(c => Guid.NewGuid()).ToList();
+               .Where(c => c.Products.Count >= 5)
+               .OrderBy(c => Guid.NewGuid()).ToList()
+               .Take(4);
 
+            ViewBag.Suppliers = db.Suppliers
+                .Where(c => c.Products.Count >= 5)
+                .OrderBy(c => Guid.NewGuid()).ToList();
 
             return View(model);
         }

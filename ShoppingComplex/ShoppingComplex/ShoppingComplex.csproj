@@ -206,11 +206,6 @@
     <Compile Include="Helpers\XCaptcha.cs" />
     <Compile Include="Helpers\XMail.cs" />
     <Compile Include="Helpers\XString.cs" />
-    <Compile Include="Migrations\201606141248156_oi.cs" />
-    <Compile Include="Migrations\201606141248156_oi.Designer.cs">
-      <DependentUpon>201606141248156_oi.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Category.cs" />
     <Compile Include="Models\Customer.cs" />
@@ -285,8 +280,10 @@
     <Content Include="Content\css\bootstrap-theme.min.css" />
     <Content Include="Content\css\bootstrap.css" />
     <Content Include="Content\css\bootstrap.min.css" />
+    <Content Include="Content\css\catslider.css" />
     <Content Include="Content\css\creative.css" />
     <Content Include="Content\css\flexslider.css" />
+    <Content Include="Content\css\grayscale.css" />
     <Content Include="Content\css\images\animated-overlay.gif" />
     <Content Include="Content\css\images\ui-bg_diagonals-thick_18_b81900_40x40.png" />
     <Content Include="Content\css\images\ui-bg_diagonals-thick_20_666666_40x40.png" />
@@ -361,6 +358,7 @@
     <Content Include="Content\img\contacts\dn.gif" />
     <Content Include="Content\img\contacts\hn.gif" />
     <Content Include="Content\img\contacts\sg.gif" />
+    <Content Include="Content\img\downloads-bg.jpg" />
     <Content Include="Content\img\Gif\cart.gif" />
     <Content Include="Content\img\Gif\icon-best-seller.png" />
     <Content Include="Content\img\Gif\icon-new.png" />
@@ -1082,7 +1080,9 @@
     <Content Include="Content\img\icons\Zoom in.png" />
     <Content Include="Content\img\icons\Zoom out.png" />
     <Content Include="Content\img\icons\Zoom.png" />
+    <Content Include="Content\img\intro-bg.jpg" />
     <Content Include="Content\img\logo.png" />
+    <Content Include="Content\img\map-marker.png" />
     <Content Include="Content\img\products\1001.jpg" />
     <Content Include="Content\img\products\1002.jpg" />
     <Content Include="Content\img\products\1003.jpg" />
@@ -1312,19 +1312,24 @@
     <None Include="Scripts\jquery-2.2.3.intellisense.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\grayscale.js" />
     <Content Include="Scripts\jquery-2.2.3.js" />
     <Content Include="Scripts\jquery-2.2.3.min.js" />
     <Content Include="Scripts\jquery-scrolltofixed-min.js" />
     <Content Include="Scripts\jquery-ui.js" />
     <Content Include="Scripts\jquery-ui.min.js" />
+    <Content Include="Scripts\jquery.catslider.js" />
+    <Content Include="Scripts\jquery.easing.min.js" />
     <Content Include="Scripts\jquery.elevatezoom.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modalform.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Scripts\modernizr.custom.63321.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\_references.js" />
@@ -1377,7 +1382,7 @@
     <Content Include="Views\Shared\_Saleoff.cshtml" />
     <Content Include="Views\Shared\_Search.cshtml" />
     <Content Include="Views\Shared\_Special.cshtml" />
-    <Content Include="Views\Home\_Banner.cshtml" />
+    <Content Include="Views\Shared\_Banner.cshtml" />
     <Content Include="Views\Product\Category.cshtml" />
     <Content Include="Views\Product\Detail.cshtml" />
     <Content Include="Views\Product\Search.cshtml" />
@@ -1394,21 +1399,19 @@
     <Content Include="Views\Product\BestSeller.cshtml" />
     <Content Include="Views\Product\SaleOff.cshtml" />
     <Content Include="Views\Product\All.cshtml" />
+    <Content Include="Views\Shared\_LayoutIndex.cshtml" />
+    <Content Include="Views\Product\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Content\img\customers\" />
+    <Folder Include="Migrations\" />
     <Folder Include="Views\SecurityActionFilterAttribute\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />
     <Content Include="Scripts\jquery-2.2.3.min.map" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\201606141248156_oi.resx">
-      <DependentUpon>201606141248156_oi.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

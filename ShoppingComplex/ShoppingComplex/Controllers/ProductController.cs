@@ -13,7 +13,15 @@ namespace ShoppingComplex.Controllers
     {
         ShoppingDbContext db = new ShoppingDbContext();
         // GET: Product
-       
+
+        public ActionResult Index()
+        {
+            var model = db.Categories
+                .Where(c => c.Products.Count >= 4)
+                .OrderBy(c => Guid.NewGuid()).ToList();
+
+            return View(model);
+        }
 
         public ActionResult Category(int CategoryID = 0)
         {
