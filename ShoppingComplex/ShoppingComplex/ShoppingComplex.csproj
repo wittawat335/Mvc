@@ -283,7 +283,11 @@
     <Content Include="Content\css\catslider.css" />
     <Content Include="Content\css\creative.css" />
     <Content Include="Content\css\flexslider.css" />
+    <Content Include="Content\css\Flipping\Flipping.css" />
+    <Content Include="Content\css\Flipping\common.css" />
+    <Content Include="Content\css\Flipping\demo.css" />
     <Content Include="Content\css\grayscale.css" />
+    <Content Include="Content\css\iconscroll.css" />
     <Content Include="Content\css\images\animated-overlay.gif" />
     <Content Include="Content\css\images\ui-bg_diagonals-thick_18_b81900_40x40.png" />
     <Content Include="Content\css\images\ui-bg_diagonals-thick_20_666666_40x40.png" />
@@ -326,6 +330,8 @@
     <Content Include="Content\img\banner\rsz_banner01.jpg" />
     <Content Include="Content\img\banner\rsz_banner02.jpg" />
     <Content Include="Content\img\banner\rsz_banner03.jpg" />
+    <Content Include="Content\img\bar2.jpg" />
+    <Content Include="Content\img\black.jpg" />
     <Content Include="Content\img\Brand\casio.jpg" />
     <Content Include="Content\img\Brand\rado.jpg" />
     <Content Include="Content\img\categories\Accept.png" />
@@ -1200,6 +1206,7 @@
     <Content Include="Content\img\products\gucci 1995.jpg" />
     <Content Include="Content\img\products\product.png" />
     <Content Include="Content\img\products\Rado 9500.jpg" />
+    <Content Include="Content\img\qrcode.jpg" />
     <Content Include="Content\img\suppliers\amd-logo.jpg" />
     <Content Include="Content\img\suppliers\apple.jpg" />
     <Content Include="Content\img\suppliers\dell-logo.jpg" />

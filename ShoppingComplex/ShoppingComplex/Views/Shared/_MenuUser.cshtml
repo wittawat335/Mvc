@@ -4,10 +4,10 @@
             Product <span class="caret"></span>
         </a>
         <ul class="dropdown-menu">
-            <li><a href="/Product/New">สินค้ามาใหม่</a></li>
-            <li><a href="/Product/BestSeller">สินค้าขายดี</a></li>
-            <li><a href="/Product/SaleOff">สินค้าลดราคา</a></li>
-            <li><a href="/Product/All">สินค้าทั้งหมด</a></li>
+            <li><a href="/Product/New">New</a></li>
+            <li><a href="/Product/BestSeller">BestSeller</a></li>
+            <li><a href="/Product/SaleOff">SaleOff</a></li>
+            <li><a href="/Product/All">All</a></li>
 
         </ul>
     </li>
@@ -19,7 +19,11 @@
 <ul class="nav navbar-nav navbar-right">
     <li class="dropdown">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-user"></span>
-           @User.Identity.Name
+        @if(Request.IsAuthenticated)
+        {
+            @User.Identity.Name
+        }
+        SignIn
         </a>
         <ul class="dropdown-menu">
             @if (!Request.IsAuthenticated)
@@ -36,7 +40,7 @@
                 <li><a href="/Order/List"><span class="glyphicon glyphicon-list"></span> OrderList</a></li>
                 <li><a href="/Order/Products">Product</a></li>
                 <li class="divider"></li>
-                <li><a href="~/Account/LogOff"><span class="glyphicon glyphicon-log-out"></span> ออกจากระบบ</a></li>
+                <li><a href="~/Account/LogOff"><span class="fa fa-fw fa-power-off"></span> ออกจากระบบ</a></li>
             }
         </ul>
     </li>
