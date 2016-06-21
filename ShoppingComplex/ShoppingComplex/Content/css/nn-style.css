@@ -21,9 +21,13 @@
 .blue {
     border-left:5px solid #0000FF!important;
 }
+
+.black {
+    border: 5px solid #1C1C1C !important;
+}
 .btn-default{
     color: whitesmoke;
-	background:#0000FF;
+	background:#1C1C1C;
 	}
 .btn-default:hover{
     color: whitesmoke;

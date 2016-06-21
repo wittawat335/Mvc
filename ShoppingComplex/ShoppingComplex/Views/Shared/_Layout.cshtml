@@ -12,14 +12,20 @@
     <link href="~/Areas/AdminTheme/Content/font-awesome-4.1.0/css/font-awesome.css" rel="stylesheet" />
 </head>
 <body id ="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
-   
 
-    <div class="container whiteBackground">
+    <div id='myModal' class='modal fade in'>
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div id='myModalContent'></div>
+            </div>
+        </div>
+    </div>
+
+<div class="container whiteBackground">
         <header class="nn-header">
            <div class="col-md-4 col-sm-6 pull-right">
                 @Html.Partial("_Search")
             </div><!--end search box-->
-            
         </header>
 
         <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
@@ -45,9 +51,14 @@
                         </li>
 
                     </ul>
-                  
+                    @if (!Request.IsAuthenticated)
+                    {
+                        @Html.Partial("_Menu")
+                    }
+                    else
+                    {
                         @Html.Partial("_MenuUser")
-                    
+                    }
                 </div>
                 <!-- /.navbar-collapse -->
             </div>
@@ -91,14 +102,14 @@
 
 <!--Shopping Cart & Cart Effect-->
 <script>
-  
-    $(function () {
-        $(".add-to-cart").click(function () {
+
+    $(function() {
+        $(".add-to-cart").click(function() {
             pid = $(this).attr("data-id");
             $.ajax({
                 url: "/Cart/Add",
-                data: {id: pid},
-                success: function (response) {
+                data: { id: pid },
+                success: function(response) {
                     $("#nn-cart-count").html(response.Count);
                     $("#nn-cart-total").html(response.Total);
                 }
@@ -111,9 +122,47 @@
             $("#cart-fly").html(newcssfly);
 
             options = { to: "#nn-cart-image", className: "fly-effect" };
-            $("#i"+pid).effect("transfer", options, 500, function () { });
+            $("#i" + pid).effect("transfer", options, 500, function() {});
         });
     });
+</script>
+
+<script>
+    $(function () {
+        $.ajaxSetup({ cache: false });
+        $(".btnModal").on("click", function (e) {
+            $('#myModalContent').load(this.href, function () {
+                $('#myModal').modal({
+                    keyboard: true
+                }, 'show');
+                bindForm(this);
+            });
+            return false;
+        });
+    });
+
+    function bindForm(dialog) {
+        $('form', dialog).submit(function () {
+            $('#progress').show();
+            $.ajax({
+                url: this.action,
+                type: this.method,
+                data: $(this).serialize(),
+                success: function (result) {
+                    if (result.success) {
+                        $('#myModal').modal('hide');
+                        $('#progress').hide();
+                        location.reload();
+                    } else {
+                        $('#progress').hide();
+                        $('#myModalContent').html(result);
+                        bindForm();
+                    }
+                }
+            });
+            return false;
+        });
+    }
 </script>
 
 <style id="cart-fly">

@@ -64,7 +64,7 @@
         <div class="nn-product-essential">
 
             <div class="nn-Product-detail-image col-sm-4">
-                <img id="zoom_mw i@(Model.Id)" src="/Content/img/products/@Model.Image" data-zoom-image="/Content/img/products/Large/@Model.ImageLarge" class="img-responsive"/>
+                <img id="zoom_mw" src="/Content/img/products/@Model.Image" data-zoom-image="/Content/img/products/Large/@Model.ImageLarge" class="img-responsive img-thumbnail"/>
 
             </div>
             <div class="col-sm-8">
@@ -338,7 +338,14 @@
                 $('#demo5').trigger('forward');
             });
         });
-        $("#zoom_mw").elevateZoom();
+       
+    </script>
+
+    <script>
+        $(function() {
+            $("#zoom_mw").elevateZoom();
+        })
+    
     </script>
 
 <script>

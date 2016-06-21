@@ -9,59 +9,52 @@
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/jqueryval")
     @Scripts.Render("~/bundles/bootstrap")
-
+    <link href="~/Areas/AdminTheme/Content/font-awesome-4.1.0/css/font-awesome.min.css" rel="stylesheet" />
 </head>
-<body>
-    <div id="fb-root"></div>
-    <script>
-        (function(d, s, id) {
-        var js, fjs = d.getElementsByTagName(s)[0];
-        if (d.getElementById(id)) return;
-        js = d.createElement(s); js.id = id;
-        js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.6&appId=1606434839675966";
-        fjs.parentNode.insertBefore(js, fjs);
-        }(document, 'script', 'facebook-jssdk'));</script>
-    
-    <div class="container whiteBackground">
-        <header class="nn-header">
-            <div class="col-sm-3 col-md-3 nn-text-align-center">
-                <h1>Logo</h1>
-            </div><!--end logo-->
-            <div class="col-md-6 col-sm-6 ">
-                @Html.Partial("_Search")
-            </div><!--end search box-->
-            <div class="nn-cart-box col-sm-3 col-md-3 ">
-                <div class="nn-top-cart-wrapper ">
-                    <div class="nn-top-cart-contain">
-                       
-                    </div>
+<body id ="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
+   <div class="container whiteBackground">
+       <header class="nn-header">
+           <div class="col-md-4 col-sm-6 pull-right">
+               @Html.Partial("_Search")
+           </div><!--end search box-->
+
+       </header>
+
+        <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-main-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand page-scroll" href="#page-top">
+                        <i class="fa fa-play-circle"></i>  <span class="light">Web</span> ShoppiingComplex
+                    </a>
                 </div>
-            </div><!--end cart box-->
-        </header>
 
-        <div class="navbar navbar-inverse">
-            <div class="navbar-header">
-                <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".js-navbar-collapse">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="/"><span class="glyphicon glyphicon-home "></span></a>
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse navbar-main-collapse">
+                    <ul class="nav navbar-nav">
+                        <!-- Hidden li included to remove active class from about link when scrolled up past about section -->
+                        <li class="hidden">
+                            <a href="#page-top"></a>
+                        </li>
+                    </ul>
+                    @if (!Request.IsAuthenticated)
+                    {
+                        @Html.Partial("_Menu")
+                    }
+                    else
+                    {
+                        @Html.Partial("_MenuUser")
+                    }
+                </div>
+                <!-- /.navbar-collapse -->
             </div>
-
-
-            <div class="navbar-collapse collapse js-navbar-collapse">
-               @if (!Request.IsAuthenticated)
-               {
-                @Html.Partial("_Menu")
-               }
-               else
-               {
-                @Html.Partial("_MenuUser")
-               }
-            </div>
-        </div><!--end navigation-->
+            <!-- /.container -->
+        </nav><!--end navigation-->
         <div class="container row">
             <div class="row">
                 @RenderBody()

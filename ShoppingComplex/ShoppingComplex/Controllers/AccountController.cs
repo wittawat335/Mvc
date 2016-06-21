@@ -69,7 +69,8 @@ namespace ShoppingComplex.Controllers
                 {
                     if (user.ConfirmedEmail == true)
                     {
-                        await SignInAsync(user, model.RememberMe); return RedirectToLocal(returnUrl);
+                        await SignInAsync(user, model.RememberMe);
+                        return RedirectToLocal(returnUrl);
                     }
                     else
                     {
@@ -80,6 +81,7 @@ namespace ShoppingComplex.Controllers
                 {
                     ModelState.AddModelError("", "username หรือ password ไม่ถูกต้องค่ะ");
                 }
+               
             }
             // If we got this far, something failed, redisplay form
             return View(model);
@@ -373,7 +375,7 @@ namespace ShoppingComplex.Controllers
         {
             AuthenticationManager.SignOut();
             Session.Abandon();
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Index", "Product");
         }
 
         // GET: /Account/ExternalLoginFailure
@@ -454,7 +456,7 @@ namespace ShoppingComplex.Controllers
             }
             else
             {
-                return RedirectToAction("Index", "Home");
+                return RedirectToAction("Index", "Product");
             }
         }
 

@@ -98,7 +98,7 @@ namespace ShoppingComplex.Areas.Admin.Controllers
             {
                 db.Entry(product).State = EntityState.Modified;
                 db.SaveChanges();
-                return Json(new { success = true });
+                return RedirectToAction("Index");
             }
             ViewBag.CategoryId = new SelectList(db.Categories, "Id", "Name", product.CategoryId);
             ViewBag.SupplierId = new SelectList(db.Suppliers, "Id", "Name", product.SupplierId);

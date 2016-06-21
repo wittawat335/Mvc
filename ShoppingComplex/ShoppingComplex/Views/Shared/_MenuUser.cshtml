@@ -1,4 +1,5 @@
-﻿<ul class="nav navbar-nav">
+﻿
+<ul class="nav navbar-nav">
     <li class="dropdown">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
             Product <span class="caret"></span>
@@ -8,40 +9,24 @@
             <li><a href="/Product/BestSeller">BestSeller</a></li>
             <li><a href="/Product/SaleOff">SaleOff</a></li>
             <li><a href="/Product/All">All</a></li>
-
         </ul>
     </li>
     <li><a href="#">Contact</a></li>
     <li><a href="#">About Us</a></li>
-    
 </ul>
 
 <ul class="nav navbar-nav navbar-right">
     <li class="dropdown">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-user"></span>
-        @if(Request.IsAuthenticated)
-        {
             @User.Identity.Name
-        }
-        SignIn
         </a>
         <ul class="dropdown-menu">
-            @if (!Request.IsAuthenticated)
-            {
-                <li><a href="/Account/Login">เข้าสู่ระบบ</a></li>
-                <li><a href="/Account/Forgot">ลืม Password</a></li>
-                <li><a href="/Account/Register">สมัครสมาชิก</a></li>
-
-            }
-            else
-            {
-                <li><a href="/Account/Manage">Manage</a></li>
-                <li><a href="/Account/Edit"><span class="glyphicon glyphicon-cog"></span> Edit</a></li>
-                <li><a href="/Order/List"><span class="glyphicon glyphicon-list"></span> OrderList</a></li>
-                <li><a href="/Order/Products">Product</a></li>
-                <li class="divider"></li>
-                <li><a href="~/Account/LogOff"><span class="fa fa-fw fa-power-off"></span> ออกจากระบบ</a></li>
-            }
+          <li><a href="/Account/Manage">Manage</a></li>
+          <li><a href="/Account/Edit"><span class="glyphicon glyphicon-cog"></span> Edit</a></li>
+          <li><a href="/Order/List"><span class="glyphicon glyphicon-list"></span> OrderList</a></li>
+          <li><a href="/Order/Products">Product</a></li>
+          <li class="divider"></li>
+          <li><a href="~/Account/LogOff"><span class="fa fa-fw fa-power-off"></span> ออกจากระบบ</a></li>
         </ul>
     </li>
 </ul>
