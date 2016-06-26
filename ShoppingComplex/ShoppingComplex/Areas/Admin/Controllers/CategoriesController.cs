@@ -23,6 +23,12 @@ namespace ShoppingComplex.Areas.Admin.Controllers
             return View();
         }
 
+        public JsonResult AjaxLoader()
+        {
+            System.Threading.Thread.Sleep(2000);
+            return Json("Ok!", JsonRequestBehavior.AllowGet);
+        }
+
         // GET: Admin/Categories/Details/5
         public ActionResult Details(int? id)
         {

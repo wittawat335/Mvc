@@ -14,6 +14,8 @@
     </li>
 </ol>
 
+<div id="ajaxBusy" style=" display:none;">loader.....</div>
+
 <div id='myModal' class='modal fade in'>
     <div class="modal-dialog">
         <div class="modal-content">
@@ -84,10 +86,10 @@
 </div><!--/row-->
 
 <script>
-    $(function () {
+    $(function() {
         $.ajaxSetup({ cache: false });
-        $(".btnModal").on("click", function (e) {
-            $('#myModalContent').load(this.href, function () {
+        $(".btnModal").on("click", function(e) {
+            $('#myModalContent').load(this.href, function() {
                 $('#myModal').modal({
                     keyboard: true
                 }, 'show');
@@ -98,13 +100,13 @@
     });
 
     function bindForm(dialog) {
-        $('form', dialog).submit(function () {
+        $('form', dialog).submit(function() {
             $('#progress').show();
             $.ajax({
                 url: this.action,
                 type: this.method,
                 data: $(this).serialize(),
-                success: function (result) {
+                success: function(result) {
                     if (result.success) {
                         $('#myModal').modal('hide');
                         $('#progress').hide();
@@ -119,5 +121,29 @@
             return false;
         });
     }
+</script>
+
+<script type="text/javascript">
+     $(document).ajaxStart(function () {
+         $('#ajaxBusy').show();
+     });
+     $(document).ajaxStop(function () {
+         $('#ajaxBusy').hide();
+     });
+     $(function () {
+
+         $(".loader").click(function () {
+             $.ajax({
+                 type: "POST",
+                 url: "/Test/AjaxLoader",
+                 data: "",
+                 success: function (sesponseTest) {
+                     alert(sesponseTest);
+                 }
+             });
+
+         });
+
+     })
 </script>
 

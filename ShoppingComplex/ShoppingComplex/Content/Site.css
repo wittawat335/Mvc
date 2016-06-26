@@ -11,8 +11,8 @@
 
 /*Set padding to keep content from hitting the edges */
 .whiteBackground {
-    background-color: #fff;
-    opacity: 0.9;
+    background-color: white;
+   
     padding: 2em;
 }
 

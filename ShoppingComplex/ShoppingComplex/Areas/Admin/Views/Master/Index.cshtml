@@ -1,7 +1,18 @@
 ﻿
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Master";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout2.cshtml";
 }
+
+<ol class="breadcrumb">
+    <li>
+        <i class="fa fa-dashboard"></i> <a href="/Admin/Home">Dashboard</a>
+    </li>
+  
+    <li class="active">
+        <i class="fa fa-table"></i> Master
+    </li>
+</ol>
 
 <div class="alert-info">
     @if (TempData["Message"] != null)
@@ -88,21 +99,25 @@
     </table>
 </fieldset>
 
+
 @section scripts{
-<script>
-    $(function () {
-        $(":checkbox[name=Roles]").click(function () {
-            var roleName = $(this).val();
-            var status = $(this).prop("checked");
-            var userName = $(this).attr("data-userid");
-            $.ajax({
-                url: "/Admin/Master/UpdateRole",
-                data: { Name: roleName, Status: status, UserName: userName },
-                success: function (response) {
-                    alert(response);
-                }
+    <script>
+        $(function() {
+            $(":checkbox[name=Roles]").click(function() {
+                var roleName = $(this).val();
+                var status = $(this).prop("checked");
+                var userName = $(this).attr("data-userid");
+                $.ajax({
+                    url: "/Admin/Master/UpdateRole",
+                    data: { Name: roleName, Status: status, UserName: userName },
+                    success: function(response) {
+                        alert(response);
+                    }
+                });
             });
         });
-    });
     </script>
+   
+    
 }
+

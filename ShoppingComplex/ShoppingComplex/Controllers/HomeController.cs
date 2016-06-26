@@ -67,5 +67,10 @@ namespace ShoppingComplex.Controllers
             var model = db.Products.Where(p => p.Discount > 0).Take(3).OrderBy(p => Guid.NewGuid()).ToList();
             return PartialView("_Saleoff", model);
         }
+
+        public ActionResult TestJquery()
+        {
+            return View();
+        }
     }
 }

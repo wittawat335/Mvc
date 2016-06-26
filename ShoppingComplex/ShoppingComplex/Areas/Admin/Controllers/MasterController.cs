@@ -57,7 +57,7 @@ namespace ShoppingComplex.Areas.Admin.Controllers
                     }
                 }
             
-            TempData["Message"] = "Username exist";
+            TempData["Message"] = "Add User Complete";
             return RedirectToAction("Index");
         }
 
@@ -90,8 +90,7 @@ namespace ShoppingComplex.Areas.Admin.Controllers
                 {
                     UserManager.RemoveFromRole(user.Id, Name);
                 }
-            TempData["Message"] = "Update Complete!";
-            return RedirectToAction("Index");
+            return Content("Update successfully !");
         }
 	}
 }

@@ -1,0 +1,33 @@
+﻿
+@{
+    ViewBag.Title = "TestJquery";
+    Layout = null;
+}
+<html>
+<head>
+    <title>Hello jQuery</title>
+
+    <script src="~/Scripts/jquery-2.2.3.js"></script>
+</head>
+<body class="text-center form-horizontal">
+    <h1>Cheers !!</h1>
+<img src="/Content/img/products/1001.jpg" id="img1"/>
+    <img id="img2"/>
+    <br />
+    <button style="display:none">no more</button>
+    <script>
+      var cheers = function(){
+          $("#img1").attr("src", "/Content/img/products/1002.jpg");
+        $("h1").text("Much more").css("font-style","italic");
+        $("button").show();
+      }
+      $("#img1").click(cheers);
+
+      var noMore = function() {
+          $("#img1").fadeOut("slow");
+          $("#img2").attr("src", "/Content/img/products/1007.jpg").slideD("slow");
+      }
+      $("button").click( noMore );
+    </script>
+</body>
+</html>

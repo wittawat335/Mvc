@@ -253,6 +253,7 @@
     <Content Include="Areas\AdminTheme\Content\plugins\dataTables.bootstrap.css" />
     <Content Include="Areas\AdminTheme\Content\plugins\metisMenu.min.css" />
     <Content Include="Areas\AdminTheme\Content\plugins\morris.css" />
+    <Content Include="Areas\AdminTheme\Scripts\navbar.js" />
     <Content Include="Areas\AdminTheme\Scripts\plugins\dataTables.bootstrap.min.js" />
     <Content Include="Areas\AdminTheme\Scripts\plugins\jquery.dataTables.js" />
     <Content Include="Areas\AdminTheme\Scripts\plugins\morris\morris-data.js" />
@@ -1316,6 +1317,7 @@
     <Content Include="Areas\Admin\Views\Orders\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Suppliers\Details.cshtml" />
     <Content Include="Areas\Admin\Views\Home\TestModal.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\_AdminLayout2.cshtml" />
     <None Include="Scripts\jquery-2.2.3.intellisense.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -1408,12 +1410,12 @@
     <Content Include="Views\Product\All.cshtml" />
     <Content Include="Views\Shared\_LayoutIndex.cshtml" />
     <Content Include="Views\Product\Index.cshtml" />
+    <Content Include="Views\Home\TestJquery.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Content\img\customers\" />
     <Folder Include="Migrations\" />
-    <Folder Include="Views\SecurityActionFilterAttribute\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
